@@ -49,9 +49,26 @@ _DEFAULT_EVAL = Path(os.environ.get("FOA2BIN_EVAL",
 
 # ---------------------------------------------------------------- defaults
 
-# Clip catalogue used when no YAML config is supplied. The path layout
-# matches what is present in /home/smck/Argentum_new/datasets at the time
-# of writing; edit ``configs/clips.yaml`` to point at a different location.
+# Per-dataset filename pairing rules. The script enumerates FOA files in
+# ``foa_root`` and rewrites the basename with the pair-function to obtain
+# the matching binaural file in ``bin_root``. ``foa_glob`` filters the
+# FOA listing so we do not pick up unrelated WAVs in the same directory.
+PAIRING_RULES = {
+    "zhu":         {"foa_glob": "AmbiX-*.wav",
+                    "pair_fn":  lambda n: n.replace("AmbiX-", "Binaural-")},
+    "a2b_2mp":     {"foa_glob": "*_ambisonics.wav",
+                    "pair_fn":  lambda n: n.replace("_ambisonics.wav", "_binaural.wav")},
+    "argentum_pg": {"foa_glob": "FOA_*.wav",
+                    "pair_fn":  lambda n: n.replace("FOA_", "BIN_", 1)},
+    "echo_project": {"foa_glob": "*.wav",
+                     "pair_fn":  lambda n: n},  # filled in once layout is known
+}
+
+
+# Clip catalogue used when no YAML config is supplied. Only the dataset
+# metadata is hard-coded; the actual files and excerpt offsets are
+# discovered at runtime by :func:`_auto_discover` so that adding new
+# recordings to the source directory is enough to make them appear here.
 DEFAULT_CLIPS = {
     "datasets": [
         {
@@ -62,18 +79,6 @@ DEFAULT_CLIPS = {
             "foa_root": "/home/smck/Argentum_new/datasets/dataset_zhu/ambisonic-binaural/test/ambisonic",
             "bin_root": "/home/smck/Argentum_new/datasets/dataset_zhu/ambisonic-binaural/test/binaural",
             "data_sr": 48000,
-            "files": [
-                {
-                    "foa": "AmbiX-211122_2225_0001.wav",
-                    "bin": "Binaural-211122_2225_0001.wav",
-                    "excerpts": [{"start_s": 8.0}, {"start_s": 30.0}],
-                },
-                {
-                    "foa": "AmbiX-211122_2225_0005.wav",
-                    "bin": "Binaural-211122_2225_0005.wav",
-                    "excerpts": [{"start_s": 12.0}],
-                },
-            ],
         },
         {
             "id": "a2b_2mp",
@@ -83,18 +88,6 @@ DEFAULT_CLIPS = {
             "foa_root": "/home/smck/Argentum_new/datasets/dataset_a2b_2mp/test/ambisonic",
             "bin_root": "/home/smck/Argentum_new/datasets/dataset_a2b_2mp/test/binaural",
             "data_sr": 44100,
-            "files": [
-                {
-                    "foa": "a2b_0000_ambisonics.wav",
-                    "bin": "a2b_0000_binaural.wav",
-                    "excerpts": [{"start_s": 10.0}, {"start_s": 45.0}],
-                },
-                {
-                    "foa": "a2b_0017_ambisonics.wav",
-                    "bin": "a2b_0017_binaural.wav",
-                    "excerpts": [{"start_s": 20.0}],
-                },
-            ],
         },
         {
             "id": "argentum_pg",
@@ -104,22 +97,10 @@ DEFAULT_CLIPS = {
             "foa_root": "/home/smck/Argentum_new/datasets/dataset_argentum/NAS_Argentum/ambisonic",
             "bin_root": "/home/smck/Argentum_new/datasets/dataset_argentum/NAS_Argentum/binaural",
             "data_sr": 48000,
-            "files": [
-                {
-                    "foa": "FOA_ZM1_CDebussy-Wrzosy.wav",
-                    "bin": "BIN_ZM1_CDebussy-Wrzosy.wav",
-                    "excerpts": [{"start_s": 30.0}, {"start_s": 90.0}],
-                },
-                {
-                    "foa": "FOA_ZM1_ChoirConcert.wav",
-                    "bin": "BIN_ZM1_ChoirConcert.wav",
-                    "excerpts": [{"start_s": 60.0}],
-                },
-            ],
         },
-        # Echo Project placeholder. Add a "files" entry once FOA recordings
-        # are available locally; the dataset block will then appear in the
-        # GUI automatically.
+        # Echo Project placeholder. Drop the FOA / binaural WAVs into the
+        # directories listed here once they are available; the dataset
+        # block will then appear in the GUI automatically.
         {
             "id": "echo_project",
             "label": "Echo Project (optional)",
@@ -128,7 +109,6 @@ DEFAULT_CLIPS = {
             "foa_root": "",
             "bin_root": "",
             "data_sr": 48000,
-            "files": [],
         },
     ]
 }
@@ -256,61 +236,150 @@ def _load_config(path: Optional[str]) -> dict:
         return yaml.safe_load(fp)
 
 
+def _auto_discover(ds_cfg: dict, duration: float, target: int) -> List[dict]:
+    """Build the (foa, bin, start_s) excerpt list for one dataset by scanning disk.
+
+    For every paired FOA / binaural file:
+
+    * one excerpt centred in the file (long enough margin from both ends) is
+      always taken first,
+    * a second excerpt near the start (offset 5 s) is taken on the second
+      pass if the target count is not yet reached and the file is long
+      enough,
+    * a third excerpt three-quarters of the way through is added on a
+      third pass when needed.
+
+    The order is deterministic so re-running the script produces the same
+    clip identifiers as long as the source directories are unchanged.
+    """
+    foa_root = Path(ds_cfg.get("foa_root", ""))
+    bin_root = Path(ds_cfg.get("bin_root", ""))
+    if not foa_root or not bin_root or not foa_root.is_dir():
+        return []
+
+    rules = PAIRING_RULES.get(ds_cfg["id"], {})
+    foa_glob = rules.get("foa_glob", "*.wav")
+    pair_fn = rules.get("pair_fn", lambda n: n)
+
+    pairs: List[Tuple[Path, Path, float]] = []
+    for foa in sorted(foa_root.glob(foa_glob)):
+        bin_path = bin_root / pair_fn(foa.name)
+        if not bin_path.exists():
+            continue
+        try:
+            duration_s = sf.info(str(foa)).duration
+        except Exception:
+            continue
+        if duration_s < duration + 4.0:
+            continue  # too short to carry one comfortable excerpt
+        pairs.append((foa, bin_path, duration_s))
+
+    if not pairs:
+        return []
+
+    excerpts: List[dict] = []
+    seen: set = set()  # (filename, start_s) dedup
+
+    def _push(foa: Path, bin_path: Path, start_s: float) -> bool:
+        key = (foa.name, round(start_s, 2))
+        if key in seen:
+            return False
+        seen.add(key)
+        excerpts.append({"foa": foa.name, "bin": bin_path.name,
+                         "start_s": float(start_s)})
+        return len(excerpts) >= target
+
+    # Pass 1: centred excerpt.
+    for foa, bin_path, file_dur in pairs:
+        start = max(2.0, (file_dur - duration) / 2.0)
+        if _push(foa, bin_path, start):
+            return excerpts
+
+    # Pass 2: extra excerpt near the start of each file.
+    for foa, bin_path, file_dur in pairs:
+        if file_dur < duration + 8.0:
+            continue
+        if _push(foa, bin_path, 5.0):
+            return excerpts
+
+    # Pass 3: extra excerpt three-quarters in.
+    for foa, bin_path, file_dur in pairs:
+        start = max(2.0, 0.75 * file_dur - duration / 2.0)
+        if start + duration > file_dur - 2.0:
+            continue
+        if _push(foa, bin_path, start):
+            return excerpts
+
+    return excerpts
+
+
 def _generate_dataset(
     ds_cfg: dict,
     duration: float,
+    target: int,
     out_root: Path,
     eval_root: Path,
 ) -> List[dict]:
     """Render every excerpt of one dataset and return its catalogue entries."""
     foa_root = Path(ds_cfg.get("foa_root", ""))
     bin_root = Path(ds_cfg.get("bin_root", ""))
-    files = ds_cfg.get("files", [])
-    if not foa_root or not files:
+    excerpts = ds_cfg.get("excerpts")  # optional explicit override
+    if excerpts is None:
+        excerpts = _auto_discover(ds_cfg, duration, target)
+    if not foa_root or not excerpts:
+        print(f"[skip] {ds_cfg['id']}: no source recordings or no excerpts to render")
         return []
+
+    print(f"  discovered {len(excerpts)} excerpts for {ds_cfg['id']}")
 
     crm, zhu, a2b = _build_renderers(eval_root, ds_cfg.get("a2b_checkpoint_id", "btpab"))
     if all(r is None for r in (crm, zhu, a2b)):
         print(f"[skip] {ds_cfg['id']}: no renderers available")
         return []
 
+    # Wipe any stale clip directories from a previous run so that orphaned
+    # clip IDs do not linger in the catalogue.
+    ds_out = out_root / ds_cfg["id"]
+    if ds_out.exists():
+        import shutil
+        shutil.rmtree(ds_out)
+
     clip_entries: List[dict] = []
-    counter = 1
-    for f in files:
-        foa_path = foa_root / f["foa"]
-        bin_path = bin_root / f["bin"]
+    for idx, ex in enumerate(excerpts, start=1):
+        foa_path = foa_root / ex["foa"]
+        bin_path = bin_root / ex["bin"]
         if not foa_path.exists() or not bin_path.exists():
             print(f"  [skip] {foa_path.name} or {bin_path.name} missing")
             continue
-        for ex in f.get("excerpts", []):
-            start_s = float(ex["start_s"])
-            clip_id = f"{ds_cfg['id']}_{counter:03d}"
-            counter += 1
 
-            print(f"  rendering {clip_id} from {foa_path.name} @ {start_s:.1f}s ...")
-            foa, sr = _slice_foa_to_temp(foa_path, start_s, duration)
-            renders = _render_with_renderers(foa, sr, crm, zhu, a2b)
-            ref, _ = _read_bin_excerpt(bin_path, start_s, duration)
+        start_s = float(ex["start_s"])
+        clip_id = f"{ds_cfg['id']}_{idx:03d}"
+        print(f"  [{idx:02d}/{len(excerpts)}] {clip_id}  "
+              f"{foa_path.name} @ {start_s:.1f}s", flush=True)
 
-            clip_dir = out_root / ds_cfg["id"] / clip_id
-            _save_wav(clip_dir / "reference.wav", ref, sr)
-            renderings = {"reference": f"audio/{ds_cfg['id']}/{clip_id}/reference.wav"}
-            for name, audio in renders.items():
-                # Make sure the rendered output matches the reference length
-                # so the audio players line up visually.
-                target_len = ref.shape[-1]
-                if audio.shape[-1] > target_len:
-                    audio = audio[..., :target_len]
-                _save_wav(clip_dir / f"{name}.wav", audio, sr)
-                renderings[name] = f"audio/{ds_cfg['id']}/{clip_id}/{name}.wav"
+        foa, sr = _slice_foa_to_temp(foa_path, start_s, duration)
+        renders = _render_with_renderers(foa, sr, crm, zhu, a2b)
+        ref, _ = _read_bin_excerpt(bin_path, start_s, duration)
 
-            clip_entries.append({
-                "id": clip_id,
-                "source": f["foa"],
-                "start_s": start_s,
-                "duration_s": duration,
-                "renderings": renderings,
-            })
+        clip_dir = out_root / ds_cfg["id"] / clip_id
+        _save_wav(clip_dir / "reference.wav", ref, sr)
+        renderings = {"reference": f"audio/{ds_cfg['id']}/{clip_id}/reference.wav"}
+        for name, audio in renders.items():
+            # Make sure the rendered output matches the reference length so
+            # the players line up visually.
+            ref_len = ref.shape[-1]
+            if audio.shape[-1] > ref_len:
+                audio = audio[..., :ref_len]
+            _save_wav(clip_dir / f"{name}.wav", audio, sr)
+            renderings[name] = f"audio/{ds_cfg['id']}/{clip_id}/{name}.wav"
+
+        clip_entries.append({
+            "id": clip_id,
+            "source": ex["foa"],
+            "start_s": start_s,
+            "duration_s": duration,
+            "renderings": renderings,
+        })
     return clip_entries
 
 
@@ -319,8 +388,10 @@ def main() -> int:
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--config", default=None,
                         help="Path to a YAML config file; defaults to built-in clips")
-    parser.add_argument("--duration", type=float, default=8.0,
-                        help="Excerpt duration in seconds (default 8)")
+    parser.add_argument("--duration", type=float, default=30.0,
+                        help="Excerpt duration in seconds (default 30)")
+    parser.add_argument("--target", type=int, default=25,
+                        help="Approximate number of excerpts per dataset (default 25)")
     parser.add_argument("--eval-root", default=str(_DEFAULT_EVAL),
                         help="Path to the foa2binaural-eval repository")
     parser.add_argument("--out", default=str(_REPO / "audio"),
@@ -339,7 +410,7 @@ def main() -> int:
     index = {"datasets": []}
     for ds in cfg.get("datasets", []):
         print(f"\n[ {ds['id']} ] {ds.get('label', ds['id'])}")
-        clips = _generate_dataset(ds, args.duration, out_root, eval_root)
+        clips = _generate_dataset(ds, args.duration, args.target, out_root, eval_root)
         index["datasets"].append({
             "id": ds["id"],
             "label": ds.get("label", ds["id"]),

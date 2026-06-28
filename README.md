@@ -66,7 +66,8 @@ Python 3.10 or later. The PyTorch wheel only matters for
 # 1. (one time) render the demo clips with all three systems.
 #    Requires the foa2binaural-eval repository to be reachable; set
 #    FOA2BIN_EVAL when it does not sit as a sibling of this repo.
-python scripts/generate_audio.py --duration 8
+#    Defaults to 25 clips per dataset at 30 seconds each (~75 clips total).
+python scripts/generate_audio.py --duration 30 --target 25
 
 # 2. launch the GUI.
 streamlit run app.py
@@ -78,25 +79,34 @@ works entirely offline.
 
 ## Generating the audio
 
-`scripts/generate_audio.py` selects a small set of representative FOA
-excerpts from each source dataset, runs the three trained models on every
-excerpt, and writes the resulting WAVs into `audio/<dataset>/<clip>/`.
+`scripts/generate_audio.py` auto-discovers paired FOA / binaural files in
+each source dataset, picks up to `--target` excerpts of `--duration`
+seconds each (defaults: 25 excerpts at 30 s, so ~75 clips total across the
+three datasets), runs the three trained models on every excerpt, and
+writes the resulting WAVs into `audio/<dataset>/<clip>/`.
 
 The default clip catalogue covers:
 
-| Dataset | Source | Sampling rate |
-|---|---|---|
-| `zhu` | Zhu (ByteDance) test set | 48 kHz |
-| `a2b_2mp` | Meta A2B 2-MP test set | 44.1 kHz |
-| `argentum_pg` | Argentum HOA corpus (concert hall recordings) | 48 kHz |
-| `echo_project` | Placeholder; add files when available | - |
+| Dataset | Source | Sampling rate | Pairing rule |
+|---|---|---|---|
+| `zhu` | Zhu (ByteDance) test set | 48 kHz | `AmbiX-*.wav` ↔ `Binaural-*.wav` |
+| `a2b_2mp` | Meta A2B 2-MP test set | 44.1 kHz | `*_ambisonics.wav` ↔ `*_binaural.wav` |
+| `argentum_pg` | Argentum HOA corpus | 48 kHz | `FOA_*.wav` ↔ `BIN_*.wav` |
+| `echo_project` | Placeholder; add files when available | - | - |
 
-To change the catalogue, copy `DEFAULT_CLIPS` from
-`scripts/generate_audio.py` into `configs/clips.yaml`, edit the file paths
-and excerpt offsets, then run
+Auto-discovery picks one centred excerpt per source file first, then loops
+back to add a second excerpt near the start and a third around the 3/4
+mark until the target is reached or every file has been visited three
+times. Re-running the script with the same source directory yields the
+same clip ordering.
+
+To override the source paths, copy `DEFAULT_CLIPS` from
+`scripts/generate_audio.py` into `configs/clips.yaml`, edit the roots,
+then run
 
 ```bash
-python scripts/generate_audio.py --config configs/clips.yaml --duration 8
+python scripts/generate_audio.py --config configs/clips.yaml \
+    --duration 30 --target 25
 ```
 
 Environment variables override the checkpoint paths:
