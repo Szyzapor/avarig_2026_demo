@@ -12,8 +12,8 @@ Companion to:
 
 For every clip the visitor listens to four versions:
 
-* **Reference** — the ground-truth binaural recording from the dataset,
-* **Proposed CRM**, **Zhu et al. 2022**, **A2B (Gebru et al. 2025)** — the
+* **Reference** - the ground-truth binaural recording from the dataset,
+* **Proposed CRM**, **Zhu et al. 2022**, **A2B (Gebru et al. 2025)** - the
   three rendering systems compared in the paper.
 
 The three systems are labelled **A**, **B**, **C** in a randomised order so
@@ -89,7 +89,7 @@ The default clip catalogue covers:
 | `zhu` | Zhu (ByteDance) test set | 48 kHz |
 | `a2b_2mp` | Meta A2B 2-MP test set | 44.1 kHz |
 | `argentum_pg` | Argentum HOA corpus (concert hall recordings) | 48 kHz |
-| `echo_project` | Placeholder; add files when available | — |
+| `echo_project` | Placeholder; add files when available | - |
 
 To change the catalogue, copy `DEFAULT_CLIPS` from
 `scripts/generate_audio.py` into `configs/clips.yaml`, edit the file paths
@@ -142,11 +142,11 @@ The scale follows ITU-R BS.1116 / P.800:
 
 | Score | Verdict |
 |---|---|
-| 5 | Excellent — imperceptible difference |
-| 4 | Good — perceptible but not annoying |
-| 3 | Fair — slightly annoying |
-| 2 | Poor — annoying |
-| 1 | Bad — very annoying |
+| 5 | Excellent - imperceptible difference |
+| 4 | Good - perceptible but not annoying |
+| 3 | Fair - slightly annoying |
+| 2 | Poor - annoying |
+| 1 | Bad - very annoying |
 
 We ask raters to consider both **timbral fidelity** and **spatial accuracy**
 (localisation, externalisation, width) in a single score.

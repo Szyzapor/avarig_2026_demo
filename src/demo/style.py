@@ -4,11 +4,11 @@ from __future__ import annotations
 
 # Standard MOS scale (ITU-R BS.1116 / P.800 wording, abbreviated).
 MOS_SCALE = {
-    5: "5 — Excellent (imperceptible difference)",
-    4: "4 — Good (perceptible but not annoying)",
-    3: "3 — Fair (slightly annoying)",
-    2: "2 — Poor (annoying)",
-    1: "1 — Bad (very annoying)",
+    5: "5 - Excellent (imperceptible difference)",
+    4: "4 - Good (perceptible but not annoying)",
+    3: "3 - Fair (slightly annoying)",
+    2: "2 - Poor (annoying)",
+    1: "1 - Bad (very annoying)",
 }
 
 # Soft pastel palette for the four players.
