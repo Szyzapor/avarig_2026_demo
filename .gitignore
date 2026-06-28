@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# Virtual envs
+.venv/
+venv/
+
+# IDEs
+.idea/
+.vscode/
+
+# Generated audio (re-create with scripts/generate_audio.py).
+# Keep the .gitkeep file so the directory survives clones.
+audio/*
+!audio/.gitkeep
+
+# Collected MOS ratings (rater-specific, do not commit by default).
+ratings/*
+!ratings/.gitkeep
+
+# Auto-generated index of audio assets (rebuilt by generate_audio.py).
+configs/audio_index.json
+
+# Logs and OS noise
+*.log
+.DS_Store
+Thumbs.db

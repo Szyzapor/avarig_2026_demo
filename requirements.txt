@@ -1,0 +1,8 @@
+streamlit>=1.30
+soundfile>=0.12
+numpy>=1.23
+# torch + torchaudio are required only by scripts/generate_audio.py.
+# Install them from the PyTorch index that matches the local hardware:
+#   pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+torch>=2.0
+torchaudio>=2.0
