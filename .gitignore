@@ -22,8 +22,9 @@ audio/*
 ratings/*
 !ratings/.gitkeep
 
-# Auto-generated index of audio assets (rebuilt by generate_audio.py).
-configs/audio_index.json
+# Auto-generated index of audio assets is checked in so users who only
+# download the audio package can run the GUI without regenerating.
+# Re-run scripts/generate_audio.py to refresh after changing the catalogue.
 
 # Logs and OS noise
 *.log

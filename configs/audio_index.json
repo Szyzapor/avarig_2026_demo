@@ -1,0 +1,931 @@
+{
+  "datasets": [
+    {
+      "id": "zhu",
+      "label": "Zhu (ByteDance)",
+      "description": "Outdoor music, 48 kHz first-order ambisonics.",
+      "clips": [
+        {
+          "id": "zhu_001",
+          "source": "AmbiX-211122_2225_0001.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_001/reference.wav",
+            "crm": "zhu/zhu_001/crm.wav",
+            "zhu": "zhu/zhu_001/zhu.wav",
+            "a2b": "zhu/zhu_001/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_002",
+          "source": "AmbiX-211122_2225_0002.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_002/reference.wav",
+            "crm": "zhu/zhu_002/crm.wav",
+            "zhu": "zhu/zhu_002/zhu.wav",
+            "a2b": "zhu/zhu_002/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_003",
+          "source": "AmbiX-211122_2225_0003.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_003/reference.wav",
+            "crm": "zhu/zhu_003/crm.wav",
+            "zhu": "zhu/zhu_003/zhu.wav",
+            "a2b": "zhu/zhu_003/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_004",
+          "source": "AmbiX-211122_2225_0004.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_004/reference.wav",
+            "crm": "zhu/zhu_004/crm.wav",
+            "zhu": "zhu/zhu_004/zhu.wav",
+            "a2b": "zhu/zhu_004/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_005",
+          "source": "AmbiX-211122_2225_0005.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_005/reference.wav",
+            "crm": "zhu/zhu_005/crm.wav",
+            "zhu": "zhu/zhu_005/zhu.wav",
+            "a2b": "zhu/zhu_005/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_006",
+          "source": "AmbiX-211122_2225_0006.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_006/reference.wav",
+            "crm": "zhu/zhu_006/crm.wav",
+            "zhu": "zhu/zhu_006/zhu.wav",
+            "a2b": "zhu/zhu_006/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_007",
+          "source": "AmbiX-211122_2225_0007.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_007/reference.wav",
+            "crm": "zhu/zhu_007/crm.wav",
+            "zhu": "zhu/zhu_007/zhu.wav",
+            "a2b": "zhu/zhu_007/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_008",
+          "source": "AmbiX-211122_2225_0008.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_008/reference.wav",
+            "crm": "zhu/zhu_008/crm.wav",
+            "zhu": "zhu/zhu_008/zhu.wav",
+            "a2b": "zhu/zhu_008/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_009",
+          "source": "AmbiX-211122_2225_0009.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_009/reference.wav",
+            "crm": "zhu/zhu_009/crm.wav",
+            "zhu": "zhu/zhu_009/zhu.wav",
+            "a2b": "zhu/zhu_009/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_010",
+          "source": "AmbiX-211122_2225_0010.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_010/reference.wav",
+            "crm": "zhu/zhu_010/crm.wav",
+            "zhu": "zhu/zhu_010/zhu.wav",
+            "a2b": "zhu/zhu_010/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_011",
+          "source": "AmbiX-211122_2225_0011.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_011/reference.wav",
+            "crm": "zhu/zhu_011/crm.wav",
+            "zhu": "zhu/zhu_011/zhu.wav",
+            "a2b": "zhu/zhu_011/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_012",
+          "source": "AmbiX-211122_2225_0012.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_012/reference.wav",
+            "crm": "zhu/zhu_012/crm.wav",
+            "zhu": "zhu/zhu_012/zhu.wav",
+            "a2b": "zhu/zhu_012/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_013",
+          "source": "AmbiX-211122_2225_0013.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_013/reference.wav",
+            "crm": "zhu/zhu_013/crm.wav",
+            "zhu": "zhu/zhu_013/zhu.wav",
+            "a2b": "zhu/zhu_013/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_014",
+          "source": "AmbiX-211122_2225_0014.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_014/reference.wav",
+            "crm": "zhu/zhu_014/crm.wav",
+            "zhu": "zhu/zhu_014/zhu.wav",
+            "a2b": "zhu/zhu_014/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_015",
+          "source": "AmbiX-211122_2225_0015.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_015/reference.wav",
+            "crm": "zhu/zhu_015/crm.wav",
+            "zhu": "zhu/zhu_015/zhu.wav",
+            "a2b": "zhu/zhu_015/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_016",
+          "source": "AmbiX-211122_2225_0016.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_016/reference.wav",
+            "crm": "zhu/zhu_016/crm.wav",
+            "zhu": "zhu/zhu_016/zhu.wav",
+            "a2b": "zhu/zhu_016/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_017",
+          "source": "AmbiX-211122_2225_0017.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_017/reference.wav",
+            "crm": "zhu/zhu_017/crm.wav",
+            "zhu": "zhu/zhu_017/zhu.wav",
+            "a2b": "zhu/zhu_017/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_018",
+          "source": "AmbiX-211122_2225_0018.wav",
+          "start_s": 15.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_018/reference.wav",
+            "crm": "zhu/zhu_018/crm.wav",
+            "zhu": "zhu/zhu_018/zhu.wav",
+            "a2b": "zhu/zhu_018/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_019",
+          "source": "AmbiX-211122_2225_0001.wav",
+          "start_s": 5.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_019/reference.wav",
+            "crm": "zhu/zhu_019/crm.wav",
+            "zhu": "zhu/zhu_019/zhu.wav",
+            "a2b": "zhu/zhu_019/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_020",
+          "source": "AmbiX-211122_2225_0002.wav",
+          "start_s": 5.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_020/reference.wav",
+            "crm": "zhu/zhu_020/crm.wav",
+            "zhu": "zhu/zhu_020/zhu.wav",
+            "a2b": "zhu/zhu_020/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_021",
+          "source": "AmbiX-211122_2225_0003.wav",
+          "start_s": 5.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_021/reference.wav",
+            "crm": "zhu/zhu_021/crm.wav",
+            "zhu": "zhu/zhu_021/zhu.wav",
+            "a2b": "zhu/zhu_021/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_022",
+          "source": "AmbiX-211122_2225_0004.wav",
+          "start_s": 5.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_022/reference.wav",
+            "crm": "zhu/zhu_022/crm.wav",
+            "zhu": "zhu/zhu_022/zhu.wav",
+            "a2b": "zhu/zhu_022/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_023",
+          "source": "AmbiX-211122_2225_0005.wav",
+          "start_s": 5.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_023/reference.wav",
+            "crm": "zhu/zhu_023/crm.wav",
+            "zhu": "zhu/zhu_023/zhu.wav",
+            "a2b": "zhu/zhu_023/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_024",
+          "source": "AmbiX-211122_2225_0006.wav",
+          "start_s": 5.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_024/reference.wav",
+            "crm": "zhu/zhu_024/crm.wav",
+            "zhu": "zhu/zhu_024/zhu.wav",
+            "a2b": "zhu/zhu_024/a2b.wav"
+          }
+        },
+        {
+          "id": "zhu_025",
+          "source": "AmbiX-211122_2225_0007.wav",
+          "start_s": 5.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "zhu/zhu_025/reference.wav",
+            "crm": "zhu/zhu_025/crm.wav",
+            "zhu": "zhu/zhu_025/zhu.wav",
+            "a2b": "zhu/zhu_025/a2b.wav"
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2b_2mp",
+      "label": "Meta A2B 2-MP",
+      "description": "Meta capture, 44.1 kHz first-order ambisonics.",
+      "clips": [
+        {
+          "id": "a2b_2mp_001",
+          "source": "a2b_0000_ambisonics.wav",
+          "start_s": 29.261337868480723,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_001/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_001/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_001/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_001/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_002",
+          "source": "a2b_0017_ambisonics.wav",
+          "start_s": 36.38666666666666,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_002/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_002/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_002/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_002/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_003",
+          "source": "a2b_0018_ambisonics.wav",
+          "start_s": 82.64,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_003/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_003/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_003/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_003/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_004",
+          "source": "a2b_0030_ambisonics.wav",
+          "start_s": 119.0319954648526,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_004/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_004/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_004/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_004/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_005",
+          "source": "a2b_0038_ambisonics.wav",
+          "start_s": 38.84,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_005/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_005/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_005/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_005/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_006",
+          "source": "a2b_0049_ambisonics.wav",
+          "start_s": 130.0880045351474,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_006/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_006/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_006/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_006/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_007",
+          "source": "a2b_0064_ambisonics.wav",
+          "start_s": 37.94933106575964,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_007/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_007/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_007/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_007/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_008",
+          "source": "a2b_0065_ambisonics.wav",
+          "start_s": 47.16,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_008/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_008/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_008/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_008/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_009",
+          "source": "a2b_0074_ambisonics.wav",
+          "start_s": 59.52800453514739,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_009/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_009/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_009/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_009/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_010",
+          "source": "a2b_0082_ambisonics.wav",
+          "start_s": 99.58666666666667,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_010/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_010/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_010/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_010/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_011",
+          "source": "a2b_0086_ambisonics.wav",
+          "start_s": 137.70400226757369,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_011/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_011/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_011/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_011/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_012",
+          "source": "a2b_0091_ambisonics.wav",
+          "start_s": 43.16,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_012/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_012/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_012/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_012/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_013",
+          "source": "a2b_0100_ambisonics.wav",
+          "start_s": 69.43733560090703,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_013/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_013/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_013/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_013/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_014",
+          "source": "a2b_0106_ambisonics.wav",
+          "start_s": 43.352006802721085,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_014/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_014/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_014/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_014/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_015",
+          "source": "a2b_0112_ambisonics.wav",
+          "start_s": 49.53333333333333,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_015/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_015/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_015/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_015/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_016",
+          "source": "a2b_0117_ambisonics.wav",
+          "start_s": 46.4240022675737,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_016/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_016/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_016/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_016/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_017",
+          "source": "a2b_0124_ambisonics.wav",
+          "start_s": 41.906666666666666,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_017/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_017/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_017/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_017/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_018",
+          "source": "a2b_0126_ambisonics.wav",
+          "start_s": 201.61333333333334,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_018/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_018/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_018/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_018/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_019",
+          "source": "a2b_0133_ambisonics.wav",
+          "start_s": 64.87200680272109,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_019/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_019/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_019/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_019/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_020",
+          "source": "a2b_0138_ambisonics.wav",
+          "start_s": 116.81333333333333,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_020/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_020/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_020/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_020/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_021",
+          "source": "a2b_0147_ambisonics.wav",
+          "start_s": 43.10666666666667,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_021/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_021/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_021/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_021/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_022",
+          "source": "a2b_0148_ambisonics.wav",
+          "start_s": 48.28534013605442,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_022/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_022/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_022/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_022/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_023",
+          "source": "a2b_0151_ambisonics.wav",
+          "start_s": 42.71200680272109,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_023/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_023/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_023/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_023/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_024",
+          "source": "a2b_0000_ambisonics.wav",
+          "start_s": 5.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_024/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_024/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_024/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_024/a2b.wav"
+          }
+        },
+        {
+          "id": "a2b_2mp_025",
+          "source": "a2b_0017_ambisonics.wav",
+          "start_s": 5.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "a2b_2mp/a2b_2mp_025/reference.wav",
+            "crm": "a2b_2mp/a2b_2mp_025/crm.wav",
+            "zhu": "a2b_2mp/a2b_2mp_025/zhu.wav",
+            "a2b": "a2b_2mp/a2b_2mp_025/a2b.wav"
+          }
+        }
+      ]
+    },
+    {
+      "id": "argentum_pg",
+      "label": "Argentum PG (Gdansk Tech)",
+      "description": "Concert hall recordings, 48 kHz first-order ambisonics.",
+      "clips": [
+        {
+          "id": "argentum_pg_001",
+          "source": "FOA_ZM1_CDebussy-Wrzosy.wav",
+          "start_s": 93.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_001/reference.wav",
+            "crm": "argentum_pg/argentum_pg_001/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_001/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_001/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_002",
+          "source": "FOA_ZM1_CDebussyCanope.wav",
+          "start_s": 97.59247916666666,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_002/reference.wav",
+            "crm": "argentum_pg/argentum_pg_002/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_002/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_002/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_003",
+          "source": "FOA_ZM1_CDebussyFeux.wav",
+          "start_s": 128.59078125,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_003/reference.wav",
+            "crm": "argentum_pg/argentum_pg_003/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_003/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_003/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_004",
+          "source": "FOA_ZM1_CharityConcert01.wav",
+          "start_s": 210.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_004/reference.wav",
+            "crm": "argentum_pg/argentum_pg_004/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_004/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_004/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_005",
+          "source": "FOA_ZM1_CharityConcert02.wav",
+          "start_s": 159.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_005/reference.wav",
+            "crm": "argentum_pg/argentum_pg_005/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_005/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_005/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_006",
+          "source": "FOA_ZM1_CharityConcert03.wav",
+          "start_s": 159.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_006/reference.wav",
+            "crm": "argentum_pg/argentum_pg_006/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_006/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_006/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_007",
+          "source": "FOA_ZM1_CharityConcert04.wav",
+          "start_s": 145.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_007/reference.wav",
+            "crm": "argentum_pg/argentum_pg_007/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_007/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_007/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_008",
+          "source": "FOA_ZM1_CharityConcert05.wav",
+          "start_s": 393.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_008/reference.wav",
+            "crm": "argentum_pg/argentum_pg_008/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_008/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_008/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_009",
+          "source": "FOA_ZM1_CharityConcert06.wav",
+          "start_s": 213.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_009/reference.wav",
+            "crm": "argentum_pg/argentum_pg_009/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_009/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_009/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_010",
+          "source": "FOA_ZM1_ChoirConcert.wav",
+          "start_s": 2437.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_010/reference.wav",
+            "crm": "argentum_pg/argentum_pg_010/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_010/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_010/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_011",
+          "source": "FOA_ZM1_ChoirConcertPt1.wav",
+          "start_s": 971.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_011/reference.wav",
+            "crm": "argentum_pg/argentum_pg_011/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_011/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_011/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_012",
+          "source": "FOA_ZM1_ChoirConcertPt2.wav",
+          "start_s": 1230.1733333333334,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_012/reference.wav",
+            "crm": "argentum_pg/argentum_pg_012/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_012/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_012/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_013",
+          "source": "FOA_ZM1_ChopinRecital1.wav",
+          "start_s": 729.1416875,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_013/reference.wav",
+            "crm": "argentum_pg/argentum_pg_013/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_013/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_013/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_014",
+          "source": "FOA_ZM1_ChopinRecital2.wav",
+          "start_s": 441.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_014/reference.wav",
+            "crm": "argentum_pg/argentum_pg_014/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_014/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_014/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_015",
+          "source": "FOA_ZM1_Concert.wav",
+          "start_s": 2583.3919895833333,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_015/reference.wav",
+            "crm": "argentum_pg/argentum_pg_015/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_015/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_015/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_016",
+          "source": "FOA_ZM1_EGrieg-LetniWieczor.wav",
+          "start_s": 74.49305208333334,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_016/reference.wav",
+            "crm": "argentum_pg/argentum_pg_016/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_016/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_016/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_017",
+          "source": "FOA_ZM1_FChopinRevolutionary.wav",
+          "start_s": 66.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_017/reference.wav",
+            "crm": "argentum_pg/argentum_pg_017/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_017/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_017/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_018",
+          "source": "FOA_ZM1_FLisztPaganiniVariations.wav",
+          "start_s": 150.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_018/reference.wav",
+            "crm": "argentum_pg/argentum_pg_018/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_018/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_018/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_019",
+          "source": "FOA_ZM1_Franck.wav",
+          "start_s": 560.9165416666667,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_019/reference.wav",
+            "crm": "argentum_pg/argentum_pg_019/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_019/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_019/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_020",
+          "source": "FOA_ZM1_FranckSonata.wav",
+          "start_s": 456.0,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_020/reference.wav",
+            "crm": "argentum_pg/argentum_pg_020/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_020/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_020/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_021",
+          "source": "FOA_ZM1_IDenisova-CherubicHymn.wav",
+          "start_s": 106.49998958333333,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_021/reference.wav",
+            "crm": "argentum_pg/argentum_pg_021/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_021/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_021/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_022",
+          "source": "FOA_ZM1_JHaydnSonata1.wav",
+          "start_s": 194.5,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_022/reference.wav",
+            "crm": "argentum_pg/argentum_pg_022/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_022/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_022/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_023",
+          "source": "FOA_ZM1_JHaydnSonata2.wav",
+          "start_s": 194.5,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_023/reference.wav",
+            "crm": "argentum_pg/argentum_pg_023/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_023/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_023/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_024",
+          "source": "FOA_ZM1_JHaydnSonata3.wav",
+          "start_s": 113.5,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_024/reference.wav",
+            "crm": "argentum_pg/argentum_pg_024/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_024/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_024/a2b.wav"
+          }
+        },
+        {
+          "id": "argentum_pg_025",
+          "source": "FOA_ZM1_JJunek-BogoroditseDevo.wav",
+          "start_s": 90.74998958333333,
+          "duration_s": 30.0,
+          "renderings": {
+            "reference": "argentum_pg/argentum_pg_025/reference.wav",
+            "crm": "argentum_pg/argentum_pg_025/crm.wav",
+            "zhu": "argentum_pg/argentum_pg_025/zhu.wav",
+            "a2b": "argentum_pg/argentum_pg_025/a2b.wav"
+          }
+        }
+      ]
+    },
+    {
+      "id": "echo_project",
+      "label": "Echo Project (optional)",
+      "description": "Placeholder; add files once FOA recordings are available.",
+      "clips": []
+    }
+  ]
+}
