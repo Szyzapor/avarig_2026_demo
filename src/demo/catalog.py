@@ -108,8 +108,16 @@ class Catalog:
         return [d for d in self.datasets if d.available_clips()]
 
 
-def load_catalog(path: str | Path) -> Catalog:
+def load_catalog(path: str | Path, audio_root: str | Path | None = None) -> Catalog:
     """Load the audio catalogue from JSON.
+
+    Args:
+        path: path to ``configs/audio_index.json``.
+        audio_root: directory that contains ``<dataset_id>/<clip_id>/*.wav``.
+            When ``None`` it defaults to ``<repo_root>/audio`` so the GUI keeps
+            working with the bundled layout, but the caller can override it
+            via the ``DEMO_AUDIO_ROOT`` environment variable when the WAV
+            files live outside the repository (typical SharePoint workflow).
 
     Missing files are kept in the catalogue so the UI can show them as
     "coming soon" rather than disappearing silently. Existence is checked
@@ -118,15 +126,19 @@ def load_catalog(path: str | Path) -> Catalog:
     with open(path, "r", encoding="utf-8") as fp:
         data = json.load(fp)
 
-    repo_root = Path(path).resolve().parent.parent  # configs/foo.json -> repo root
+    if audio_root is None:
+        # configs/foo.json -> repo root -> repo_root/audio
+        audio_root = Path(path).resolve().parent.parent / "audio"
+    audio_root = Path(audio_root).expanduser()
+
     datasets: List[Dataset] = []
     for ds in data.get("datasets", []):
         clips = []
         for c in ds.get("clips", []):
-            # Paths in the index are repo-relative; resolve against the repo root
-            # so the UI can use absolute paths to st.audio().
+            # Paths in the index are stored relative to ``audio_root`` so the
+            # same JSON works regardless of where the WAVs live on disk.
             renderings = {
-                m: str((repo_root / p).resolve())
+                m: str((audio_root / p).resolve())
                 for m, p in c.get("renderings", {}).items()
             }
             clips.append(Clip(

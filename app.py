@@ -15,6 +15,7 @@ Run with:
 
 from __future__ import annotations
 
+import os
 import random
 import sys
 from pathlib import Path
@@ -44,13 +45,17 @@ from demo.style import CUSTOM_CSS, MOS_SCALE, SYSTEM_COLORS  # noqa: E402
 
 CATALOG_PATH = _REPO / "configs" / "audio_index.json"
 RATINGS_DIR = _REPO / "ratings"
+# Audio root. Defaults to ``audio/`` next to this script for backwards
+# compatibility; set DEMO_AUDIO_ROOT when the WAVs live elsewhere (for
+# example after extracting them from a SharePoint share).
+AUDIO_ROOT = Path(os.environ.get("DEMO_AUDIO_ROOT", _REPO / "audio")).expanduser()
 
 
 # ---------------------------------------------------------------- caching
 
 @st.cache_resource(show_spinner=False)
-def _load_catalog_cached(path_str: str) -> Catalog:
-    return load_catalog(path_str)
+def _load_catalog_cached(path_str: str, audio_root_str: str) -> Catalog:
+    return load_catalog(path_str, audio_root=audio_root_str)
 
 
 # ---------------------------------------------------------------- state
@@ -302,7 +307,14 @@ def main() -> None:
         )
         st.stop()
 
-    catalog = _load_catalog_cached(str(CATALOG_PATH))
+    if not AUDIO_ROOT.exists():
+        st.warning(
+            f"Audio root `{AUDIO_ROOT}` does not exist. "
+            "Set `DEMO_AUDIO_ROOT` to the directory that contains the "
+            "extracted demo audio (or place the WAVs under `audio/` next to "
+            "this app)."
+        )
+    catalog = _load_catalog_cached(str(CATALOG_PATH), str(AUDIO_ROOT))
     dataset, clip = _sidebar(catalog)
     if dataset is None or clip is None:
         st.stop()

@@ -363,7 +363,7 @@ def _generate_dataset(
 
         clip_dir = out_root / ds_cfg["id"] / clip_id
         _save_wav(clip_dir / "reference.wav", ref, sr)
-        renderings = {"reference": f"audio/{ds_cfg['id']}/{clip_id}/reference.wav"}
+        renderings = {"reference": f"{ds_cfg['id']}/{clip_id}/reference.wav"}
         for name, audio in renders.items():
             # Make sure the rendered output matches the reference length so
             # the players line up visually.
@@ -371,7 +371,7 @@ def _generate_dataset(
             if audio.shape[-1] > ref_len:
                 audio = audio[..., :ref_len]
             _save_wav(clip_dir / f"{name}.wav", audio, sr)
-            renderings[name] = f"audio/{ds_cfg['id']}/{clip_id}/{name}.wav"
+            renderings[name] = f"{ds_cfg['id']}/{clip_id}/{name}.wav"
 
         clip_entries.append({
             "id": clip_id,
