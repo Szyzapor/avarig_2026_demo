@@ -26,6 +26,9 @@ ratings/*
 # download the audio package can run the GUI without regenerating.
 # Re-run scripts/generate_audio.py to refresh after changing the catalogue.
 
+# Audio copied at runtime for the in-browser player (per session/clip).
+static/clips/
+
 # Logs and OS noise
 *.log
 .DS_Store

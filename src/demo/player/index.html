@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!--
+  Gapless A/B comparison player for the AES 2026 listening demo.
+
+  Decodes every version of one clip (reference + blind systems) into a single
+  Web Audio AudioContext and drives them from ONE transport. Only one stream is
+  audible at a time (exclusive), and selecting a different version cross-switches
+  at the exact same playhead with a short equal-power ramp, so the comparison is
+  sample-aligned and click-free. This is the behaviour st.audio cannot provide
+  (each st.audio is an independent <audio> element with its own clock).
+
+  Implemented as a no-build Streamlit component: it talks to the host page over
+  the documented postMessage protocol (componentReady / render / setFrameHeight).
+  It is one-way - it never calls setComponentValue; ratings stay in Streamlit.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #6b7280;
+    --card: #f3f4f6;
+    --line: #e5e7eb;
+    --accent: #2563eb;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--fg); background: transparent;
+  }
+  #wrap {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px 16px;
+    background: var(--card);
+  }
+  #status { font-size: 0.85rem; color: var(--muted); }
+  .transport {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 10px;
+  }
+  #play {
+    flex: 0 0 auto;
+    width: 46px; height: 46px; border-radius: 50%;
+    border: none; cursor: pointer;
+    background: var(--accent); color: #fff;
+    font-size: 18px; line-height: 1;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: filter .12s ease;
+  }
+  #play:hover { filter: brightness(1.08); }
+  #play:disabled { background: #9ca3af; cursor: default; }
+  .seekwrap { flex: 1 1 auto; display: flex; align-items: center; gap: 10px; }
+  #seek { flex: 1 1 auto; cursor: pointer; accent-color: var(--accent); }
+  #time { flex: 0 0 auto; font-variant-numeric: tabular-nums; font-size: 0.85rem; color: var(--muted); min-width: 86px; text-align: right; }
+  .sources { display: flex; flex-wrap: wrap; gap: 8px; }
+  .src {
+    flex: 1 1 0; min-width: 120px;
+    border: 2px solid var(--line);
+    border-left-width: 6px;
+    border-radius: 8px;
+    padding: 8px 10px;
+    background: #fff; cursor: pointer;
+    font-size: 0.92rem; font-weight: 600;
+    color: var(--fg);
+    text-align: left;
+    transition: background .12s ease, border-color .12s ease, box-shadow .12s ease;
+  }
+  .src small { display:block; font-weight: 400; color: var(--muted); font-size: 0.72rem; margin-top: 2px; }
+  .src:hover { background: #f8fafc; }
+  .src.active { background: #eef4ff; box-shadow: 0 0 0 2px rgba(37,99,235,.25) inset; }
+  .src:disabled { opacity: .5; cursor: default; }
+  .hint { margin-top: 10px; font-size: 0.76rem; color: var(--muted); }
+  kbd {
+    background:#fff;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;
+    padding:0 5px;font-size:0.72rem;font-family:inherit;
+  }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div class="transport">
+    <button id="play" disabled aria-label="Play/Pause">▶</button>
+    <div class="seekwrap">
+      <input id="seek" type="range" min="0" max="1000" value="0" step="1" disabled />
+      <span id="time">0:00 / 0:00</span>
+    </div>
+  </div>
+  <div id="sources" class="sources"></div>
+  <div id="status" class="hint">Loading audio…</div>
+  <div class="hint">
+    Only one version plays at a time and they share one timeline — switch with the buttons or
+    <kbd>1</kbd>…<kbd>9</kbd>, play/pause with <kbd>Space</kbd>. Headphones recommended.
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ----------------------------- Streamlit protocol ----------------------------- */
+const Streamlit = {
+  ready() { this._post("streamlit:componentReady", { apiVersion: 1 }); },
+  setFrameHeight(h) { this._post("streamlit:setFrameHeight", { height: h }); },
+  _post(type, extra) {
+    window.parent.postMessage(Object.assign({ isStreamlitMessage: true, type }, extra), "*");
+  },
+};
+
+/* ------------------------------- audio engine -------------------------------- */
+const FADE = 0.012;          // s: equal-power-ish ramp to avoid switch clicks
+let ctx = null;
+let masterGain = null;
+let sources = [];            // [{id,label,color,uri}]
+let buffers = {};            // id -> AudioBuffer
+let duration = 0;
+let token = null;            // identity of the currently loaded clip
+let loading = false;
+
+let currentId = null;        // which version is selected
+let playing = false;
+let offset = 0;              // playhead (s) at last transport event
+let ctxAnchor = 0;          // ctx.currentTime at last transport event
+let active = null;          // {node, gain} currently sounding
+let scrubbing = false;
+
+const $ = (id) => document.getElementById(id);
+const elPlay = $("play"), elSeek = $("seek"), elTime = $("time"),
+      elSources = $("sources"), elStatus = $("status");
+
+function ensureCtx() {
+  if (!ctx) {
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = ctx.createGain();
+    masterGain.gain.value = 1;
+    masterGain.connect(ctx.destination);
+  }
+  return ctx;
+}
+
+function fmt(t) {
+  if (!isFinite(t) || t < 0) t = 0;
+  const m = Math.floor(t / 60), s = Math.floor(t % 60);
+  return m + ":" + String(s).padStart(2, "0");
+}
+
+function currentOffset() {
+  if (!playing) return offset;
+  const d = duration || 1;
+  return (offset + (ctx.currentTime - ctxAnchor)) % d;   // wraps for looping
+}
+
+/* Start `id` at `at` seconds with a short fade-in; returns {node,gain}. */
+function makeVoice(id, at, fadeIn) {
+  const node = ctx.createBufferSource();
+  node.buffer = buffers[id];
+  node.loop = true;                 // seamless looping of the clip
+  const g = ctx.createGain();
+  node.connect(g); g.connect(masterGain);
+  const now = ctx.currentTime;
+  g.gain.setValueAtTime(fadeIn ? 0.0001 : 1, now);
+  if (fadeIn) g.gain.exponentialRampToValueAtTime(1, now + FADE);
+  node.start(now, Math.max(0, Math.min(at, node.buffer.duration - 0.001)));
+  return { node, gain: g };
+}
+
+/* Fade out and stop a voice without clicking. */
+function killVoice(voice) {
+  if (!voice) return;
+  const now = ctx.currentTime;
+  try {
+    voice.gain.gain.cancelScheduledValues(now);
+    voice.gain.gain.setValueAtTime(Math.max(0.0001, voice.gain.gain.value), now);
+    voice.gain.gain.exponentialRampToValueAtTime(0.0001, now + FADE);
+    voice.node.stop(now + FADE + 0.01);
+  } catch (e) { /* already stopped */ }
+}
+
+function play() {
+  if (loading || !currentId || playing) return;
+  ensureCtx();
+  if (ctx.state === "suspended") ctx.resume();
+  if (currentOffset() >= duration - 0.02) offset = 0;   // restart if at end
+  active = makeVoice(currentId, offset, true);
+  ctxAnchor = ctx.currentTime;
+  playing = true;
+  elPlay.textContent = "⏸";
+  tick();
+}
+
+function pause() {
+  if (!playing) return;
+  offset = currentOffset();
+  playing = false;
+  killVoice(active); active = null;
+  elPlay.textContent = "▶";
+  render();
+}
+
+/* Exclusive, gapless switch to another version at the same playhead. */
+function selectSource(id) {
+  if (id === currentId || !buffers[id]) return;
+  if (playing) {
+    const at = currentOffset();
+    const old = active;
+    active = makeVoice(id, at, true);
+    offset = at; ctxAnchor = ctx.currentTime;
+    killVoice(old);
+  }
+  currentId = id;
+  render();
+}
+
+function seekTo(t) {
+  t = Math.max(0, Math.min(duration, t));
+  offset = t;
+  if (playing) {
+    const old = active;
+    active = makeVoice(currentId, t, true);
+    ctxAnchor = ctx.currentTime;
+    killVoice(old);
+  }
+  render();
+}
+
+function tick() {
+  if (!playing) return;
+  render();                          // loops forever; no end-stop
+  requestAnimationFrame(tick);
+}
+
+/* ------------------------------- rendering ----------------------------------- */
+function render() {
+  const t = currentOffset();
+  if (!scrubbing) elSeek.value = duration ? Math.round((t / duration) * 1000) : 0;
+  elTime.textContent = fmt(t) + " / " + fmt(duration);
+  document.querySelectorAll(".src").forEach((b) => {
+    b.classList.toggle("active", b.dataset.id === currentId);
+  });
+}
+
+function buildSourceButtons() {
+  elSources.innerHTML = "";
+  sources.forEach((s, i) => {
+    const b = document.createElement("button");
+    b.className = "src";
+    b.dataset.id = s.id;
+    b.style.borderLeftColor = s.color || "#888";
+    b.innerHTML = `${s.label}<small>${i < 9 ? "press " + (i + 1) : "&nbsp;"}</small>`;
+    b.addEventListener("click", () => selectSource(s.id));
+    elSources.appendChild(b);
+  });
+}
+
+function relabel() {
+  // Update labels/colors in place without disturbing audio (e.g. on reveal).
+  sources.forEach((s) => {
+    const b = elSources.querySelector(`.src[data-id="${CSS.escape(s.id)}"]`);
+    if (b) {
+      b.style.borderLeftColor = s.color || "#888";
+      const idx = sources.indexOf(s);
+      b.innerHTML = `${s.label}<small>${idx < 9 ? "press " + (idx + 1) : "&nbsp;"}</small>`;
+    }
+  });
+  render();
+}
+
+function reportHeight() {
+  Streamlit.setFrameHeight(document.getElementById("wrap").offsetHeight + 8);
+}
+
+/* ------------------------------- load a clip --------------------------------- */
+async function loadClip(newSources) {
+  loading = true;
+  elPlay.disabled = true; elSeek.disabled = true;
+  elStatus.textContent = "Loading audio…";
+  // tear down any current playback
+  if (playing) { killVoice(active); active = null; playing = false; }
+  offset = 0; currentId = null; buffers = {}; duration = 0;
+  sources = newSources;
+  ensureCtx();
+  try {
+    await Promise.all(sources.map(async (s) => {
+      const resp = await fetch(s.uri);
+      const ab = await resp.arrayBuffer();
+      buffers[s.id] = await ctx.decodeAudioData(ab);
+    }));
+  } catch (e) {
+    elStatus.textContent = "Could not decode audio: " + e;
+    loading = false;
+    return;
+  }
+  duration = Math.max(...sources.map((s) => buffers[s.id].duration));
+  currentId = sources.length ? sources[0].id : null;
+  buildSourceButtons();
+  elPlay.textContent = "▶";
+  elPlay.disabled = false; elSeek.disabled = false;
+  elStatus.textContent = `${sources.length} versions · ${fmt(duration)} · shared timeline`;
+  loading = false;
+  render();
+  reportHeight();
+}
+
+/* ------------------------------- UI wiring ----------------------------------- */
+elPlay.addEventListener("click", () => (playing ? pause() : play()));
+elSeek.addEventListener("input", () => { scrubbing = true; const t = (elSeek.value / 1000) * duration; elTime.textContent = fmt(t) + " / " + fmt(duration); });
+elSeek.addEventListener("change", () => { scrubbing = false; seekTo((elSeek.value / 1000) * duration); });
+window.addEventListener("keydown", (e) => {
+  if (loading) return;
+  if (e.code === "Space") { e.preventDefault(); playing ? pause() : play(); }
+  else if (e.key >= "1" && e.key <= "9") {
+    const idx = parseInt(e.key, 10) - 1;
+    if (idx < sources.length) selectSource(sources[idx].id);
+  }
+});
+window.addEventListener("resize", reportHeight);
+
+/* ------------------------- Streamlit render handling ------------------------- */
+function onRender(args) {
+  if (!args || !Array.isArray(args.sources)) return;
+  if (args.token !== token) {
+    token = args.token;
+    loadClip(args.sources);          // new clip -> decode & reset transport
+  } else {
+    sources = args.sources;          // same clip -> just refresh labels (reveal)
+    relabel();
+    reportHeight();
+  }
+}
+
+window.addEventListener("message", (e) => {
+  if (e.data && e.data.type === "streamlit:render") onRender(e.data.args);
+});
+
+// Announce readiness (after this tick so the listener is registered).
+Streamlit.ready();
+reportHeight();
+</script>
+</body>
+</html>
