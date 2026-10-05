@@ -1,0 +1,954 @@
+testname: FOA-to-binaural listening test (AVARIG 2026 follow-up)
+testId: foa2bin_avarig_followup
+bufferSize: 2048
+stopOnErrors: true
+showButtonPreviousPage: true
+remoteService: service/write.php
+pages:
+- type: generic
+  id: intro
+  name: Welcome
+  content: Headphones required. Each page has a reference and several stimuli, including a hidden reference and anchors. Rate
+    each stimulus against the reference (0–100). Loop and switch freely.
+- type: volume
+  id: vol
+  name: Volume
+  content: Set a comfortable listening level; do not change it during the test.
+  stimulus: configs/listening_test_v2/audio/zhu__zhu_001/reference.wav
+  defaultVolume: 0.5
+- - random
+  - type: mushra
+    id: overall_zhu__zhu_001
+    name: Overall — zhu__zhu_001
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_001/anchor_lp3500.wav
+  - type: mushra
+    id: overall_zhu__zhu_002
+    name: Overall — zhu__zhu_002
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_002/anchor_lp3500.wav
+  - type: mushra
+    id: overall_zhu__zhu_003
+    name: Overall — zhu__zhu_003
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_003/anchor_lp3500.wav
+  - type: mushra
+    id: overall_zhu__zhu_004
+    name: Overall — zhu__zhu_004
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_004/anchor_lp3500.wav
+  - type: mushra
+    id: overall_a2b_2mp__a2b_2mp_001
+    name: Overall — a2b_2mp__a2b_2mp_001
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_lp3500.wav
+  - type: mushra
+    id: overall_a2b_2mp__a2b_2mp_002
+    name: Overall — a2b_2mp__a2b_2mp_002
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_lp3500.wav
+  - type: mushra
+    id: overall_a2b_2mp__a2b_2mp_003
+    name: Overall — a2b_2mp__a2b_2mp_003
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_lp3500.wav
+  - type: mushra
+    id: overall_a2b_2mp__a2b_2mp_004
+    name: Overall — a2b_2mp__a2b_2mp_004
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_lp3500.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_001
+    name: Overall — argentum_pg__argentum_pg_001
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_lp3500.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_002
+    name: Overall — argentum_pg__argentum_pg_002
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_lp3500.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_003
+    name: Overall — argentum_pg__argentum_pg_003
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_lp3500.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_008
+    name: Overall — argentum_pg__argentum_pg_008
+    content: Rate the OVERALL similarity to the reference (timbre and spatial impression).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_lp3500.wav
+- - random
+  - type: mushra
+    id: tone_color_zhu__zhu_001
+    name: Barwa / Tone colour — zhu__zhu_001
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_001/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_zhu__zhu_002
+    name: Barwa / Tone colour — zhu__zhu_002
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_002/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_zhu__zhu_003
+    name: Barwa / Tone colour — zhu__zhu_003
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_003/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_zhu__zhu_004
+    name: Barwa / Tone colour — zhu__zhu_004
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_004/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_a2b_2mp__a2b_2mp_001
+    name: Barwa / Tone colour — a2b_2mp__a2b_2mp_001
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_a2b_2mp__a2b_2mp_002
+    name: Barwa / Tone colour — a2b_2mp__a2b_2mp_002
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_a2b_2mp__a2b_2mp_003
+    name: Barwa / Tone colour — a2b_2mp__a2b_2mp_003
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_a2b_2mp__a2b_2mp_004
+    name: Barwa / Tone colour — a2b_2mp__a2b_2mp_004
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_argentum_pg__argentum_pg_001
+    name: Barwa / Tone colour — argentum_pg__argentum_pg_001
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_argentum_pg__argentum_pg_002
+    name: Barwa / Tone colour — argentum_pg__argentum_pg_002
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_argentum_pg__argentum_pg_003
+    name: Barwa / Tone colour — argentum_pg__argentum_pg_003
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_lp3500.wav
+  - type: mushra
+    id: tone_color_argentum_pg__argentum_pg_008
+    name: Barwa / Tone colour — argentum_pg__argentum_pg_008
+    content: Rate how close the TONE COLOUR (timbre, brightness, bass) of each stimulus is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_lp3500.wav
+- - random
+  - type: mushra
+    id: localization_zhu__zhu_001
+    name: Lokalizacja i szerokość / Localisation and width — zhu__zhu_001
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_001/anchor_lp3500.wav
+  - type: mushra
+    id: localization_zhu__zhu_002
+    name: Lokalizacja i szerokość / Localisation and width — zhu__zhu_002
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_002/anchor_lp3500.wav
+  - type: mushra
+    id: localization_zhu__zhu_003
+    name: Lokalizacja i szerokość / Localisation and width — zhu__zhu_003
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_003/anchor_lp3500.wav
+  - type: mushra
+    id: localization_zhu__zhu_004
+    name: Lokalizacja i szerokość / Localisation and width — zhu__zhu_004
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_004/anchor_lp3500.wav
+  - type: mushra
+    id: localization_a2b_2mp__a2b_2mp_001
+    name: Lokalizacja i szerokość / Localisation and width — a2b_2mp__a2b_2mp_001
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_lp3500.wav
+  - type: mushra
+    id: localization_a2b_2mp__a2b_2mp_002
+    name: Lokalizacja i szerokość / Localisation and width — a2b_2mp__a2b_2mp_002
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_lp3500.wav
+  - type: mushra
+    id: localization_a2b_2mp__a2b_2mp_003
+    name: Lokalizacja i szerokość / Localisation and width — a2b_2mp__a2b_2mp_003
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_lp3500.wav
+  - type: mushra
+    id: localization_a2b_2mp__a2b_2mp_004
+    name: Lokalizacja i szerokość / Localisation and width — a2b_2mp__a2b_2mp_004
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_lp3500.wav
+  - type: mushra
+    id: localization_argentum_pg__argentum_pg_001
+    name: Lokalizacja i szerokość / Localisation and width — argentum_pg__argentum_pg_001
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_lp3500.wav
+  - type: mushra
+    id: localization_argentum_pg__argentum_pg_002
+    name: Lokalizacja i szerokość / Localisation and width — argentum_pg__argentum_pg_002
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_lp3500.wav
+  - type: mushra
+    id: localization_argentum_pg__argentum_pg_003
+    name: Lokalizacja i szerokość / Localisation and width — argentum_pg__argentum_pg_003
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_lp3500.wav
+  - type: mushra
+    id: localization_argentum_pg__argentum_pg_008
+    name: Lokalizacja i szerokość / Localisation and width — argentum_pg__argentum_pg_008
+    content: Rate how close the DIRECTIONS and WIDTH of sound sources are to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_lp3500.wav
+- - random
+  - type: mushra
+    id: externalization_zhu__zhu_001
+    name: Eksternalizacja / Externalisation — zhu__zhu_001
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_001/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_zhu__zhu_002
+    name: Eksternalizacja / Externalisation — zhu__zhu_002
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_002/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_zhu__zhu_003
+    name: Eksternalizacja / Externalisation — zhu__zhu_003
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_003/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_zhu__zhu_004
+    name: Eksternalizacja / Externalisation — zhu__zhu_004
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_004/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_a2b_2mp__a2b_2mp_001
+    name: Eksternalizacja / Externalisation — a2b_2mp__a2b_2mp_001
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_a2b_2mp__a2b_2mp_002
+    name: Eksternalizacja / Externalisation — a2b_2mp__a2b_2mp_002
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_a2b_2mp__a2b_2mp_003
+    name: Eksternalizacja / Externalisation — a2b_2mp__a2b_2mp_003
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_a2b_2mp__a2b_2mp_004
+    name: Eksternalizacja / Externalisation — a2b_2mp__a2b_2mp_004
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_argentum_pg__argentum_pg_001
+    name: Eksternalizacja / Externalisation — argentum_pg__argentum_pg_001
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_argentum_pg__argentum_pg_002
+    name: Eksternalizacja / Externalisation — argentum_pg__argentum_pg_002
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_argentum_pg__argentum_pg_003
+    name: Eksternalizacja / Externalisation — argentum_pg__argentum_pg_003
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_lp3500.wav
+  - type: mushra
+    id: externalization_argentum_pg__argentum_pg_008
+    name: Eksternalizacja / Externalisation — argentum_pg__argentum_pg_008
+    content: Rate how close the EXTERNALISATION (sound outside vs. inside the head) is to the reference.
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_lp3500.wav
+- - random
+  - type: mushra
+    id: artifacts_zhu__zhu_001
+    name: Artefakty / Artefacts — zhu__zhu_001
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_001/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_zhu__zhu_002
+    name: Artefakty / Artefacts — zhu__zhu_002
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_002/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_zhu__zhu_003
+    name: Artefakty / Artefacts — zhu__zhu_003
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_003/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_zhu__zhu_004
+    name: Artefakty / Artefacts — zhu__zhu_004
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/zhu__zhu_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/zhu__zhu_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/zhu__zhu_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/zhu__zhu_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/zhu__zhu_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/zhu__zhu_004/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_a2b_2mp__a2b_2mp_001
+    name: Artefakty / Artefacts — a2b_2mp__a2b_2mp_001
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_001/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_a2b_2mp__a2b_2mp_002
+    name: Artefakty / Artefacts — a2b_2mp__a2b_2mp_002
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_002/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_a2b_2mp__a2b_2mp_003
+    name: Artefakty / Artefacts — a2b_2mp__a2b_2mp_003
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_003/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_a2b_2mp__a2b_2mp_004
+    name: Artefakty / Artefacts — a2b_2mp__a2b_2mp_004
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a2b_2mp__a2b_2mp_004/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_argentum_pg__argentum_pg_001
+    name: Artefakty / Artefacts — argentum_pg__argentum_pg_001
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_001/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_argentum_pg__argentum_pg_002
+    name: Artefakty / Artefacts — argentum_pg__argentum_pg_002
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_002/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_argentum_pg__argentum_pg_003
+    name: Artefakty / Artefacts — argentum_pg__argentum_pg_003
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_003/anchor_lp3500.wav
+  - type: mushra
+    id: artifacts_argentum_pg__argentum_pg_008
+    name: Artefakty / Artefacts — argentum_pg__argentum_pg_008
+    content: Rate how free of ARTEFACTS (distortion, musical noise, clicks, “bitrate-like” sound) each stimulus is, relative
+      to the reference (100 = no added artefacts).
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/reference.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/proposed_crm_v2.wav
+      zhu2022: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/zhu2022.wav
+      a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/a2b_btpab.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_foa_cardioid.wav
+      anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_lp3500.wav
+- type: finish
+  name: Thank you
+  content: Thank you for taking part.
+  showResults: true
+  writeResults: true
+  questionnaire:
+  - type: text
+    label: Name or ID
+    name: name
+  - type: likert
+    name: experience
+    label: Spatial audio listening experience
+    response:
+    - value: none
+      label: None
+    - value: some
+      label: Some
+    - value: expert
+      label: Expert

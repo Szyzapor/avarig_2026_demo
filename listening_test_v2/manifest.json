@@ -1,0 +1,398 @@
+[
+ {
+  "dataset": "zhu",
+  "clip": "zhu_001",
+  "source": "AmbiX-211122_2225_0001.wav",
+  "start_s": 25.0,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -19.9,
+    "gain_db": -3.1
+   },
+   "zhu2022": {
+    "lufs_before": -19.56,
+    "gain_db": -3.44
+   },
+   "a2b_btpab": {
+    "lufs_before": -21.58,
+    "gain_db": -1.42
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -30.82,
+    "gain_db": 7.82
+   },
+   "anchor_lp3500": {
+    "lufs_before": -21.48,
+    "gain_db": -1.52
+   }
+  },
+  "reference_lufs_before": -21.46,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": -1.54
+ },
+ {
+  "dataset": "zhu",
+  "clip": "zhu_002",
+  "source": "AmbiX-211122_2225_0002.wav",
+  "start_s": 25.0,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -31.5,
+    "gain_db": 8.5
+   },
+   "zhu2022": {
+    "lufs_before": -26.45,
+    "gain_db": 3.45
+   },
+   "a2b_btpab": {
+    "lufs_before": -26.49,
+    "gain_db": 3.49
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -31.35,
+    "gain_db": 8.35
+   },
+   "anchor_lp3500": {
+    "lufs_before": -27.2,
+    "gain_db": 4.2
+   }
+  },
+  "reference_lufs_before": -27.1,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": 4.1
+ },
+ {
+  "dataset": "zhu",
+  "clip": "zhu_003",
+  "source": "AmbiX-211122_2225_0003.wav",
+  "start_s": 25.0,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -35.1,
+    "gain_db": 12.1
+   },
+   "zhu2022": {
+    "lufs_before": -34.23,
+    "gain_db": 11.23
+   },
+   "a2b_btpab": {
+    "lufs_before": -34.26,
+    "gain_db": 11.26
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -35.08,
+    "gain_db": 12.08
+   },
+   "anchor_lp3500": {
+    "lufs_before": -33.63,
+    "gain_db": 10.63
+   }
+  },
+  "reference_lufs_before": -33.57,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": 10.57
+ },
+ {
+  "dataset": "zhu",
+  "clip": "zhu_004",
+  "source": "AmbiX-211122_2225_0004.wav",
+  "start_s": 25.0,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -23.41,
+    "gain_db": 0.41
+   },
+   "zhu2022": {
+    "lufs_before": -23.39,
+    "gain_db": 0.39
+   },
+   "a2b_btpab": {
+    "lufs_before": -23.34,
+    "gain_db": 0.34
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -19.99,
+    "gain_db": -3.01
+   },
+   "anchor_lp3500": {
+    "lufs_before": -23.81,
+    "gain_db": 0.81
+   }
+  },
+  "reference_lufs_before": -23.31,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": 0.31
+ },
+ {
+  "dataset": "a2b_2mp",
+  "clip": "a2b_2mp_001",
+  "source": "a2b_0000_ambisonics.wav",
+  "start_s": 39.26133786848072,
+  "duration_s": 10.0,
+  "sr": 44100,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -26.9,
+    "gain_db": 3.9
+   },
+   "zhu2022": {
+    "lufs_before": -28.63,
+    "gain_db": 5.63
+   },
+   "a2b_btpab": {
+    "lufs_before": -25.3,
+    "gain_db": 2.3
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -49.57,
+    "gain_db": 26.57
+   },
+   "anchor_lp3500": {
+    "lufs_before": -27.89,
+    "gain_db": 4.89
+   }
+  },
+  "reference_lufs_before": -27.64,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": 4.64
+ },
+ {
+  "dataset": "a2b_2mp",
+  "clip": "a2b_2mp_002",
+  "source": "a2b_0017_ambisonics.wav",
+  "start_s": 46.38666666666666,
+  "duration_s": 10.0,
+  "sr": 44100,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -26.19,
+    "gain_db": -0.69
+   },
+   "zhu2022": {
+    "lufs_before": -26.49,
+    "gain_db": -0.39
+   },
+   "a2b_btpab": {
+    "lufs_before": -25.87,
+    "gain_db": -1.01
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -48.74,
+    "gain_db": 21.86
+   },
+   "anchor_lp3500": {
+    "lufs_before": -26.27,
+    "gain_db": -0.61
+   }
+  },
+  "reference_lufs_before": -25.95,
+  "trial_gain_db": -3.88,
+  "reference_gain_db": -0.92
+ },
+ {
+  "dataset": "a2b_2mp",
+  "clip": "a2b_2mp_003",
+  "source": "a2b_0018_ambisonics.wav",
+  "start_s": 92.64,
+  "duration_s": 10.0,
+  "sr": 44100,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -23.48,
+    "gain_db": 0.48
+   },
+   "zhu2022": {
+    "lufs_before": -21.75,
+    "gain_db": -1.25
+   },
+   "a2b_btpab": {
+    "lufs_before": -22.64,
+    "gain_db": -0.36
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -49.49,
+    "gain_db": 26.49
+   },
+   "anchor_lp3500": {
+    "lufs_before": -24.51,
+    "gain_db": 1.51
+   }
+  },
+  "reference_lufs_before": -23.69,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": 0.69
+ },
+ {
+  "dataset": "a2b_2mp",
+  "clip": "a2b_2mp_004",
+  "source": "a2b_0030_ambisonics.wav",
+  "start_s": 129.0319954648526,
+  "duration_s": 10.0,
+  "sr": 44100,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -26.27,
+    "gain_db": 3.27
+   },
+   "zhu2022": {
+    "lufs_before": -25.11,
+    "gain_db": 2.11
+   },
+   "a2b_btpab": {
+    "lufs_before": -25.27,
+    "gain_db": 2.27
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -45.97,
+    "gain_db": 22.97
+   },
+   "anchor_lp3500": {
+    "lufs_before": -26.66,
+    "gain_db": 3.66
+   }
+  },
+  "reference_lufs_before": -26.35,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": 3.35
+ },
+ {
+  "dataset": "argentum_pg",
+  "clip": "argentum_pg_001",
+  "source": "FOA_ZM1_CharityConcert03.wav",
+  "start_s": 169.0,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -26.25,
+    "gain_db": 3.25
+   },
+   "zhu2022": {
+    "lufs_before": -26.08,
+    "gain_db": 3.08
+   },
+   "a2b_btpab": {
+    "lufs_before": -26.47,
+    "gain_db": 3.47
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -35.78,
+    "gain_db": 12.78
+   },
+   "anchor_lp3500": {
+    "lufs_before": -26.27,
+    "gain_db": 3.27
+   }
+  },
+  "reference_lufs_before": -26.25,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": 3.25
+ },
+ {
+  "dataset": "argentum_pg",
+  "clip": "argentum_pg_002",
+  "source": "FOA_ZM1_ChopinRecital2.wav",
+  "start_s": 451.0,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -28.71,
+    "gain_db": 5.71
+   },
+   "zhu2022": {
+    "lufs_before": -28.8,
+    "gain_db": 5.8
+   },
+   "a2b_btpab": {
+    "lufs_before": -28.97,
+    "gain_db": 5.97
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -32.87,
+    "gain_db": 9.87
+   },
+   "anchor_lp3500": {
+    "lufs_before": -28.62,
+    "gain_db": 5.62
+   }
+  },
+  "reference_lufs_before": -28.62,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": 5.62
+ },
+ {
+  "dataset": "argentum_pg",
+  "clip": "argentum_pg_003",
+  "source": "FOA_ZM1_IDenisova-CherubicHymn.wav",
+  "start_s": 116.5,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -22.53,
+    "gain_db": -0.47
+   },
+   "zhu2022": {
+    "lufs_before": -22.66,
+    "gain_db": -0.34
+   },
+   "a2b_btpab": {
+    "lufs_before": -22.5,
+    "gain_db": -0.5
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -33.11,
+    "gain_db": 10.11
+   },
+   "anchor_lp3500": {
+    "lufs_before": -22.69,
+    "gain_db": -0.31
+   }
+  },
+  "reference_lufs_before": -22.61,
+  "trial_gain_db": 0.0,
+  "reference_gain_db": -0.39
+ },
+ {
+  "dataset": "argentum_pg",
+  "clip": "argentum_pg_008",
+  "source": "FOA_ZM1_SopotPier.wav",
+  "start_s": 337.5,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lufs_before": -25.5,
+    "gain_db": 0.1
+   },
+   "zhu2022": {
+    "lufs_before": -25.65,
+    "gain_db": 0.24
+   },
+   "a2b_btpab": {
+    "lufs_before": -25.41,
+    "gain_db": -0.0
+   },
+   "anchor_foa_cardioid": {
+    "lufs_before": -43.91,
+    "gain_db": 18.5
+   },
+   "anchor_lp3500": {
+    "lufs_before": -25.57,
+    "gain_db": 0.16
+   }
+  },
+  "reference_lufs_before": -25.56,
+  "trial_gain_db": -2.41,
+  "reference_gain_db": 0.15
+ }
+]

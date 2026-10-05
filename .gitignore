@@ -33,3 +33,6 @@ static/clips/
 *.log
 .DS_Store
 Thumbs.db
+
+# Listening test v2 audio (distributed as avarig_2026_listening_test_v2.zip)
+listening_test_v2/audio/
