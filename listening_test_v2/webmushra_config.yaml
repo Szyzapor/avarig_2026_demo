@@ -16,7 +16,8 @@ pages:
   content: Set a comfortable listening level; do not change it during the test.
   stimulus: configs/listening_test_v2/audio/zhu__zhu_001/reference.wav
   defaultVolume: 0.5
-- - random
+-
+  - random
   - type: mushra
     id: overall_zhu__zhu_001
     name: Overall — zhu__zhu_001
@@ -197,7 +198,8 @@ pages:
       a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/a2b_btpab.wav
       anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_foa_cardioid.wav
       anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_lp3500.wav
-- - random
+-
+  - random
   - type: mushra
     id: tone_color_zhu__zhu_001
     name: Barwa / Tone colour — zhu__zhu_001
@@ -378,7 +380,8 @@ pages:
       a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/a2b_btpab.wav
       anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_foa_cardioid.wav
       anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_lp3500.wav
-- - random
+-
+  - random
   - type: mushra
     id: localization_zhu__zhu_001
     name: Lokalizacja i szerokość / Localisation and width — zhu__zhu_001
@@ -559,7 +562,8 @@ pages:
       a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/a2b_btpab.wav
       anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_foa_cardioid.wav
       anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_lp3500.wav
-- - random
+-
+  - random
   - type: mushra
     id: externalization_zhu__zhu_001
     name: Eksternalizacja / Externalisation — zhu__zhu_001
@@ -740,7 +744,8 @@ pages:
       a2b_btpab: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/a2b_btpab.wav
       anchor_foa_cardioid: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_foa_cardioid.wav
       anchor_lp3500: configs/listening_test_v2/audio/argentum_pg__argentum_pg_008/anchor_lp3500.wav
-- - random
+-
+  - random
   - type: mushra
     id: artifacts_zhu__zhu_001
     name: Artefakty / Artefacts — zhu__zhu_001
