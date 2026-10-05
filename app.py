@@ -35,7 +35,9 @@ from demo.catalog import (  # noqa: E402
     Clip,
     Dataset,
     METHOD_LABELS,
+    RATED_DATASETS,
     SYSTEMS_TO_RATE,
+    audio_version,
     load_catalog,
 )
 from demo.ratings import (  # noqa: E402
@@ -44,6 +46,8 @@ from demo.ratings import (  # noqa: E402
     new_session_id,
     now_iso,
     now_stamp,
+    PROFILE_FIELDS,
+    write_participant,
 )
 from demo.style import CUSTOM_CSS, MOS_SCALE, SYSTEM_COLORS  # noqa: E402
 from demo.audio_player import gapless_player  # noqa: E402
@@ -55,6 +59,32 @@ RATINGS_DIR = _REPO / "ratings"
 # compatibility; set DEMO_AUDIO_ROOT when the WAVs live elsewhere (for
 # example after extracting them from a SharePoint share).
 AUDIO_ROOT = Path(os.environ.get("DEMO_AUDIO_ROOT", _REPO / "audio")).expanduser()
+# Datasets offered for rating (see catalog.RATED_DATASETS for why a2b_2mp is out).
+RATED = tuple(d.strip() for d in os.environ.get("DEMO_DATASETS", ",".join(RATED_DATASETS)).split(",")
+              if d.strip())
+# Audio package version, stored with every rating.
+AUDIO_VERSION = audio_version(AUDIO_ROOT)
+
+# Listener profile (ITU-R BS.1534-3 §10.2: experience, hearing, reproduction
+# equipment). Codes go to the CSV, labels are shown.
+PROFILE_QUESTIONS = [
+    ("age", "Age", [("18-24", "18-24"), ("25-34", "25-34"), ("35-44", "35-44"),
+                    ("45-54", "45-54"), ("55+", "55+"), ("na", "Prefer not to say")]),
+    ("hearing", "Known hearing impairment", [("no", "No"), ("yes", "Yes"), ("unsure", "Not sure")]),
+    ("headphones", "Headphones used now", [
+        ("over_open", "Over-ear, open"), ("over_closed", "Over-ear, closed"), ("on_ear", "On-ear"),
+        ("in_ear", "In-ear, wired"), ("bluetooth", "Wireless (Bluetooth)"), ("other", "Other")]),
+    ("environment", "Listening environment", [
+        ("quiet", "Quiet room"), ("some_noise", "Some background noise"), ("noisy", "Noisy (e.g. poster hall)")]),
+    ("music_experience", "Music experience", [
+        ("none", "None"), ("hobby", "Hobby"), ("education", "Music education"), ("professional", "Professional")]),
+    ("audio_experience", "Audio engineering experience", [
+        ("none", "None"), ("hobby", "Hobby"), ("student", "Student"),
+        ("professional", "Professional / research")]),
+    ("spatial_experience", "Spatial / binaural audio experience", [
+        ("none", "None"), ("some", "Occasional"), ("regular", "Regular")]),
+    ("listening_tests", "Previous listening tests", [("0", "None"), ("1-3", "1-3"), ("4+", "4 or more")]),
+]
 
 # Paper QR shown in the upper-right corner (served via static serving so it is
 # fetched once and not re-sent on every rerun). Regenerate static/paper_qr.png
@@ -95,6 +125,9 @@ def _init_state() -> None:
     ss.setdefault("reveal_names", False)
     ss.setdefault("clip_pos", 0)             # index within the current dataset
     ss.setdefault("session_started", now_stamp())   # frozen for the CSV filename
+    for key in PROFILE_FIELDS:
+        ss.setdefault(f"profile_{key}", None)
+    ss.setdefault("profile_headphone_model", "")
 
 
 def _blind_assignment(clip_id: str) -> Dict[str, str]:
@@ -184,10 +217,30 @@ def _saved_mos(store: "RatingsStore | None", session_id: str, dataset: str,
     return None
 
 
+def _profile() -> Dict[str, str]:
+    ss = st.session_state
+    out = {k: ss.get(f"profile_{k}") for k in PROFILE_FIELDS}
+    out["headphone_model"] = ss.get("profile_headphone_model", "").strip()
+    return out
+
+
+def _profile_complete() -> bool:
+    return all(_profile()[k] for k in PROFILE_FIELDS)
+
+
+def _save_profile() -> None:
+    """Profile widget changed -> upsert the participant row (once a name exists)."""
+    ss = st.session_state
+    if ss.get("rater", "").strip():
+        write_participant(RATINGS_DIR, ss["rater"], ss["session_started"], ss["session_id"],
+                          AUDIO_VERSION, _profile())
+
+
 def _write_rating(dataset_id: str, clip_id: str, system: str, blind_label: str,
                   mos_key: str, comment_key: str) -> None:
     ss = st.session_state
     rater = ss["rater"].strip()
+    _save_profile()
     RatingsStore.for_rater(RATINGS_DIR, rater, ss.get("session_started")).upsert(
         Rating(
             timestamp=now_iso(),
@@ -199,6 +252,7 @@ def _write_rating(dataset_id: str, clip_id: str, system: str, blind_label: str,
             blind_label=blind_label,
             mos=int(ss.get(mos_key, 3)),
             comment=ss.get(comment_key, "").strip(),
+            audio_version=AUDIO_VERSION,
         )
     )
 
@@ -207,8 +261,8 @@ def _autosave(dataset_id: str, clip_id: str, system: str, blind_label: str,
               mos_key: str, comment_key: str) -> None:
     """Slider changed → record the score (with whatever comment is present)."""
     ss = st.session_state
-    if not ss.get("rater", "").strip():
-        return                       # no identity yet; the UI shows a reminder
+    if not ss.get("rater", "").strip() or not _profile_complete():
+        return                       # no identity / profile yet; the UI shows a reminder
     if ss.get(mos_key, _MOS_UNRATED) == _MOS_UNRATED:
         return                       # still on the "not rated" stop
     _write_rating(dataset_id, clip_id, system, blind_label, mos_key, comment_key)
@@ -219,7 +273,7 @@ def _autosave_comment(dataset_id: str, clip_id: str, system: str, blind_label: s
     """Comment changed → attach it only if a score was already chosen, so a
     stray comment never silently records the midpoint default."""
     ss = st.session_state
-    if not ss.get("rater", "").strip():
+    if not ss.get("rater", "").strip() or not _profile_complete():
         return
     store = RatingsStore.for_rater(RATINGS_DIR, ss["rater"].strip(),
                                    ss.get("session_started"))
@@ -311,6 +365,10 @@ def _render_clip(dataset: Dataset, clip: Clip, store: RatingsStore | None,
     )
     if store is None:
         st.warning("Enter your name at the top to autosave your ratings.")
+    elif not _profile_complete():
+        st.warning("Fill in **About you** at the top; ratings are saved only after that.")
+    if reveal:
+        st.info("System names are shown, so rating is locked. Turn off **Reveal system names** to rate.")
 
     cols = st.columns(len(mapping))
     for (label, system), col in zip(mapping.items(), cols):
@@ -344,6 +402,9 @@ def _render_clip(dataset: Dataset, clip: Clip, store: RatingsStore | None,
                 key=mos_key,
                 on_change=_autosave,
                 args=cb_args,
+                # Ratings are blind: locked while the real names are shown, so a
+                # revealed name can never influence a stored score.
+                disabled=reveal,
             )
             # Custom 1..5 scale under the slider (the built-in tick bar is hidden
             # so "not rated" is not labelled; "1" is shifted right, off the
@@ -362,6 +423,7 @@ def _render_clip(dataset: Dataset, clip: Clip, store: RatingsStore | None,
                 placeholder="e.g. spatial impression, timbre, artifacts",
                 on_change=_autosave_comment,
                 args=cb_args,
+                disabled=reveal,
             )
 
             saved = _saved_mos(store, ss["session_id"], dataset.id, clip.id, system)
@@ -378,7 +440,7 @@ def _progress_panel(catalog: Catalog, store: RatingsStore | None) -> None:
     counts = (store.count_by_dataset_clip(session_id=st.session_state["session_id"])
               if store is not None else {})
     rows: List[Dict[str, str]] = []
-    for ds in catalog.populated_datasets():
+    for ds in [d for d in catalog.populated_datasets() if d.id in RATED]:
         for clip in ds.available_clips():
             done = counts.get((ds.id, clip.id), 0)
             total = len([m for m in SYSTEMS_TO_RATE if clip.has(m)])
@@ -436,7 +498,7 @@ def main() -> None:
         )
 
     catalog = _load_catalog_cached(str(CATALOG_PATH), str(AUDIO_ROOT))
-    populated = catalog.populated_datasets()
+    populated = [d for d in catalog.populated_datasets() if d.id in RATED]
     if not populated:
         st.warning(
             "No audio found under the audio root. Run "
@@ -458,9 +520,20 @@ def main() -> None:
                       label_visibility="collapsed")
     with info_col:
         st.caption(
-            f"Session `{st.session_state['session_id']}` · "
+            f"Session `{st.session_state['session_id']}` · audio package `{AUDIO_VERSION}` · "
             f"ratings autosave to `ratings/`."
         )
+    with st.expander("About you (required before ratings are saved)",
+                     expanded=not _profile_complete()):
+        cols = st.columns(4)
+        for i, (key, label, options) in enumerate(PROFILE_QUESTIONS):
+            codes = [c for c, _ in options]
+            names = dict(options)
+            with cols[i % 4]:
+                st.selectbox(label, codes, index=None, format_func=names.get,
+                             placeholder="Choose...", key=f"profile_{key}", on_change=_save_profile)
+        st.text_input("Headphone model (optional)", key="profile_headphone_model",
+                      on_change=_save_profile)
 
     dataset = catalog.dataset(st.session_state["dataset_id"])
     clips = dataset.available_clips()

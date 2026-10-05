@@ -30,6 +30,7 @@ CSV_HEADER = (
     "blind_label",
     "mos",
     "comment",
+    "audio_version",
 )
 
 
@@ -60,6 +61,7 @@ class Rating:
     blind_label: str     # what the user saw in the GUI ('A', 'B', 'C')
     mos: int             # 1..5
     comment: str = ""
+    audio_version: str = ""  # audio package the clip was played from, e.g. "v2.1"
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -102,7 +104,7 @@ class RatingsStore:
         return [
             r.timestamp, r.session_id, r.rater,
             r.dataset, r.clip_id, r.system,
-            r.blind_label, r.mos, r.comment,
+            r.blind_label, r.mos, r.comment, r.audio_version,
         ]
 
     def append(self, rating: Rating) -> None:
@@ -158,6 +160,7 @@ class RatingsStore:
                         blind_label=row.get("blind_label", ""),
                         mos=int(row["mos"]),
                         comment=row.get("comment", ""),
+                        audio_version=row.get("audio_version", ""),
                     ))
                 except (KeyError, ValueError):
                     # Skip malformed rows rather than crash the GUI.
@@ -190,3 +193,39 @@ class RatingsStore:
                 if session_id is None or r.session_id == session_id:
                     return True
         return False
+
+
+# ---------------------------------------------------------------- participants
+
+# Listener profile asked once per sitting (ITU-R BS.1534-3 §10.2 asks experimenters
+# to report listener experience, hearing and reproduction equipment). Values are
+# stored as short codes; the wording lives in app.py.
+PROFILE_FIELDS = (
+    "age", "hearing", "headphones", "environment",
+    "music_experience", "audio_experience", "spatial_experience", "listening_tests",
+)
+PARTICIPANT_HEADER = ("timestamp", "session_id", "rater", "audio_version") + PROFILE_FIELDS + (
+    "headphone_model",)
+
+
+def write_participant(root: str | Path, rater: str, stamp: str, session_id: str,
+                      audio_version: str, profile: dict) -> Path:
+    """Upsert the profile of ``session_id`` into ``participants_<stamp>_<name>.csv``."""
+    root = Path(root)
+    root.mkdir(parents=True, exist_ok=True)
+    safe = "".join(ch if ch.isalnum() or ch in "._-" else "_" for ch in rater.strip())
+    path = root / f"participants_{stamp}_{safe or 'anonymous'}.csv"
+    rows = []
+    if path.exists():
+        with path.open("r", newline="", encoding="utf-8") as fp:
+            rows = [r for r in csv.DictReader(fp) if r.get("session_id") != session_id]
+    row = {"timestamp": now_iso(), "session_id": session_id, "rater": rater.strip(),
+           "audio_version": audio_version}
+    row.update({k: profile.get(k) or "" for k in PROFILE_FIELDS + ("headphone_model",)})
+    rows.append(row)
+    with path.open("w", newline="", encoding="utf-8") as fp:
+        w = csv.DictWriter(fp, fieldnames=PARTICIPANT_HEADER)
+        w.writeheader()
+        for r in rows:
+            w.writerow({k: r.get(k, "") for k in PARTICIPANT_HEADER})
+    return path

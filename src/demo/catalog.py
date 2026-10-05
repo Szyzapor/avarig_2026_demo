@@ -51,6 +51,26 @@ METHOD_LABELS: Dict[str, str] = {
 METHOD_ORDER = ("reference", "crm", "zhu", "a2b")
 SYSTEMS_TO_RATE = ("crm", "zhu", "a2b")  # reference is shown but not rated
 
+# Datasets offered for rating. a2b_2mp is left out: its FOA is not consistent
+# B-format, while the Zhu and A2B baselines expect ACN/SN3D input, so ratings on
+# that set would penalise the baselines for a wrong input rather than for the
+# rendering. Override with DEMO_DATASETS=zhu,a2b_2mp,argentum_pg for a demo-only
+# run.
+RATED_DATASETS = ("zhu", "argentum_pg")
+
+
+def audio_version(audio_root: str | Path) -> str:
+    """Audio package version from ``<audio_root>/README.txt`` ("... package v2.1"),
+    or ``"unknown"``. Stored with every rating so that ratings made on different
+    packages are never pooled by accident."""
+    import re
+    try:
+        head = (Path(audio_root).expanduser() / "README.txt").read_text(encoding="utf-8")[:300]
+    except OSError:
+        return "unknown"
+    m = re.search(r"package\s+(v[\d.]+)", head)
+    return m.group(1) if m else "v1"
+
 
 @dataclass
 class Clip:

@@ -24,6 +24,96 @@ after the rating is recorded.
 
 ---
 
+## Online listening test (GitHub Pages)
+
+`web/` holds a static version of the test that runs on GitHub Pages with no
+server. Each participant:
+
+1. agrees to take part (anonymous; 18+),
+2. fills in a short questionnaire: age range, gender (optional), playback
+   device and headphone model, noise cancelling, listening environment,
+   hearing impairment, music experience, audio-engineering experience,
+   familiarity with spatial audio, earlier listening tests,
+3. sets the volume and passes a left/right headphone check,
+4. rates `clipsPerDataset` random clips from each dataset (default 5 x 2 = 10
+   trials, about 15 minutes). Every trial has the reference and three blind
+   versions A/B/C in a fresh random order, played on the same gapless
+   shared-timeline player as the Streamlit GUI. A version can be rated only
+   after it has been played for `minListenSeconds`,
+5. can leave a final comment.
+
+Answers go to a Google Sheet through a Google Apps Script web app, one event
+per step, so a participant who quits half-way still leaves their finished
+trials. Progress is kept in `localStorage`, so reloading the page resumes the
+session. Without an endpoint, or if sending fails, the last page offers a
+JSON download instead.
+
+### Build the audio
+
+```bash
+DEMO_AUDIO_ROOT=~/avarig_demo_audio python scripts/build_web.py \
+    --datasets zhu argentum_pg --clips-per-dataset 15
+```
+
+This writes `web/audio/**.flac` (24-bit) and `web/manifest.json` (about
+234 MB for 15 clips x 2 datasets x 12 s). ffmpeg is the only dependency.
+
+`a2b_2mp` is left out on purpose. Its FOA is not consistent B-format, while
+the Zhu and A2B baselines expect ACN/SN3D input, so the comparison on that
+set is unfair to them. The formal listening test makes the same choice. The
+script:
+
+* crops seconds 9-21 of each 30 s demo clip,
+* gain-matches every version to -23 LUFS (EBU R128), with one shared
+  correction per clip if needed to keep the true peak below -1 dBTP.
+  Without this the systems differed by up to 20 dB, which biases the ratings,
+* leaves polarity alone: the v2 audio package is already time- and
+  polarity-aligned to the reference (`--fix-crm-polarity` inverts CRM, which
+  is only needed for the old v1 package),
+* skips excerpts whose reference is quieter than -45 LUFS,
+* gives the files hashed names so the system is not visible in the URL.
+
+Applied gains are logged to `configs/web_levels.json`. Use `--datasets` to
+leave a dataset out.
+
+### Set up response collection
+
+1. Create a Google Sheet, then open **Extensions > Apps Script**.
+2. Paste in [`apps_script/Code.gs`](apps_script/Code.gs) and save.
+3. **Deploy > New deployment > Web app**, set *Execute as: Me* and *Who has
+   access: Anyone*, then copy the `/exec` URL.
+4. Put the URL into `web/config.js` as `endpoint`.
+
+The script creates three sheets: `participants` (one row per person),
+`ratings` (one row per person x clip x system, including the true system, the
+blind label and listening time per version) and `sessions` (final comment and
+total time). Survey answers are stored as language-independent codes (for
+example `dev_over_open` or `mus_hobby`). Their wording is in `web/i18n.js`.
+
+### Publish
+
+In the GitHub repository, set **Settings > Pages > Source** to
+**GitHub Actions**. The workflow `.github/workflows/pages.yml` deploys `web/`
+on every push to `main` that touches it. To test locally:
+
+```bash
+python -m http.server -d web 8000   # open http://localhost:8000
+```
+
+### Analyse
+
+Download the `ratings` and `participants` sheets as CSV, then run:
+
+```bash
+python scripts/analyze_web_ratings.py ratings.csv participants.csv
+```
+
+The script prints MOS ± 95% CI per system, per dataset and per questionnaire
+group. Participants who failed the L/R check or listened on loudspeakers are
+left out (`--all` keeps them).
+
+---
+
 ## What is in the repository
 
 ```
@@ -64,8 +154,31 @@ Python 3.10 or later. The PyTorch wheel only matters for
 
 ## Quick start
 
-The audio files (about 1.1 GB compressed, 300 WAVs total) are distributed
+The audio files (about 2.3 GB compressed, 300 WAVs total) are distributed
 separately because they are too large for a Git repository. Two options:
+
+The current audio package is **v2.1** (2026-10-05):
+
+* `crm` is the retrained model `popr9_mirror_rot_level` (corrected training
+  data); `zhu` and `a2b` use the same checkpoints as before,
+* `zhu/` and `a2b_2mp/` use the same 25 + 25 excerpts as v1,
+* `argentum_pg/` has 25 new excerpts taken only from hold-out recordings that
+  the proposed model never saw in training (v1 used training recordings),
+* every version is time- and polarity-aligned to the reference and
+  loudness-matched to -23 LUFS (BS.1770) with a shared -1 dBFS peak limit,
+* v2.1: `zhu` and `a2b` are re-rendered in 32-bit float. In v2 they were
+  16-bit and, once raised to -23 LUFS, carried a coarse quantisation grid
+  that only the baselines had. The `a2b_2mp` references are re-read from the
+  float source files. All files are 24-bit. Zhu source recordings are 16-bit,
+  so their references keep that grid (quantisation floor about -109 dBFS).
+* on `a2b_2mp` the baseline renderings get a non-standard FOA input (see
+  above), so treat them as indicative only.
+
+`configs/audio_index.json` in this repository matches v2.1 (same clips as
+v2). v2 is built by `code/build_demo_package.py` and v2.1 by
+`code/rerender_demo_baselines.py` in the popr_9 working copy, and
+`code/verify_demo_package.py` checks the result, not by
+`scripts/generate_audio.py` (that script still renders the v1 setup).
 
 ### Option A: download the pre-generated audio package
 
@@ -109,7 +222,7 @@ The default clip catalogue covers:
 |---|---|---|---|
 | `zhu` | Zhu (ByteDance) test set | 48 kHz | `AmbiX-*.wav` ↔ `Binaural-*.wav` |
 | `a2b_2mp` | Meta A2B 2-MP test set | 44.1 kHz | `*_ambisonics.wav` ↔ `*_binaural.wav` |
-| `argentum_pg` | Argentum HOA corpus | 48 kHz | `FOA_*.wav` ↔ `BIN_*.wav` |
+| `argentum_pg` | Argentum HOA corpus (v2: hold-out recordings only) | 48 kHz | `FOA_*.wav` ↔ `BIN_*.wav` |
 | `echo_project` | Placeholder; add files when available | - | - |
 
 Auto-discovery picks one centred excerpt per source file first, then loops
@@ -149,17 +262,37 @@ Once you have a paired FOA / binaural recording from Echo Project locally:
 The dataset block in the sidebar appears automatically once it contains
 at least one clip with a rendered reference.
 
-## Using the GUI
+## Using the GUI (collecting ratings)
 
-* Type your initials in the sidebar; ratings are autosaved to
-  `ratings/ratings_<initials>.csv`. Each row records `dataset`, `clip_id`,
-  `system` (true system name, not the blind label), `mos`, and an
-  optional comment.
-* The session identifier in the sidebar groups ratings made during one
-  sitting (useful when several visitors share a laptop).
-* `Reveal which system is which` shows the mapping between **A / B / C**
-  and the underlying systems. Use it after rating, not before.
+* Type your name or initials at the top and fill in **About you** (age range,
+  hearing, headphones, environment, music / audio / spatial-audio experience,
+  previous listening tests). Ratings are saved only once both are done.
+* Ratings autosave to `ratings/ratings_<YYYY-MM-DD--HHMM>_<name>.csv`. Each row
+  records `dataset`, `clip_id`, `system` (true name), `blind_label`, `mos`,
+  the optional comment and `audio_version` (the audio package the clip was
+  played from, read from the package README). The profile goes to
+  `ratings/participants_<...>_<name>.csv`, keyed by session.
+* Only `zhu` and `argentum_pg` are offered for rating. `a2b_2mp` is left out
+  because its FOA is not standard B-format for the baselines. For a demo-only
+  run use `DEMO_DATASETS=zhu,a2b_2mp,argentum_pg streamlit run app.py`.
+* **Reveal system names** shows the A / B / C mapping and locks the sliders
+  while it is on, so a revealed name never reaches a stored score.
+* The session identifier groups ratings made in one sitting (useful when
+  several visitors share a laptop). Re-rating overwrites the earlier score.
 * `Download my ratings as CSV` exports the current CSV from disk.
+
+Analyse the collected files with:
+
+```bash
+python scripts/analyze_demo_ratings.py ratings/
+```
+
+It uses only ratings made on audio package v2.1 and the two rated datasets,
+drops sessions without a complete profile or with identical ratings
+throughout, and prints MOS ± 95% CI per system (overall, per dataset, per
+profile group) plus paired CRM - baseline differences. Ratings collected
+before this version (no `audio_version` column) were made on other audio
+and are reported separately, not pooled.
 
 The reference player can be hidden if you prefer a fully blind protocol
 without the ground truth.
