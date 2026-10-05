@@ -8,29 +8,66 @@
   "sr": 48000,
   "stimuli": {
    "proposed_crm_v2": {
-    "lufs_before": -19.9,
-    "gain_db": -3.1
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.921,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": -3.1,
+    "lufs_final": -23.01,
+    "peak_dbfs": -5.72,
+    "file": "audio/832ede3733ebdb3a.wav"
    },
    "zhu2022": {
-    "lufs_before": -19.56,
-    "gain_db": -3.44
+    "lag_samples": 2,
+    "lag_ms": 0.04,
+    "polarity_flipped": false,
+    "corr_mid": 0.952,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 5.78,
+    "lufs_final": -23.01,
+    "peak_dbfs": -5.79,
+    "file": "audio/b756e92185d29c7b.wav"
    },
    "a2b_btpab": {
-    "lufs_before": -21.58,
-    "gain_db": -1.42
+    "lag_samples": 2,
+    "lag_ms": 0.04,
+    "polarity_flipped": false,
+    "corr_mid": 0.977,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 5.95,
+    "lufs_final": -23.02,
+    "peak_dbfs": -4.15,
+    "file": "audio/f6215a65f5b2617c.wav"
    },
    "anchor_foa_cardioid": {
-    "lufs_before": -30.82,
-    "gain_db": 7.82
+    "lag_samples": 87,
+    "lag_ms": 1.81,
+    "polarity_flipped": true,
+    "corr_mid": 0.118,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 7.82,
+    "lufs_final": -23.01,
+    "peak_dbfs": -3.88,
+    "file": "audio/361b4ebda3a9c4fa.wav"
    },
    "anchor_lp3500": {
-    "lufs_before": -21.48,
-    "gain_db": -1.52
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": -1.52,
+    "lufs_final": -23.02,
+    "peak_dbfs": -3.87,
+    "file": "audio/0670e2e59e21dd33.wav"
+   },
+   "reference": {
+    "gain_db": -1.54,
+    "lufs_final": -23.02,
+    "peak_dbfs": -3.72,
+    "file": "audio/1630ba93ced26798.wav"
    }
   },
-  "reference_lufs_before": -21.46,
+  "reference_hf_above_3k5_db": -25.3,
   "trial_gain_db": 0.0,
-  "reference_gain_db": -1.54
+  "role": "test"
  },
  {
   "dataset": "zhu",
@@ -41,29 +78,66 @@
   "sr": 48000,
   "stimuli": {
    "proposed_crm_v2": {
-    "lufs_before": -31.5,
-    "gain_db": 8.5
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.922,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 8.5,
+    "lufs_final": -23.0,
+    "peak_dbfs": -11.96,
+    "file": "audio/7fc26829be73404a.wav"
    },
    "zhu2022": {
-    "lufs_before": -26.45,
-    "gain_db": 3.45
+    "lag_samples": 3,
+    "lag_ms": 0.06,
+    "polarity_flipped": false,
+    "corr_mid": 0.952,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 13.82,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.26,
+    "file": "audio/14964384c17a8b4d.wav"
    },
    "a2b_btpab": {
-    "lufs_before": -26.49,
-    "gain_db": 3.49
+    "lag_samples": 2,
+    "lag_ms": 0.04,
+    "polarity_flipped": false,
+    "corr_mid": 0.971,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 12.72,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.13,
+    "file": "audio/d2a87040a3704458.wav"
    },
    "anchor_foa_cardioid": {
-    "lufs_before": -31.35,
-    "gain_db": 8.35
+    "lag_samples": 87,
+    "lag_ms": 1.81,
+    "polarity_flipped": true,
+    "corr_mid": 0.473,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 8.35,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.65,
+    "file": "audio/148103f8befd6181.wav"
    },
    "anchor_lp3500": {
-    "lufs_before": -27.2,
-    "gain_db": 4.2
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": 4.2,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.59,
+    "file": "audio/2116feb3001e8f28.wav"
+   },
+   "reference": {
+    "gain_db": 4.1,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.81,
+    "file": "audio/488f23a8f2433dfe.wav"
    }
   },
-  "reference_lufs_before": -27.1,
+  "reference_hf_above_3k5_db": -22.5,
   "trial_gain_db": 0.0,
-  "reference_gain_db": 4.1
+  "role": "test"
  },
  {
   "dataset": "zhu",
@@ -74,29 +148,66 @@
   "sr": 48000,
   "stimuli": {
    "proposed_crm_v2": {
-    "lufs_before": -35.1,
-    "gain_db": 12.1
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.924,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 12.1,
+    "lufs_final": -23.07,
+    "peak_dbfs": -10.7,
+    "file": "audio/633081b60e9779cc.wav"
    },
    "zhu2022": {
-    "lufs_before": -34.23,
-    "gain_db": 11.23
+    "lag_samples": 2,
+    "lag_ms": 0.04,
+    "polarity_flipped": false,
+    "corr_mid": 0.947,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 20.53,
+    "lufs_final": -23.01,
+    "peak_dbfs": -10.24,
+    "file": "audio/eb2c9cd3bf4a0bc2.wav"
    },
    "a2b_btpab": {
-    "lufs_before": -34.26,
-    "gain_db": 11.26
+    "lag_samples": 3,
+    "lag_ms": 0.06,
+    "polarity_flipped": false,
+    "corr_mid": 0.955,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 19.04,
+    "lufs_final": -23.01,
+    "peak_dbfs": -10.68,
+    "file": "audio/9b3c8e26da243d0d.wav"
    },
    "anchor_foa_cardioid": {
-    "lufs_before": -35.08,
-    "gain_db": 12.08
+    "lag_samples": 88,
+    "lag_ms": 1.83,
+    "polarity_flipped": true,
+    "corr_mid": 0.127,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 12.08,
+    "lufs_final": -23.0,
+    "peak_dbfs": -11.13,
+    "file": "audio/31822611aa3f663c.wav"
    },
    "anchor_lp3500": {
-    "lufs_before": -33.63,
-    "gain_db": 10.63
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": 10.63,
+    "lufs_final": -23.01,
+    "peak_dbfs": -11.02,
+    "file": "audio/6b42236fc86e2eee.wav"
+   },
+   "reference": {
+    "gain_db": 10.57,
+    "lufs_final": -23.01,
+    "peak_dbfs": -10.95,
+    "file": "audio/3f6d80eed650dcaa.wav"
    }
   },
-  "reference_lufs_before": -33.57,
+  "reference_hf_above_3k5_db": -21.1,
   "trial_gain_db": 0.0,
-  "reference_gain_db": 10.57
+  "role": "test"
  },
  {
   "dataset": "zhu",
@@ -107,227 +218,206 @@
   "sr": 48000,
   "stimuli": {
    "proposed_crm_v2": {
-    "lufs_before": -23.41,
-    "gain_db": 0.41
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.936,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 0.41,
+    "lufs_final": -23.0,
+    "peak_dbfs": -4.88,
+    "file": "audio/26c37da08dd79403.wav"
    },
    "zhu2022": {
-    "lufs_before": -23.39,
-    "gain_db": 0.39
+    "lag_samples": 2,
+    "lag_ms": 0.04,
+    "polarity_flipped": false,
+    "corr_mid": 0.943,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 1.02,
+    "lufs_final": -23.0,
+    "peak_dbfs": -3.1,
+    "file": "audio/1fd169709c9e7a3a.wav"
    },
    "a2b_btpab": {
-    "lufs_before": -23.34,
-    "gain_db": 0.34
+    "lag_samples": 3,
+    "lag_ms": 0.06,
+    "polarity_flipped": false,
+    "corr_mid": 0.957,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": -0.73,
+    "lufs_final": -23.0,
+    "peak_dbfs": -2.96,
+    "file": "audio/02feb54aebcd0c4b.wav"
    },
    "anchor_foa_cardioid": {
-    "lufs_before": -19.99,
-    "gain_db": -3.01
+    "lag_samples": 93,
+    "lag_ms": 1.94,
+    "polarity_flipped": true,
+    "corr_mid": 0.204,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": -3.01,
+    "lufs_final": -23.0,
+    "peak_dbfs": -5.48,
+    "file": "audio/073ad81b874931d7.wav"
    },
    "anchor_lp3500": {
-    "lufs_before": -23.81,
-    "gain_db": 0.81
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": 0.81,
+    "lufs_final": -23.0,
+    "peak_dbfs": -3.13,
+    "file": "audio/6d83c4a9a811e629.wav"
+   },
+   "reference": {
+    "gain_db": 0.31,
+    "lufs_final": -23.0,
+    "peak_dbfs": -3.51,
+    "file": "audio/f84c17946061f058.wav"
    }
   },
-  "reference_lufs_before": -23.31,
+  "reference_hf_above_3k5_db": -15.9,
   "trial_gain_db": 0.0,
-  "reference_gain_db": 0.31
+  "role": "test"
  },
  {
-  "dataset": "a2b_2mp",
-  "clip": "a2b_2mp_001",
-  "source": "a2b_0000_ambisonics.wav",
-  "start_s": 39.26133786848072,
-  "duration_s": 10.0,
-  "sr": 44100,
-  "stimuli": {
-   "proposed_crm_v2": {
-    "lufs_before": -26.9,
-    "gain_db": 3.9
-   },
-   "zhu2022": {
-    "lufs_before": -28.63,
-    "gain_db": 5.63
-   },
-   "a2b_btpab": {
-    "lufs_before": -25.3,
-    "gain_db": 2.3
-   },
-   "anchor_foa_cardioid": {
-    "lufs_before": -49.57,
-    "gain_db": 26.57
-   },
-   "anchor_lp3500": {
-    "lufs_before": -27.89,
-    "gain_db": 4.89
-   }
-  },
-  "reference_lufs_before": -27.64,
-  "trial_gain_db": 0.0,
-  "reference_gain_db": 4.64
- },
- {
-  "dataset": "a2b_2mp",
-  "clip": "a2b_2mp_002",
-  "source": "a2b_0017_ambisonics.wav",
-  "start_s": 46.38666666666666,
-  "duration_s": 10.0,
-  "sr": 44100,
-  "stimuli": {
-   "proposed_crm_v2": {
-    "lufs_before": -26.19,
-    "gain_db": -0.69
-   },
-   "zhu2022": {
-    "lufs_before": -26.49,
-    "gain_db": -0.39
-   },
-   "a2b_btpab": {
-    "lufs_before": -25.87,
-    "gain_db": -1.01
-   },
-   "anchor_foa_cardioid": {
-    "lufs_before": -48.74,
-    "gain_db": 21.86
-   },
-   "anchor_lp3500": {
-    "lufs_before": -26.27,
-    "gain_db": -0.61
-   }
-  },
-  "reference_lufs_before": -25.95,
-  "trial_gain_db": -3.88,
-  "reference_gain_db": -0.92
- },
- {
-  "dataset": "a2b_2mp",
-  "clip": "a2b_2mp_003",
-  "source": "a2b_0018_ambisonics.wav",
-  "start_s": 92.64,
-  "duration_s": 10.0,
-  "sr": 44100,
-  "stimuli": {
-   "proposed_crm_v2": {
-    "lufs_before": -23.48,
-    "gain_db": 0.48
-   },
-   "zhu2022": {
-    "lufs_before": -21.75,
-    "gain_db": -1.25
-   },
-   "a2b_btpab": {
-    "lufs_before": -22.64,
-    "gain_db": -0.36
-   },
-   "anchor_foa_cardioid": {
-    "lufs_before": -49.49,
-    "gain_db": 26.49
-   },
-   "anchor_lp3500": {
-    "lufs_before": -24.51,
-    "gain_db": 1.51
-   }
-  },
-  "reference_lufs_before": -23.69,
-  "trial_gain_db": 0.0,
-  "reference_gain_db": 0.69
- },
- {
-  "dataset": "a2b_2mp",
-  "clip": "a2b_2mp_004",
-  "source": "a2b_0030_ambisonics.wav",
-  "start_s": 129.0319954648526,
-  "duration_s": 10.0,
-  "sr": 44100,
-  "stimuli": {
-   "proposed_crm_v2": {
-    "lufs_before": -26.27,
-    "gain_db": 3.27
-   },
-   "zhu2022": {
-    "lufs_before": -25.11,
-    "gain_db": 2.11
-   },
-   "a2b_btpab": {
-    "lufs_before": -25.27,
-    "gain_db": 2.27
-   },
-   "anchor_foa_cardioid": {
-    "lufs_before": -45.97,
-    "gain_db": 22.97
-   },
-   "anchor_lp3500": {
-    "lufs_before": -26.66,
-    "gain_db": 3.66
-   }
-  },
-  "reference_lufs_before": -26.35,
-  "trial_gain_db": 0.0,
-  "reference_gain_db": 3.35
- },
- {
-  "dataset": "argentum_pg",
-  "clip": "argentum_pg_001",
-  "source": "FOA_ZM1_CharityConcert03.wav",
-  "start_s": 169.0,
+  "dataset": "zhu",
+  "clip": "zhu_005",
+  "source": "AmbiX-211122_2225_0005.wav",
+  "start_s": 25.0,
   "duration_s": 10.0,
   "sr": 48000,
   "stimuli": {
    "proposed_crm_v2": {
-    "lufs_before": -26.25,
-    "gain_db": 3.25
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.951,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 0.62,
+    "lufs_final": -23.0,
+    "peak_dbfs": -4.98,
+    "file": "audio/24854c1544247767.wav"
    },
    "zhu2022": {
-    "lufs_before": -26.08,
-    "gain_db": 3.08
+    "lag_samples": 1,
+    "lag_ms": 0.02,
+    "polarity_flipped": false,
+    "corr_mid": 0.957,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 1.45,
+    "lufs_final": -23.0,
+    "peak_dbfs": -5.32,
+    "file": "audio/c8dda137193daa97.wav"
    },
    "a2b_btpab": {
-    "lufs_before": -26.47,
-    "gain_db": 3.47
+    "lag_samples": 1,
+    "lag_ms": 0.02,
+    "polarity_flipped": false,
+    "corr_mid": 0.982,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 0.08,
+    "lufs_final": -23.0,
+    "peak_dbfs": -3.35,
+    "file": "audio/de9d206926a439e0.wav"
    },
    "anchor_foa_cardioid": {
-    "lufs_before": -35.78,
-    "gain_db": 12.78
+    "lag_samples": 78,
+    "lag_ms": 1.62,
+    "polarity_flipped": true,
+    "corr_mid": 0.342,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": -1.62,
+    "lufs_final": -23.0,
+    "peak_dbfs": -4.82,
+    "file": "audio/5fbddc5bd4e4ce81.wav"
    },
    "anchor_lp3500": {
-    "lufs_before": -26.27,
-    "gain_db": 3.27
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": 0.94,
+    "lufs_final": -23.0,
+    "peak_dbfs": -5.18,
+    "file": "audio/516799560fb3a6d8.wav"
+   },
+   "reference": {
+    "gain_db": 0.75,
+    "lufs_final": -23.0,
+    "peak_dbfs": -4.31,
+    "file": "audio/ca4f7fc2c5067554.wav"
    }
   },
-  "reference_lufs_before": -26.25,
+  "reference_hf_above_3k5_db": -20.9,
   "trial_gain_db": 0.0,
-  "reference_gain_db": 3.25
+  "role": "test"
  },
  {
-  "dataset": "argentum_pg",
-  "clip": "argentum_pg_002",
-  "source": "FOA_ZM1_ChopinRecital2.wav",
-  "start_s": 451.0,
+  "dataset": "zhu",
+  "clip": "zhu_006",
+  "source": "AmbiX-211122_2225_0006.wav",
+  "start_s": 25.0,
   "duration_s": 10.0,
   "sr": 48000,
   "stimuli": {
    "proposed_crm_v2": {
-    "lufs_before": -28.71,
-    "gain_db": 5.71
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.938,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": -0.06,
+    "lufs_final": -23.0,
+    "peak_dbfs": -5.09,
+    "file": "audio/a90abb45b1535009.wav"
    },
    "zhu2022": {
-    "lufs_before": -28.8,
-    "gain_db": 5.8
+    "lag_samples": 1,
+    "lag_ms": 0.02,
+    "polarity_flipped": false,
+    "corr_mid": 0.953,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 1.86,
+    "lufs_final": -23.0,
+    "peak_dbfs": -4.93,
+    "file": "audio/28d8ddabab05bee0.wav"
    },
    "a2b_btpab": {
-    "lufs_before": -28.97,
-    "gain_db": 5.97
+    "lag_samples": 1,
+    "lag_ms": 0.02,
+    "polarity_flipped": false,
+    "corr_mid": 0.979,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 0.52,
+    "lufs_final": -23.0,
+    "peak_dbfs": -4.13,
+    "file": "audio/dbd18621787bb7d5.wav"
    },
    "anchor_foa_cardioid": {
-    "lufs_before": -32.87,
-    "gain_db": 9.87
+    "lag_samples": 94,
+    "lag_ms": 1.96,
+    "polarity_flipped": true,
+    "corr_mid": 0.235,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": -1.57,
+    "lufs_final": -23.0,
+    "peak_dbfs": -4.97,
+    "file": "audio/bc208f1c8f585f98.wav"
    },
    "anchor_lp3500": {
-    "lufs_before": -28.62,
-    "gain_db": 5.62
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": 0.29,
+    "lufs_final": -23.0,
+    "peak_dbfs": -5.2,
+    "file": "audio/a9fc59b84612510b.wav"
+   },
+   "reference": {
+    "gain_db": 0.06,
+    "lufs_final": -23.0,
+    "peak_dbfs": -5.0,
+    "file": "audio/7fcba2962aea251b.wav"
    }
   },
-  "reference_lufs_before": -28.62,
+  "reference_hf_above_3k5_db": -20.4,
   "trial_gain_db": 0.0,
-  "reference_gain_db": 5.62
+  "role": "test"
  },
  {
   "dataset": "argentum_pg",
@@ -338,61 +428,555 @@
   "sr": 48000,
   "stimuli": {
    "proposed_crm_v2": {
-    "lufs_before": -22.53,
-    "gain_db": -0.47
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.981,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": -0.47,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.32,
+    "file": "audio/7e2317f04200b1cb.wav"
    },
    "zhu2022": {
-    "lufs_before": -22.66,
-    "gain_db": -0.34
+    "lag_samples": 814,
+    "lag_ms": 16.96,
+    "polarity_flipped": true,
+    "corr_mid": -0.729,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 17.68,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.31,
+    "file": "audio/3e1464d186369923.wav"
    },
    "a2b_btpab": {
-    "lufs_before": -22.5,
-    "gain_db": -0.5
+    "lag_samples": 765,
+    "lag_ms": 15.94,
+    "polarity_flipped": false,
+    "corr_mid": 0.584,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 15.46,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.89,
+    "file": "audio/b1dad0cdf5877f52.wav"
    },
    "anchor_foa_cardioid": {
-    "lufs_before": -33.11,
-    "gain_db": 10.11
+    "lag_samples": 886,
+    "lag_ms": 18.46,
+    "polarity_flipped": false,
+    "corr_mid": 0.863,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 10.1,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.47,
+    "file": "audio/58cb510e1c69b2a1.wav"
    },
    "anchor_lp3500": {
-    "lufs_before": -22.69,
-    "gain_db": -0.31
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": -0.31,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.38,
+    "file": "audio/8c179b202db5803d.wav"
+   },
+   "reference": {
+    "gain_db": -0.39,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.32,
+    "file": "audio/15f74f35de23d39d.wav"
    }
   },
-  "reference_lufs_before": -22.61,
+  "reference_hf_above_3k5_db": -23.8,
   "trial_gain_db": 0.0,
-  "reference_gain_db": -0.39
+  "role": "test"
  },
  {
   "dataset": "argentum_pg",
-  "clip": "argentum_pg_008",
-  "source": "FOA_ZM1_SopotPier.wav",
-  "start_s": 337.5,
+  "clip": "argentum_pg_005",
+  "source": "FOA_ZM1_MRaczynski-LaudateDominum.wav",
+  "start_s": 91.0,
   "duration_s": 10.0,
   "sr": 48000,
   "stimuli": {
    "proposed_crm_v2": {
-    "lufs_before": -25.5,
-    "gain_db": 0.1
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.929,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": -2.85,
+    "lufs_final": -23.0,
+    "peak_dbfs": -7.54,
+    "file": "audio/351b28488bd4b22c.wav"
    },
    "zhu2022": {
-    "lufs_before": -25.65,
-    "gain_db": 0.24
+    "lag_samples": 811,
+    "lag_ms": 16.9,
+    "polarity_flipped": true,
+    "corr_mid": -0.725,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 11.49,
+    "lufs_final": -23.0,
+    "peak_dbfs": -5.11,
+    "file": "audio/31812fd06bd17385.wav"
    },
    "a2b_btpab": {
-    "lufs_before": -25.41,
-    "gain_db": -0.0
+    "lag_samples": 810,
+    "lag_ms": 16.88,
+    "polarity_flipped": true,
+    "corr_mid": -0.581,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 8.73,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.25,
+    "file": "audio/8f07e25327c870f4.wav"
    },
    "anchor_foa_cardioid": {
-    "lufs_before": -43.91,
-    "gain_db": 18.5
+    "lag_samples": 887,
+    "lag_ms": 18.48,
+    "polarity_flipped": false,
+    "corr_mid": 0.597,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 2.06,
+    "lufs_final": -23.0,
+    "peak_dbfs": -6.69,
+    "file": "audio/ede46562de243828.wav"
    },
    "anchor_lp3500": {
-    "lufs_before": -25.57,
-    "gain_db": 0.16
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": -2.76,
+    "lufs_final": -23.0,
+    "peak_dbfs": -6.74,
+    "file": "audio/d610cf6f64f3178d.wav"
+   },
+   "reference": {
+    "gain_db": -2.84,
+    "lufs_final": -23.0,
+    "peak_dbfs": -6.62,
+    "file": "audio/d9bad994f80be77b.wav"
    }
   },
-  "reference_lufs_before": -25.56,
-  "trial_gain_db": -2.41,
-  "reference_gain_db": 0.15
+  "reference_hf_above_3k5_db": -24.4,
+  "trial_gain_db": 0.0,
+  "role": "test"
+ },
+ {
+  "dataset": "argentum_pg",
+  "clip": "argentum_pg_019",
+  "source": "FOA_ZM1a_PARTYcz3.wav",
+  "start_s": 58.375,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.973,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 0.04,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.58,
+    "file": "audio/79bd92bfe1cbafce.wav"
+   },
+   "zhu2022": {
+    "lag_samples": -267,
+    "lag_ms": -5.56,
+    "polarity_flipped": false,
+    "corr_mid": 0.647,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 10.91,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.52,
+    "file": "audio/59c74dbc6fec7f0c.wav"
+   },
+   "a2b_btpab": {
+    "lag_samples": -263,
+    "lag_ms": -5.48,
+    "polarity_flipped": false,
+    "corr_mid": 0.57,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 10.35,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.23,
+    "file": "audio/27c107bc8a4afb8a.wav"
+   },
+   "anchor_foa_cardioid": {
+    "lag_samples": -137,
+    "lag_ms": -2.85,
+    "polarity_flipped": false,
+    "corr_mid": 0.845,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 3.76,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.27,
+    "file": "audio/284064b04b7ac8dd.wav"
+   },
+   "anchor_lp3500": {
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": -0.01,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.47,
+    "file": "audio/b863d4986523f47f.wav"
+   },
+   "reference": {
+    "gain_db": -0.04,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.5,
+    "file": "audio/72ddf36aabec5f7d.wav"
+   }
+  },
+  "reference_hf_above_3k5_db": -27.0,
+  "trial_gain_db": 0.0,
+  "role": "test"
+ },
+ {
+  "dataset": "argentum_pg",
+  "clip": "argentum_pg_021",
+  "source": "FOA_ZM1_CharityConcert03.wav",
+  "start_s": 256.0,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.984,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": -3.16,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.05,
+    "file": "audio/9e47d42984fb9500.wav"
+   },
+   "zhu2022": {
+    "lag_samples": -208,
+    "lag_ms": -4.33,
+    "polarity_flipped": true,
+    "corr_mid": -0.71,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 8.84,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.14,
+    "file": "audio/b3531f34bfe60ae3.wav"
+   },
+   "a2b_btpab": {
+    "lag_samples": -256,
+    "lag_ms": -5.33,
+    "polarity_flipped": false,
+    "corr_mid": 0.572,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 6.84,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.32,
+    "file": "audio/1acceaa7fff031de.wav"
+   },
+   "anchor_foa_cardioid": {
+    "lag_samples": -137,
+    "lag_ms": -2.85,
+    "polarity_flipped": false,
+    "corr_mid": 0.862,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 0.84,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.61,
+    "file": "audio/c206452dd37fda44.wav"
+   },
+   "anchor_lp3500": {
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": -3.13,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.59,
+    "file": "audio/8b3785a53954333f.wav"
+   },
+   "reference": {
+    "gain_db": -3.16,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.51,
+    "file": "audio/7d929e871545bfd9.wav"
+   }
+  },
+  "reference_hf_above_3k5_db": -28.4,
+  "trial_gain_db": 0.0,
+  "role": "test"
+ },
+ {
+  "dataset": "argentum_pg",
+  "clip": "argentum_pg_024",
+  "source": "FOA_ZM1_JHaydnSonata3.wav",
+  "start_s": 187.75,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.989,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": -1.5,
+    "lufs_final": -23.0,
+    "peak_dbfs": -7.95,
+    "file": "audio/2f6dcd836f680471.wav"
+   },
+   "zhu2022": {
+    "lag_samples": -215,
+    "lag_ms": -4.48,
+    "polarity_flipped": true,
+    "corr_mid": -0.695,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 9.78,
+    "lufs_final": -23.0,
+    "peak_dbfs": -6.3,
+    "file": "audio/816f6b141c01d6da.wav"
+   },
+   "a2b_btpab": {
+    "lag_samples": -216,
+    "lag_ms": -4.5,
+    "polarity_flipped": true,
+    "corr_mid": -0.61,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 8.1,
+    "lufs_final": -23.0,
+    "peak_dbfs": -6.92,
+    "file": "audio/29529d17f1e17db6.wav"
+   },
+   "anchor_foa_cardioid": {
+    "lag_samples": -137,
+    "lag_ms": -2.85,
+    "polarity_flipped": false,
+    "corr_mid": 0.879,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 3.02,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.48,
+    "file": "audio/81528b6ef6d5c6f7.wav"
+   },
+   "anchor_lp3500": {
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": -1.54,
+    "lufs_final": -23.0,
+    "peak_dbfs": -7.72,
+    "file": "audio/89eeb4f086c8a983.wav"
+   },
+   "reference": {
+    "gain_db": -1.56,
+    "lufs_final": -23.0,
+    "peak_dbfs": -7.69,
+    "file": "audio/079c3ef949d59bbe.wav"
+   }
+  },
+  "reference_hf_above_3k5_db": -30.8,
+  "trial_gain_db": 0.0,
+  "role": "test"
+ },
+ {
+  "dataset": "argentum_pg",
+  "clip": "argentum_pg_015",
+  "source": "FOA_ZM1_MRaczynski-LaudateDominum.wav",
+  "start_s": 43.0,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.963,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 2.06,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.81,
+    "file": "audio/58c08cce155e8597.wav"
+   },
+   "zhu2022": {
+    "lag_samples": 812,
+    "lag_ms": 16.92,
+    "polarity_flipped": true,
+    "corr_mid": -0.734,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 19.43,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.64,
+    "file": "audio/9f5f73ff02b1f945.wav"
+   },
+   "a2b_btpab": {
+    "lag_samples": 811,
+    "lag_ms": 16.9,
+    "polarity_flipped": true,
+    "corr_mid": -0.519,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 17.7,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.45,
+    "file": "audio/3c964403e2196b94.wav"
+   },
+   "anchor_foa_cardioid": {
+    "lag_samples": 887,
+    "lag_ms": 18.48,
+    "polarity_flipped": false,
+    "corr_mid": 0.804,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 11.93,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.25,
+    "file": "audio/a0cd4962a93f095c.wav"
+   },
+   "anchor_lp3500": {
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": 2.09,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.15,
+    "file": "audio/223efd6215caf8dd.wav"
+   },
+   "reference": {
+    "gain_db": 2.03,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.06,
+    "file": "audio/6e313530b908084f.wav"
+   }
+  },
+  "reference_hf_above_3k5_db": -26.2,
+  "trial_gain_db": 0.0,
+  "role": "test"
+ },
+ {
+  "dataset": "zhu",
+  "clip": "zhu_009",
+  "source": "AmbiX-211122_2225_0009.wav",
+  "start_s": 25.0,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.937,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 0.49,
+    "lufs_final": -23.0,
+    "peak_dbfs": -6.44,
+    "file": "audio/49ec084b7c09b84a.wav"
+   },
+   "zhu2022": {
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.945,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": -0.76,
+    "lufs_final": -23.0,
+    "peak_dbfs": -6.42,
+    "file": "audio/6820bf996f6bee1f.wav"
+   },
+   "a2b_btpab": {
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.972,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": -2.76,
+    "lufs_final": -23.0,
+    "peak_dbfs": -5.29,
+    "file": "audio/5320790dcb2b41ec.wav"
+   },
+   "anchor_foa_cardioid": {
+    "lag_samples": 77,
+    "lag_ms": 1.6,
+    "polarity_flipped": true,
+    "corr_mid": 0.323,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": -5.65,
+    "lufs_final": -23.0,
+    "peak_dbfs": -8.59,
+    "file": "audio/aafd9707347ef0f0.wav"
+   },
+   "anchor_lp3500": {
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": 0.93,
+    "lufs_final": -23.0,
+    "peak_dbfs": -6.42,
+    "file": "audio/b739e62f37895a5d.wav"
+   },
+   "reference": {
+    "gain_db": 0.59,
+    "lufs_final": -23.0,
+    "peak_dbfs": -6.24,
+    "file": "audio/0578cf27c5fd096f.wav"
+   }
+  },
+  "reference_hf_above_3k5_db": -18.1,
+  "trial_gain_db": 0.0,
+  "role": "training"
+ },
+ {
+  "dataset": "argentum_pg",
+  "clip": "argentum_pg_013",
+  "source": "FOA_ZM1_IDenisova-CherubicHymn.wav",
+  "start_s": 55.75,
+  "duration_s": 10.0,
+  "sr": 48000,
+  "stimuli": {
+   "proposed_crm_v2": {
+    "lag_samples": 0,
+    "lag_ms": 0.0,
+    "polarity_flipped": false,
+    "corr_mid": 0.993,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 1.07,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.78,
+    "file": "audio/a4490fa22f1cd77b.wav"
+   },
+   "zhu2022": {
+    "lag_samples": 821,
+    "lag_ms": 17.1,
+    "polarity_flipped": true,
+    "corr_mid": -0.79,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 20.07,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.1,
+    "file": "audio/1e5b70e81085c4e3.wav"
+   },
+   "a2b_btpab": {
+    "lag_samples": 762,
+    "lag_ms": 15.88,
+    "polarity_flipped": false,
+    "corr_mid": 0.636,
+    "alignment": "band-passed cross-correlation on the 30 s clip",
+    "gain_db": 18.65,
+    "lufs_final": -23.0,
+    "peak_dbfs": -9.74,
+    "file": "audio/79373ae3503a9421.wav"
+   },
+   "anchor_foa_cardioid": {
+    "lag_samples": 886,
+    "lag_ms": 18.46,
+    "polarity_flipped": false,
+    "corr_mid": 0.931,
+    "alignment": "alignment table (alignment_ref.py)",
+    "gain_db": 13.44,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.11,
+    "file": "audio/aaebcdc25372b9f4.wav"
+   },
+   "anchor_lp3500": {
+    "note": "reference low-passed at 3.5 kHz (8th-order Butterworth, zero-phase)",
+    "gain_db": 1.07,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.77,
+    "file": "audio/1bb1334e2e214b27.wav"
+   },
+   "reference": {
+    "gain_db": 1.02,
+    "lufs_final": -23.0,
+    "peak_dbfs": -10.56,
+    "file": "audio/feec7aa9a7e68067.wav"
+   }
+  },
+  "reference_hf_above_3k5_db": -27.3,
+  "trial_gain_db": 0.0,
+  "role": "training"
  }
 ]

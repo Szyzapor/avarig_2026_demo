@@ -1,0 +1,447 @@
+testname: FOA-to-binaural listening test, session 1 (overall)
+testId: foa2bin_v2_session1
+bufferSize: 2048
+stopOnErrors: true
+showButtonPreviousPage: true
+remoteService: service/write.php
+pages:
+- type: generic
+  id: intro
+  name: Sesja 1 z 2 · Session 1 of 2
+  content: '<p><b>PL</b> Potrzebne są słuchawki (najlepiej przewodowe, nauszne lub wokółuszne) i ciche miejsce. Ustaw w systemie
+    częstotliwość próbkowania wyjścia audio na <b>48 kHz</b>; przy innej wartości webMUSHRA zatrzyma test z komunikatem o
+    błędzie.</p><p>Na każdej stronie jest referencja oraz sześć wersji tego samego 10-sekundowego nagrania. Wśród nich jest
+    ukryta kopia referencji i dwie wersje celowo zdegradowane. Odtwarzaj i przełączaj wersje dowolnie (pętla), a następnie
+    oceń każdą w skali 0–100 względem referencji. Ukrytą referencję oceń na 100. Przesuń każdy suwak, także gdy zostawiasz
+    wysoką ocenę.</p><p><b>EN</b> You need headphones (preferably wired, on-ear or over-ear) and a quiet place. Set your system
+    audio output to <b>48 kHz</b>; with another sample rate webMUSHRA stops with an error.</p><p>Each page has a reference
+    and six versions of the same 10-second recording. One of them is a hidden copy of the reference and two are deliberately
+    degraded. Play and switch freely (loop), then rate each version from 0 to 100 against the reference. Rate the hidden reference
+    100. Move every slider, even if you keep a high score.</p><p><b>PL</b> Sesja 1: 2 strony treningowe, potem 14 stron z
+    oceną <b>jakości ogólnej</b> (ok. 25–30 minut). Sesja 2 (osobny link) dotyczy czterech cech dźwięku.</p><p><b>EN</b> Session
+    1: 2 training pages, then 14 pages rating <b>overall quality</b> (about 25–30 minutes). Session 2 (separate link) covers
+    four sound attributes.</p><p><b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko:
+    barwę, kierunki, eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference,
+    considering everything: tone colour, directions, externalisation and artefacts.</p>'
+- type: volume
+  id: vol
+  name: Głośność · Volume
+  content: Ustaw wygodną głośność i nie zmieniaj jej do końca sesji. · Set a comfortable level and do not change it until
+    the end of the session.
+  stimulus: configs/listening_test_v2/audio/1630ba93ced26798.wav
+  defaultVolume: 0.5
+- type: mushra
+  id: training_1
+  name: Trening · Training 1/2
+  content: '<b>Strona treningowa, oceny nie są analizowane.</b> Posłuchaj referencji i wszystkich wersji, znajdź ukrytą referencję
+    i wersje zdegradowane, poćwicz suwaki. · <b>Training page, ratings are not analysed.</b> Listen to the reference and all
+    versions, find the hidden reference and the degraded versions, practise the sliders.<br/><br/><b>Jakość ogólna</b>: na
+    ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki, eksternalizację i artefakty.<br/><b>Overall
+    quality</b>: how close each version sounds to the reference, considering everything: tone colour, directions, externalisation
+    and artefacts.'
+  showWaveform: false
+  enableLooping: true
+  reference: configs/listening_test_v2/audio/0578cf27c5fd096f.wav
+  createAnchor35: false
+  createAnchor70: false
+  stimuli:
+    proposed_crm_v2: configs/listening_test_v2/audio/49ec084b7c09b84a.wav
+    zhu2022: configs/listening_test_v2/audio/6820bf996f6bee1f.wav
+    a2b_btpab: configs/listening_test_v2/audio/5320790dcb2b41ec.wav
+    anchor_lp3500: configs/listening_test_v2/audio/b739e62f37895a5d.wav
+    anchor_foa_cardioid: configs/listening_test_v2/audio/aafd9707347ef0f0.wav
+- type: mushra
+  id: training_2
+  name: Trening · Training 2/2
+  content: '<b>Strona treningowa, oceny nie są analizowane.</b> Posłuchaj referencji i wszystkich wersji, znajdź ukrytą referencję
+    i wersje zdegradowane, poćwicz suwaki. · <b>Training page, ratings are not analysed.</b> Listen to the reference and all
+    versions, find the hidden reference and the degraded versions, practise the sliders.<br/><br/><b>Jakość ogólna</b>: na
+    ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki, eksternalizację i artefakty.<br/><b>Overall
+    quality</b>: how close each version sounds to the reference, considering everything: tone colour, directions, externalisation
+    and artefacts.'
+  showWaveform: false
+  enableLooping: true
+  reference: configs/listening_test_v2/audio/feec7aa9a7e68067.wav
+  createAnchor35: false
+  createAnchor70: false
+  stimuli:
+    proposed_crm_v2: configs/listening_test_v2/audio/a4490fa22f1cd77b.wav
+    zhu2022: configs/listening_test_v2/audio/1e5b70e81085c4e3.wav
+    a2b_btpab: configs/listening_test_v2/audio/79373ae3503a9421.wav
+    anchor_lp3500: configs/listening_test_v2/audio/1bb1334e2e214b27.wav
+    anchor_foa_cardioid: configs/listening_test_v2/audio/aaebcdc25372b9f4.wav
+-
+  - random
+  - type: mushra
+    id: overall_zhu__zhu_001
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/1630ba93ced26798.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/832ede3733ebdb3a.wav
+      zhu2022: configs/listening_test_v2/audio/b756e92185d29c7b.wav
+      a2b_btpab: configs/listening_test_v2/audio/f6215a65f5b2617c.wav
+      anchor_lp3500: configs/listening_test_v2/audio/0670e2e59e21dd33.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/361b4ebda3a9c4fa.wav
+  - type: mushra
+    id: overall_zhu__zhu_002
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/488f23a8f2433dfe.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/7fc26829be73404a.wav
+      zhu2022: configs/listening_test_v2/audio/14964384c17a8b4d.wav
+      a2b_btpab: configs/listening_test_v2/audio/d2a87040a3704458.wav
+      anchor_lp3500: configs/listening_test_v2/audio/2116feb3001e8f28.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/148103f8befd6181.wav
+  - type: mushra
+    id: overall_zhu__zhu_003
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/3f6d80eed650dcaa.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/633081b60e9779cc.wav
+      zhu2022: configs/listening_test_v2/audio/eb2c9cd3bf4a0bc2.wav
+      a2b_btpab: configs/listening_test_v2/audio/9b3c8e26da243d0d.wav
+      anchor_lp3500: configs/listening_test_v2/audio/6b42236fc86e2eee.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/31822611aa3f663c.wav
+  - type: mushra
+    id: overall_zhu__zhu_004
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/f84c17946061f058.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/26c37da08dd79403.wav
+      zhu2022: configs/listening_test_v2/audio/1fd169709c9e7a3a.wav
+      a2b_btpab: configs/listening_test_v2/audio/02feb54aebcd0c4b.wav
+      anchor_lp3500: configs/listening_test_v2/audio/6d83c4a9a811e629.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/073ad81b874931d7.wav
+  - type: mushra
+    id: overall_zhu__zhu_005
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/ca4f7fc2c5067554.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/24854c1544247767.wav
+      zhu2022: configs/listening_test_v2/audio/c8dda137193daa97.wav
+      a2b_btpab: configs/listening_test_v2/audio/de9d206926a439e0.wav
+      anchor_lp3500: configs/listening_test_v2/audio/516799560fb3a6d8.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/5fbddc5bd4e4ce81.wav
+  - type: mushra
+    id: overall_zhu__zhu_006
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/7fcba2962aea251b.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/a90abb45b1535009.wav
+      zhu2022: configs/listening_test_v2/audio/28d8ddabab05bee0.wav
+      a2b_btpab: configs/listening_test_v2/audio/dbd18621787bb7d5.wav
+      anchor_lp3500: configs/listening_test_v2/audio/a9fc59b84612510b.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/bc208f1c8f585f98.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_003
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/15f74f35de23d39d.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/7e2317f04200b1cb.wav
+      zhu2022: configs/listening_test_v2/audio/3e1464d186369923.wav
+      a2b_btpab: configs/listening_test_v2/audio/b1dad0cdf5877f52.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8c179b202db5803d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/58cb510e1c69b2a1.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_005
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/d9bad994f80be77b.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/351b28488bd4b22c.wav
+      zhu2022: configs/listening_test_v2/audio/31812fd06bd17385.wav
+      a2b_btpab: configs/listening_test_v2/audio/8f07e25327c870f4.wav
+      anchor_lp3500: configs/listening_test_v2/audio/d610cf6f64f3178d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/ede46562de243828.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_019
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/72ddf36aabec5f7d.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/79bd92bfe1cbafce.wav
+      zhu2022: configs/listening_test_v2/audio/59c74dbc6fec7f0c.wav
+      a2b_btpab: configs/listening_test_v2/audio/27c107bc8a4afb8a.wav
+      anchor_lp3500: configs/listening_test_v2/audio/b863d4986523f47f.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/284064b04b7ac8dd.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_021
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/7d929e871545bfd9.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/9e47d42984fb9500.wav
+      zhu2022: configs/listening_test_v2/audio/b3531f34bfe60ae3.wav
+      a2b_btpab: configs/listening_test_v2/audio/1acceaa7fff031de.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8b3785a53954333f.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/c206452dd37fda44.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_024
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/079c3ef949d59bbe.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/2f6dcd836f680471.wav
+      zhu2022: configs/listening_test_v2/audio/816f6b141c01d6da.wav
+      a2b_btpab: configs/listening_test_v2/audio/29529d17f1e17db6.wav
+      anchor_lp3500: configs/listening_test_v2/audio/89eeb4f086c8a983.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/81528b6ef6d5c6f7.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_015
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/6e313530b908084f.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/58c08cce155e8597.wav
+      zhu2022: configs/listening_test_v2/audio/9f5f73ff02b1f945.wav
+      a2b_btpab: configs/listening_test_v2/audio/3c964403e2196b94.wav
+      anchor_lp3500: configs/listening_test_v2/audio/223efd6215caf8dd.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/a0cd4962a93f095c.wav
+  - type: mushra
+    id: overall_zhu__zhu_002_repeat
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/488f23a8f2433dfe.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/7fc26829be73404a.wav
+      zhu2022: configs/listening_test_v2/audio/14964384c17a8b4d.wav
+      a2b_btpab: configs/listening_test_v2/audio/d2a87040a3704458.wav
+      anchor_lp3500: configs/listening_test_v2/audio/2116feb3001e8f28.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/148103f8befd6181.wav
+  - type: mushra
+    id: overall_argentum_pg__argentum_pg_003_repeat
+    name: Jakość ogólna · Overall quality
+    content: '<b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki,
+      eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference, considering
+      everything: tone colour, directions, externalisation and artefacts.<br/><br/><small>Jedna z wersji jest ukrytą referencją:
+      oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/15f74f35de23d39d.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/7e2317f04200b1cb.wav
+      zhu2022: configs/listening_test_v2/audio/3e1464d186369923.wav
+      a2b_btpab: configs/listening_test_v2/audio/b1dad0cdf5877f52.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8c179b202db5803d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/58cb510e1c69b2a1.wav
+- type: finish
+  name: Dziękujemy · Thank you
+  content: Wypełnij ankietę i kliknij „Send results”. Jeśli pojawi się komunikat o błędzie, nie zamykaj strony i skontaktuj
+    się z prowadzącym. · Fill in the questionnaire and click "Send results". If an error message appears, keep the page open
+    and contact the experimenter.
+  showResults: false
+  writeResults: true
+  showErrors: true
+  questionnaire:
+  - type: text
+    name: participant_code
+    label: Kod uczestnika · Participant code (2 pierwsze litery imienia matki + dzień urodzenia, np. AN07; ten sam w obu sesjach
+      · first 2 letters of your mother's first name + your day of birth, e.g. AN07; the same in both sessions)
+  - type: likert
+    name: age
+    label: Wiek · Age
+    response:
+    - value: 18-24
+      label: 18–24
+    - value: 25-34
+      label: 25–34
+    - value: 35-44
+      label: 35–44
+    - value: 45-54
+      label: 45–54
+    - value: 55+
+      label: 55+
+    - value: na
+      label: Wolę nie podawać · Prefer not to say
+  - type: likert
+    name: hearing
+    label: Stwierdzone problemy ze słuchem · Known hearing impairment
+    response:
+    - value: 'no'
+      label: Nie · No
+    - value: 'yes'
+      label: Tak · Yes
+    - value: unsure
+      label: Nie wiem · Not sure
+  - type: likert
+    name: music
+    label: Doświadczenie muzyczne · Music experience
+    response:
+    - value: none
+      label: Brak · None
+    - value: hobby
+      label: Hobby
+    - value: education
+      label: Edukacja muzyczna · Music education
+    - value: professional
+      label: Zawodowo · Professional
+  - type: likert
+    name: audio
+    label: Doświadczenie z realizacją dźwięku · Audio engineering experience
+    response:
+    - value: none
+      label: Brak · None
+    - value: hobby
+      label: Hobby
+    - value: student
+      label: Student
+    - value: professional
+      label: Zawodowo / badania · Professional / research
+  - type: likert
+    name: spatial
+    label: Doświadczenie z dźwiękiem przestrzennym / binauralnym · Spatial / binaural audio experience
+    response:
+    - value: none
+      label: Brak · None
+    - value: some
+      label: Okazjonalnie · Occasional
+    - value: regular
+      label: Regularnie · Regular
+  - type: likert
+    name: tests
+    label: Wcześniejsze testy odsłuchowe · Previous listening tests
+    response:
+    - value: '0'
+      label: '0'
+    - value: 1-3
+      label: 1–3
+    - value: 4+
+      label: 4+
+  - type: likert
+    name: headphones
+    label: Typ słuchawek · Headphone type
+    response:
+    - value: over_open
+      label: Wokółuszne otwarte · Over-ear open
+    - value: over_closed
+      label: Wokółuszne zamknięte · Over-ear closed
+    - value: on_ear
+      label: Nauszne · On-ear
+    - value: in_ear
+      label: Douszne przewodowe · In-ear wired
+    - value: bluetooth
+      label: Bezprzewodowe (Bluetooth) · Wireless (Bluetooth)
+    - value: other
+      label: Inne · Other
+  - type: text
+    name: headphone_model
+    label: Model słuchawek · Headphone model
+    optional: true
+  - type: likert
+    name: environment
+    label: Otoczenie · Listening environment
+    response:
+    - value: quiet
+      label: Ciche pomieszczenie · Quiet room
+    - value: some_noise
+      label: Trochę hałasu · Some noise
+    - value: noisy
+      label: Głośno · Noisy
+  - type: text
+    name: browser_device
+    label: Przeglądarka i komputer · Browser and computer (np. / e.g. Chrome, Windows laptop)
+    optional: true
+  - type: long_text
+    name: comments
+    label: Uwagi · Comments
+    optional: true
