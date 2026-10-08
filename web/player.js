@@ -42,9 +42,15 @@ class GaplessPlayer {
       const el = e.target;
       if (el && (el.tagName === "TEXTAREA" || (el.tagName === "INPUT" && el.type === "text"))) return;
       if (e.code === "Space") { e.preventDefault(); this.playing ? this.pause() : this.play(); }
-      else if (e.key >= "1" && e.key <= "9") {
-        const i = parseInt(e.key, 10) - 1;
-        if (i < this.sources.length) this.select(this.sources[i].id);
+      else {
+        // Sources may define their own key (e.g. "0" for the reference);
+        // otherwise keys 1-9 select by position.
+        const byKey = this.sources.find((s) => s.key === e.key);
+        if (byKey) this.select(byKey.id);
+        else if (e.key >= "1" && e.key <= "9" && !this.sources.some((s) => s.key)) {
+          const i = parseInt(e.key, 10) - 1;
+          if (i < this.sources.length) this.select(this.sources[i].id);
+        }
       }
     });
     this.enabled = false;
@@ -183,7 +189,7 @@ class GaplessPlayer {
       b.className = "src";
       b.dataset.id = s.id;
       b.style.borderLeftColor = s.color;
-      b.innerHTML = `<span></span><small>${i + 1}</small>`;
+      b.innerHTML = `<span></span><small>${s.key !== undefined ? s.key : i + 1}</small>`;
       b.firstChild.textContent = s.label;
       b.addEventListener("click", () => this.select(s.id));
       this.els.sources.appendChild(b);
@@ -221,7 +227,7 @@ class GaplessPlayer {
     this.els.play.disabled = true; this.els.seek.disabled = true;
     this.els.status.textContent = msgs.loading;
     this.offset = 0; this.currentId = null; this.buffers = {}; this.duration = 0; this.listened = {};
-    this.sources = sources.map((s) => ({ id: s.id, label: s.label, color: s.color }));
+    this.sources = sources.map((s) => ({ id: s.id, label: s.label, color: s.color, key: s.key }));
     this.buildButtons();
     this.ensureCtx();
     try {

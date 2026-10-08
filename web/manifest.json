@@ -1,291 +1,254 @@
 {
- "build": {
-  "duration_s": 12.0,
-  "offset_s": 9.0,
-  "target_lufs": -23.0,
-  "max_true_peak_dbtp": -1.0,
-  "crm_polarity_inverted": false
- },
- "datasets": [
+ "package": "listening_test_v2r_mushra_web",
+ "sample_rate": 48000,
+ "conditions": [
+  "proposed_crm_v2",
+  "zhu2022",
+  "a2b_btpab",
+  "anchor_foa_cardioid",
+  "anchor_lp3500",
+  "anchor_lp7000",
+  "reference"
+ ],
+ "mid_anchor_min_db": -30.0,
+ "trials": [
   {
-   "id": "zhu",
-   "clips": [
-    {
-     "id": "zhu_001",
-     "files": {
-      "reference": "audio/zhu/3b99fbbd3eed.flac",
-      "crm": "audio/zhu/126fce089eea.flac",
-      "zhu": "audio/zhu/79d8d2bcf21e.flac",
-      "a2b": "audio/zhu/7d57b97976e8.flac"
-     }
-    },
-    {
-     "id": "zhu_002",
-     "files": {
-      "reference": "audio/zhu/8759944e57fe.flac",
-      "crm": "audio/zhu/24f20d7ba971.flac",
-      "zhu": "audio/zhu/985b9afa28ed.flac",
-      "a2b": "audio/zhu/63bc5fbf019f.flac"
-     }
-    },
-    {
-     "id": "zhu_004",
-     "files": {
-      "reference": "audio/zhu/76f2835e0cc8.flac",
-      "crm": "audio/zhu/fdeab11ad652.flac",
-      "zhu": "audio/zhu/ab58b47c0e60.flac",
-      "a2b": "audio/zhu/38c32e189837.flac"
-     }
-    },
-    {
-     "id": "zhu_005",
-     "files": {
-      "reference": "audio/zhu/6aa66cf04421.flac",
-      "crm": "audio/zhu/b6b2b928fca9.flac",
-      "zhu": "audio/zhu/3141e1a60809.flac",
-      "a2b": "audio/zhu/2df9b56685e4.flac"
-     }
-    },
-    {
-     "id": "zhu_007",
-     "files": {
-      "reference": "audio/zhu/c8365822ea1e.flac",
-      "crm": "audio/zhu/7c64b7c80df7.flac",
-      "zhu": "audio/zhu/46fae33386fe.flac",
-      "a2b": "audio/zhu/6538874e5fe5.flac"
-     }
-    },
-    {
-     "id": "zhu_008",
-     "files": {
-      "reference": "audio/zhu/50e06f4cb9cf.flac",
-      "crm": "audio/zhu/0ae1ae79e77c.flac",
-      "zhu": "audio/zhu/42ecaf7cec41.flac",
-      "a2b": "audio/zhu/9c945d0faef9.flac"
-     }
-    },
-    {
-     "id": "zhu_010",
-     "files": {
-      "reference": "audio/zhu/0db206f05e3a.flac",
-      "crm": "audio/zhu/5ac542aed9ae.flac",
-      "zhu": "audio/zhu/c981b9a4832c.flac",
-      "a2b": "audio/zhu/32e607b3a873.flac"
-     }
-    },
-    {
-     "id": "zhu_011",
-     "files": {
-      "reference": "audio/zhu/4b82ae702200.flac",
-      "crm": "audio/zhu/5b3e96a6d1ae.flac",
-      "zhu": "audio/zhu/b5aaf6d8365c.flac",
-      "a2b": "audio/zhu/255ed86a79f9.flac"
-     }
-    },
-    {
-     "id": "zhu_015",
-     "files": {
-      "reference": "audio/zhu/a23ffaf7b4a3.flac",
-      "crm": "audio/zhu/a6b1c4df905b.flac",
-      "zhu": "audio/zhu/90931b4bed7d.flac",
-      "a2b": "audio/zhu/7c416f712042.flac"
-     }
-    },
-    {
-     "id": "zhu_016",
-     "files": {
-      "reference": "audio/zhu/043362185ff5.flac",
-      "crm": "audio/zhu/4d487b5b6cdb.flac",
-      "zhu": "audio/zhu/23a641a180de.flac",
-      "a2b": "audio/zhu/101a2c12aa6e.flac"
-     }
-    },
-    {
-     "id": "zhu_018",
-     "files": {
-      "reference": "audio/zhu/9d62a151114a.flac",
-      "crm": "audio/zhu/f638339e0e15.flac",
-      "zhu": "audio/zhu/b56b15811b3c.flac",
-      "a2b": "audio/zhu/80cd89552726.flac"
-     }
-    },
-    {
-     "id": "zhu_019",
-     "files": {
-      "reference": "audio/zhu/8e9efb7315f2.flac",
-      "crm": "audio/zhu/fcba40607f93.flac",
-      "zhu": "audio/zhu/e3a77815a625.flac",
-      "a2b": "audio/zhu/cca238d7df57.flac"
-     }
-    },
-    {
-     "id": "zhu_021",
-     "files": {
-      "reference": "audio/zhu/514565779db1.flac",
-      "crm": "audio/zhu/548091681238.flac",
-      "zhu": "audio/zhu/5e2448e95318.flac",
-      "a2b": "audio/zhu/341f8b5994c0.flac"
-     }
-    },
-    {
-     "id": "zhu_022",
-     "files": {
-      "reference": "audio/zhu/47f59bcb7fd9.flac",
-      "crm": "audio/zhu/a58fea6fa12b.flac",
-      "zhu": "audio/zhu/ce598bada47d.flac",
-      "a2b": "audio/zhu/d4900787bc1e.flac"
-     }
-    },
-    {
-     "id": "zhu_024",
-     "files": {
-      "reference": "audio/zhu/8e154a19c614.flac",
-      "crm": "audio/zhu/50b47283df24.flac",
-      "zhu": "audio/zhu/92790d72557e.flac",
-      "a2b": "audio/zhu/bf65087970f2.flac"
-     }
-    }
-   ]
+   "id": "zhu__zhu_001",
+   "dataset": "zhu",
+   "clip": "zhu_001",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/832ede3733ebdb3a.flac",
+    "zhu2022": "audio/b756e92185d29c7b.flac",
+    "a2b_btpab": "audio/f6215a65f5b2617c.flac",
+    "anchor_foa_cardioid": "audio/361b4ebda3a9c4fa.flac",
+    "anchor_lp3500": "audio/0670e2e59e21dd33.flac",
+    "anchor_lp7000": "audio/a21001f661c93fe1.flac",
+    "reference": "audio/1630ba93ced26798.flac"
+   },
+   "mid_anchor_removed_db": -28.2,
+   "mid_anchor_screening": true
   },
   {
-   "id": "argentum_pg",
-   "clips": [
-    {
-     "id": "argentum_pg_001",
-     "files": {
-      "reference": "audio/argentum_pg/eb55d1f08cfa.flac",
-      "crm": "audio/argentum_pg/6fb304b2e1de.flac",
-      "zhu": "audio/argentum_pg/bf8ed9319a7f.flac",
-      "a2b": "audio/argentum_pg/2dcf6a4e9c9c.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_002",
-     "files": {
-      "reference": "audio/argentum_pg/e91645fb9043.flac",
-      "crm": "audio/argentum_pg/043071812e0a.flac",
-      "zhu": "audio/argentum_pg/5283ef83b923.flac",
-      "a2b": "audio/argentum_pg/558e51bb8270.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_004",
-     "files": {
-      "reference": "audio/argentum_pg/2e93ba7f0ec1.flac",
-      "crm": "audio/argentum_pg/740400569387.flac",
-      "zhu": "audio/argentum_pg/10b54018cc60.flac",
-      "a2b": "audio/argentum_pg/89ea77c41317.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_005",
-     "files": {
-      "reference": "audio/argentum_pg/aeb378d34bea.flac",
-      "crm": "audio/argentum_pg/68b8ac056241.flac",
-      "zhu": "audio/argentum_pg/f5049e5f18c1.flac",
-      "a2b": "audio/argentum_pg/8ca50b9d62dd.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_007",
-     "files": {
-      "reference": "audio/argentum_pg/79bd9f163d31.flac",
-      "crm": "audio/argentum_pg/e4512d6ad630.flac",
-      "zhu": "audio/argentum_pg/636c10d7ae6f.flac",
-      "a2b": "audio/argentum_pg/baacf6d17337.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_008",
-     "files": {
-      "reference": "audio/argentum_pg/f869e65563d9.flac",
-      "crm": "audio/argentum_pg/13591cf96179.flac",
-      "zhu": "audio/argentum_pg/4a303daf0a24.flac",
-      "a2b": "audio/argentum_pg/b4613ad72c21.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_010",
-     "files": {
-      "reference": "audio/argentum_pg/3dc82496ad65.flac",
-      "crm": "audio/argentum_pg/a4de5a8d3048.flac",
-      "zhu": "audio/argentum_pg/8b210154292a.flac",
-      "a2b": "audio/argentum_pg/5d92a7849f64.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_011",
-     "files": {
-      "reference": "audio/argentum_pg/714ad7c1a44d.flac",
-      "crm": "audio/argentum_pg/e45e7ae52328.flac",
-      "zhu": "audio/argentum_pg/99cf2f184df3.flac",
-      "a2b": "audio/argentum_pg/b40a7a7292db.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_015",
-     "files": {
-      "reference": "audio/argentum_pg/c2b1b2c57399.flac",
-      "crm": "audio/argentum_pg/2d5207e752ed.flac",
-      "zhu": "audio/argentum_pg/922395351c4c.flac",
-      "a2b": "audio/argentum_pg/8118619491e5.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_016",
-     "files": {
-      "reference": "audio/argentum_pg/ac5161c4c88c.flac",
-      "crm": "audio/argentum_pg/0e67e7fa26e4.flac",
-      "zhu": "audio/argentum_pg/1f0072c313b3.flac",
-      "a2b": "audio/argentum_pg/dc38b42cedeb.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_018",
-     "files": {
-      "reference": "audio/argentum_pg/9919d430a906.flac",
-      "crm": "audio/argentum_pg/9ed10813db31.flac",
-      "zhu": "audio/argentum_pg/bc41a3bc7492.flac",
-      "a2b": "audio/argentum_pg/1d6f71b16eb9.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_019",
-     "files": {
-      "reference": "audio/argentum_pg/0aa32c26c87b.flac",
-      "crm": "audio/argentum_pg/cda94759be14.flac",
-      "zhu": "audio/argentum_pg/1e274a3baf24.flac",
-      "a2b": "audio/argentum_pg/834935d2aba7.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_021",
-     "files": {
-      "reference": "audio/argentum_pg/189174f09236.flac",
-      "crm": "audio/argentum_pg/48655b3673ce.flac",
-      "zhu": "audio/argentum_pg/479cad8bd282.flac",
-      "a2b": "audio/argentum_pg/906f719bf948.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_022",
-     "files": {
-      "reference": "audio/argentum_pg/bf85d52e897b.flac",
-      "crm": "audio/argentum_pg/41e8b32cdc7a.flac",
-      "zhu": "audio/argentum_pg/bb8387384d38.flac",
-      "a2b": "audio/argentum_pg/097ff801687a.flac"
-     }
-    },
-    {
-     "id": "argentum_pg_024",
-     "files": {
-      "reference": "audio/argentum_pg/c81444f00496.flac",
-      "crm": "audio/argentum_pg/aab9b33b48e7.flac",
-      "zhu": "audio/argentum_pg/3a40e4365f31.flac",
-      "a2b": "audio/argentum_pg/45f908976478.flac"
-     }
-    }
-   ]
+   "id": "zhu__zhu_002",
+   "dataset": "zhu",
+   "clip": "zhu_002",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/7fc26829be73404a.flac",
+    "zhu2022": "audio/14964384c17a8b4d.flac",
+    "a2b_btpab": "audio/d2a87040a3704458.flac",
+    "anchor_foa_cardioid": "audio/148103f8befd6181.flac",
+    "anchor_lp3500": "audio/2116feb3001e8f28.flac",
+    "anchor_lp7000": "audio/11dfb237da541576.flac",
+    "reference": "audio/488f23a8f2433dfe.flac"
+   },
+   "mid_anchor_removed_db": -39.8,
+   "mid_anchor_screening": false
+  },
+  {
+   "id": "zhu__zhu_003",
+   "dataset": "zhu",
+   "clip": "zhu_003",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/633081b60e9779cc.flac",
+    "zhu2022": "audio/eb2c9cd3bf4a0bc2.flac",
+    "a2b_btpab": "audio/9b3c8e26da243d0d.flac",
+    "anchor_foa_cardioid": "audio/31822611aa3f663c.flac",
+    "anchor_lp3500": "audio/6b42236fc86e2eee.flac",
+    "anchor_lp7000": "audio/e3f342fd670ed6b2.flac",
+    "reference": "audio/3f6d80eed650dcaa.flac"
+   },
+   "mid_anchor_removed_db": -42.6,
+   "mid_anchor_screening": false
+  },
+  {
+   "id": "zhu__zhu_004",
+   "dataset": "zhu",
+   "clip": "zhu_004",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/26c37da08dd79403.flac",
+    "zhu2022": "audio/1fd169709c9e7a3a.flac",
+    "a2b_btpab": "audio/02feb54aebcd0c4b.flac",
+    "anchor_foa_cardioid": "audio/073ad81b874931d7.flac",
+    "anchor_lp3500": "audio/6d83c4a9a811e629.flac",
+    "anchor_lp7000": "audio/91bb54ec853f51f3.flac",
+    "reference": "audio/f84c17946061f058.flac"
+   },
+   "mid_anchor_removed_db": -23.0,
+   "mid_anchor_screening": true
+  },
+  {
+   "id": "zhu__zhu_005",
+   "dataset": "zhu",
+   "clip": "zhu_005",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/24854c1544247767.flac",
+    "zhu2022": "audio/c8dda137193daa97.flac",
+    "a2b_btpab": "audio/de9d206926a439e0.flac",
+    "anchor_foa_cardioid": "audio/5fbddc5bd4e4ce81.flac",
+    "anchor_lp3500": "audio/516799560fb3a6d8.flac",
+    "anchor_lp7000": "audio/734fc7b68488c5e5.flac",
+    "reference": "audio/ca4f7fc2c5067554.flac"
+   },
+   "mid_anchor_removed_db": -23.1,
+   "mid_anchor_screening": true
+  },
+  {
+   "id": "zhu__zhu_006",
+   "dataset": "zhu",
+   "clip": "zhu_006",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/a90abb45b1535009.flac",
+    "zhu2022": "audio/28d8ddabab05bee0.flac",
+    "a2b_btpab": "audio/dbd18621787bb7d5.flac",
+    "anchor_foa_cardioid": "audio/bc208f1c8f585f98.flac",
+    "anchor_lp3500": "audio/a9fc59b84612510b.flac",
+    "anchor_lp7000": "audio/3a62cc052d886903.flac",
+    "reference": "audio/7fcba2962aea251b.flac"
+   },
+   "mid_anchor_removed_db": -21.8,
+   "mid_anchor_screening": true
+  },
+  {
+   "id": "argentum_pg__argentum_pg_003",
+   "dataset": "argentum_pg",
+   "clip": "argentum_pg_003",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/7e2317f04200b1cb.flac",
+    "zhu2022": "audio/3e1464d186369923.flac",
+    "a2b_btpab": "audio/b1dad0cdf5877f52.flac",
+    "anchor_foa_cardioid": "audio/58cb510e1c69b2a1.flac",
+    "anchor_lp3500": "audio/8c179b202db5803d.flac",
+    "anchor_lp7000": "audio/95e792498e412228.flac",
+    "reference": "audio/15f74f35de23d39d.flac"
+   },
+   "mid_anchor_removed_db": -41.8,
+   "mid_anchor_screening": false
+  },
+  {
+   "id": "argentum_pg__argentum_pg_005",
+   "dataset": "argentum_pg",
+   "clip": "argentum_pg_005",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/351b28488bd4b22c.flac",
+    "zhu2022": "audio/31812fd06bd17385.flac",
+    "a2b_btpab": "audio/8f07e25327c870f4.flac",
+    "anchor_foa_cardioid": "audio/ede46562de243828.flac",
+    "anchor_lp3500": "audio/d610cf6f64f3178d.flac",
+    "anchor_lp7000": "audio/7e395f23c0321715.flac",
+    "reference": "audio/d9bad994f80be77b.flac"
+   },
+   "mid_anchor_removed_db": -41.2,
+   "mid_anchor_screening": false
+  },
+  {
+   "id": "argentum_pg__argentum_pg_019",
+   "dataset": "argentum_pg",
+   "clip": "argentum_pg_019",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/79bd92bfe1cbafce.flac",
+    "zhu2022": "audio/59c74dbc6fec7f0c.flac",
+    "a2b_btpab": "audio/27c107bc8a4afb8a.flac",
+    "anchor_foa_cardioid": "audio/284064b04b7ac8dd.flac",
+    "anchor_lp3500": "audio/b863d4986523f47f.flac",
+    "anchor_lp7000": "audio/81be2948b486d3f7.flac",
+    "reference": "audio/72ddf36aabec5f7d.flac"
+   },
+   "mid_anchor_removed_db": -53.6,
+   "mid_anchor_screening": false
+  },
+  {
+   "id": "argentum_pg__argentum_pg_021",
+   "dataset": "argentum_pg",
+   "clip": "argentum_pg_021",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/9e47d42984fb9500.flac",
+    "zhu2022": "audio/b3531f34bfe60ae3.flac",
+    "a2b_btpab": "audio/1acceaa7fff031de.flac",
+    "anchor_foa_cardioid": "audio/c206452dd37fda44.flac",
+    "anchor_lp3500": "audio/8b3785a53954333f.flac",
+    "anchor_lp7000": "audio/dda4002ee54d71d2.flac",
+    "reference": "audio/7d929e871545bfd9.flac"
+   },
+   "mid_anchor_removed_db": -43.1,
+   "mid_anchor_screening": false
+  },
+  {
+   "id": "argentum_pg__argentum_pg_024",
+   "dataset": "argentum_pg",
+   "clip": "argentum_pg_024",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/2f6dcd836f680471.flac",
+    "zhu2022": "audio/816f6b141c01d6da.flac",
+    "a2b_btpab": "audio/29529d17f1e17db6.flac",
+    "anchor_foa_cardioid": "audio/81528b6ef6d5c6f7.flac",
+    "anchor_lp3500": "audio/89eeb4f086c8a983.flac",
+    "anchor_lp7000": "audio/59a6fc3a47537ade.flac",
+    "reference": "audio/079c3ef949d59bbe.flac"
+   },
+   "mid_anchor_removed_db": -52.4,
+   "mid_anchor_screening": false
+  },
+  {
+   "id": "argentum_pg__argentum_pg_015",
+   "dataset": "argentum_pg",
+   "clip": "argentum_pg_015",
+   "role": "test",
+   "files": {
+    "proposed_crm_v2": "audio/58c08cce155e8597.flac",
+    "zhu2022": "audio/9f5f73ff02b1f945.flac",
+    "a2b_btpab": "audio/3c964403e2196b94.flac",
+    "anchor_foa_cardioid": "audio/a0cd4962a93f095c.flac",
+    "anchor_lp3500": "audio/223efd6215caf8dd.flac",
+    "anchor_lp7000": "audio/5c9f8fffd5afe7df.flac",
+    "reference": "audio/6e313530b908084f.flac"
+   },
+   "mid_anchor_removed_db": -41.9,
+   "mid_anchor_screening": false
+  },
+  {
+   "id": "zhu__zhu_009",
+   "dataset": "zhu",
+   "clip": "zhu_009",
+   "role": "training",
+   "files": {
+    "proposed_crm_v2": "audio/49ec084b7c09b84a.flac",
+    "zhu2022": "audio/6820bf996f6bee1f.flac",
+    "a2b_btpab": "audio/5320790dcb2b41ec.flac",
+    "anchor_foa_cardioid": "audio/aafd9707347ef0f0.flac",
+    "anchor_lp3500": "audio/b739e62f37895a5d.flac",
+    "anchor_lp7000": "audio/596b4876609ce9a3.flac",
+    "reference": "audio/0578cf27c5fd096f.flac"
+   },
+   "mid_anchor_removed_db": -22.2,
+   "mid_anchor_screening": true
+  },
+  {
+   "id": "argentum_pg__argentum_pg_006",
+   "dataset": "argentum_pg",
+   "clip": "argentum_pg_006",
+   "role": "training",
+   "files": {
+    "proposed_crm_v2": "audio/31210fa10fb58d7d.flac",
+    "zhu2022": "audio/ca0f084dde1e3f59.flac",
+    "a2b_btpab": "audio/f3ddcf5f854ce97b.flac",
+    "anchor_foa_cardioid": "audio/c11c914901ce1030.flac",
+    "anchor_lp3500": "audio/50d10cc0c92f3499.flac",
+    "anchor_lp7000": "audio/2c45ae0fe09882fb.flac",
+    "reference": "audio/5488b9164495ec0a.flac"
+   },
+   "mid_anchor_removed_db": -57.0,
+   "mid_anchor_screening": false
   }
  ]
 }

@@ -24,95 +24,113 @@ after the rating is recorded.
 
 ---
 
-## Online listening test (GitHub Pages)
+## Online MUSHRA test (GitHub Pages)
 
-`web/` holds a static version of the test that runs on GitHub Pages with no
-server. Each participant:
+`web/` is the listening test used for the paper results: a MUSHRA test
+(ITU-R BS.1534-3 style) that runs as a static site on GitHub Pages, at
+https://szyzapor.github.io/avarig_2026_demo/. The earlier online MOS test
+(5-point scale, no hidden reference or anchors) is kept on branch
+`online-mos-v2.1`.
 
-1. agrees to take part (anonymous; 18+),
-2. fills in a short questionnaire: age range, gender (optional), playback
-   device and headphone model, noise cancelling, listening environment,
-   hearing impairment, music experience, audio-engineering experience,
-   familiarity with spatial audio, earlier listening tests,
-3. sets the volume and passes a left/right headphone check,
-4. rates `clipsPerDataset` random clips from each dataset (default 5 x 2 = 10
-   trials, about 15 minutes). Every trial has the reference and three blind
-   versions A/B/C in a fresh random order, played on the same gapless
-   shared-timeline player as the Streamlit GUI. A version can be rated only
-   after it has been played for `minListenSeconds`,
-5. can leave a final comment.
+**Stimuli** are those of listening test v2 revision 2 (`listening_test_v2/`,
+which addresses the review in #3), plus a mid anchor:
 
-Answers go to a Google Sheet through a Google Apps Script web app, one event
-per step, so a participant who quits half-way still leaves their finished
-trials. Progress is kept in `localStorage`, so reloading the page resumes the
-session. Without an endpoint, or if sending fails, the last page offers a
-JSON download instead.
+* 12 trials of 10 s: 6 Zhu, 6 Argentum hold-out (no a2b_2mp: its FOA is not
+  consistent B-format, so the baselines got a mis-specified input),
+* 7 conditions per trial: hidden reference, `proposed_crm_v2`, `zhu2022`,
+  `a2b_btpab`, `anchor_lp7000` (mid anchor, reference low-passed at 7 kHz),
+  `anchor_lp3500` (low anchor) and `anchor_foa_cardioid`. All are aligned to
+  the reference, at -23 LUFS, 48 kHz / 24-bit (served as lossless FLAC),
+* practice clips `zhu_009` and `argentum_pg_006`. The Argentum practice clip
+  comes from a recording that is not in the test.
 
-### Build the audio
+**Sessions** (same page, `?session=1` or `?session=2`):
 
-```bash
-DEMO_AUDIO_ROOT=~/avarig_demo_audio python scripts/build_web.py \
-    --datasets zhu argentum_pg --clips-per-dataset 15
-```
+| Session | Pages | Time | Role |
+|---|---|---|---|
+| 1 | 2 practice + 12 trials (random order) + 2 repeats in a separate final block, overall quality | about 25-30 min | primary result |
+| 2 | 1 practice + 4 attribute blocks x 6 trials (block order from a balanced Latin square per participant) + 1 repeat in a later block | about 35 min | exploratory |
 
-This writes `web/audio/**.flac` (24-bit) and `web/manifest.json` (about
-234 MB for 15 clips x 2 datasets x 12 s). ffmpeg is the only dependency.
+Each session runs: information and consent (contact address from
+`config.js`), then a questionnaire. Session 1 asks for age range, hearing,
+headphones and model, environment, and music, audio and spatial-audio
+experience; session 2 only asks for headphones, model and environment.
+**Bluetooth headphones and loudspeakers are screened out** before the test.
+Then come the volume setting, the left/right check (must pass, or two failed
+rounds are recorded), instructions, practice and the rating pages.
 
-`a2b_2mp` is left out on purpose. Its FOA is not consistent B-format, while
-the Zhu and A2B baselines expect ACN/SN3D input, so the comparison on that
-set is unfair to them. The formal listening test makes the same choice. The
-script:
+On every rating page the reference and seven numbered versions (new random
+order per page) play on one gapless shared timeline (keys 0-7, Space). Each
+slider starts unrated and unlocks after its version has been heard for 2 s.
+**Next unlocks only when every version has been heard and every slider set.**
+The page title shows only the criterion and progress (`?debug=1` adds the
+trial id).
 
-* crops seconds 9-21 of each 30 s demo clip,
-* gain-matches every version to -23 LUFS (EBU R128), with one shared
-  correction per clip if needed to keep the true peak below -1 dBTP.
-  Without this the systems differed by up to 20 dB, which biases the ratings,
-* leaves polarity alone: the v2 audio package is already time- and
-  polarity-aligned to the reference (`--fix-crm-polarity` inverts CRM, which
-  is only needed for the old v1 package),
-* skips excerpts whose reference is quieter than -45 LUFS,
-* gives the files hashed names so the system is not visible in the URL.
+**Participants** get a code from the URL (`?pid=...`, use per-person links)
+or a generated 8-character one that is written into the URL, so a reload
+resumes the session. The final page shows the code and the session 2 link
+with the same code, and always offers the results as a JSON download.
 
-Applied gains are logged to `configs/web_levels.json`. Use `--datasets` to
-leave a dataset out.
+### Results collection
 
-### Set up response collection
+Results go page by page to a Google Apps Script web app that writes a
+Google Sheet (`apps_script/Code.gs`, sheets `participants`, `mushra` with one
+row per condition, and `sessions`, de-duplicated by event id):
 
-1. Create a Google Sheet, then open **Extensions > Apps Script**.
-2. Paste in [`apps_script/Code.gs`](apps_script/Code.gs) and save.
-3. **Deploy > New deployment > Web app**, set *Execute as: Me* and *Who has
-   access: Anyone*, then copy the `/exec` URL.
-4. Put the URL into `web/config.js` as `endpoint`.
+1. Create a Google Sheet, then open **Extensions > Apps Script**, paste
+   `Code.gs` and save.
+2. **Deploy > New deployment > Web app**, set *Execute as: Me* and *Who has
+   access: Anyone*.
+3. Put the `/exec` URL into `web/config.js` (`endpoint`) together with
+   `contactEmail`, then push to `main`. The Pages workflow redeploys.
 
-The script creates three sheets: `participants` (one row per person),
-`ratings` (one row per person x clip x system, including the true system, the
-blind label and listening time per version) and `sessions` (final comment and
-total time). Survey answers are stored as language-independent codes (for
-example `dev_over_open` or `mus_hobby`). Their wording is in `web/i18n.js`.
+Until `endpoint` is set nothing is collected centrally; participants can
+only download their JSON.
 
-### Publish
-
-In the GitHub repository, set **Settings > Pages > Source** to
-**GitHub Actions**. The workflow `.github/workflows/pages.yml` deploys `web/`
-on every push to `main` that touches it. To test locally:
+### Analysis (fixed before data collection)
 
 ```bash
-python -m http.server -d web 8000   # open http://localhost:8000
+python scripts/analyze_mushra.py --mushra mushra.csv --participants participants.csv \
+    [--json downloads/*.json]
 ```
 
-### Analyse
+* Listeners are excluded if they failed the L/R check, rated the hidden
+  reference below 90 on more than 15% of test pages, or rated the mid anchor
+  above 90 on more than 15% of the pages where it is audible enough
+  (BS.1534-3 §4.1.2). Both rules also need at least 2 pages.
+  "Audible enough" means the 7 kHz low-pass removes at least -30 dB of the
+  reference energy (`mid_anchor_screening` in `web/manifest.json`). That holds
+  for 4 Zhu trials only; most Argentum excerpts have too little energy above
+  7 kHz.
+* Repeats give a reliability measure: mean |difference| to the original,
+  flagged above 20 points. Practice pages are never analysed.
+* Primary: per-listener means per dataset, mean ± 95% CI across listeners,
+  and paired Wilcoxon signed-rank tests of CRM against each baseline within
+  each dataset (4 tests, Holm correction). Session 2 uses the same method per
+  attribute and is reported as exploratory.
+* Ceiling check: the share of system ratings at or above 80.
 
-Download the `ratings` and `participants` sheets as CSV, then run:
+### Rebuilding the stimuli
 
 ```bash
-python scripts/analyze_web_ratings.py ratings.csv participants.csv
+# in the research working copy (Argentum_popr9)
+PYTHONPATH=code .venv/bin/python code/build_listening_test_v2r.py --out listening_test_v2r_mushra_web \
+    --mid-anchor --training zhu=zhu_009,argentum_pg=argentum_pg_006
+# here
+python scripts/build_mushra_web.py <path>/listening_test_v2r_mushra_web
 ```
 
-The script prints MOS ± 95% CI per system, per dataset and per questionnaire
-group. Participants who failed the L/R check or listened on loudspeakers are
-left out (`--all` keeps them).
+### Before launch
 
----
+* Set `endpoint` and `contactEmail` in `web/config.js`.
+* Run a 3-5 listener pilot. Check session time, score spread, whether the
+  anchors (especially the 7 kHz one) are audible, and the
+  `audio_sample_rate` logged per participant (the player resamples, so 44.1
+  kHz devices work, but it is worth knowing).
+* Limits to report: an online, unsupervised, mixed panel deviates from
+  BS.1534-3 §4.1/§8. Aim for about 20 listeners after screening. The six Zhu
+  clips are consecutive files of one session and the Argentum clips come
+  from 5 recordings, so report results per dataset. A2B is in-domain on Zhu.
 
 ## What is in the repository
 
@@ -262,7 +280,10 @@ Once you have a paired FOA / binaural recording from Echo Project locally:
 The dataset block in the sidebar appears automatically once it contains
 at least one clip with a rendered reference.
 
-## Using the GUI (collecting ratings)
+## Using the GUI (poster demo)
+
+Paper results come from the online MUSHRA test above, not from this GUI.
+
 
 * Type your name or initials at the top and fill in **About you** (age range,
   hearing, headphones, environment, music / audio / spatial-audio experience,
