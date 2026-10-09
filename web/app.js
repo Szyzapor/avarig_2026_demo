@@ -415,6 +415,10 @@ function renderPageText() {
 
 function buildSliders(p) {
   const box = $("sliders");
+  // one column for the reference plus one per condition, shared with the player buttons
+  const cols = `1.4fr repeat(${Object.keys(p.labels).length}, minmax(0, 1fr))`;
+  box.style.gridTemplateColumns = cols;
+  $("pl-sources").style.gridTemplateColumns = cols;
   box.innerHTML = '<div class="scol refcol"></div>';
   ratings = {};
   Object.keys(p.labels).forEach((label) => {

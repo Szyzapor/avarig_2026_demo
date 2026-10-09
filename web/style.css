@@ -157,7 +157,7 @@ code { font-size: 0.9em; background: var(--accent-soft); padding: 1px 5px; borde
 .note { background: var(--accent-soft); border-radius: 8px; padding: 8px 12px; }
 .crit { margin: 0 0 12px; }
 .player { position: static; }
-.mushra-sources { grid-template-columns: 1.4fr repeat(7, minmax(0, 1fr)); margin-left: var(--scale-w); }
+.mushra-sources { margin-left: var(--scale-w); }
 .mushra-sources .src { text-align: center; padding: 8px 4px; }
 .mushra-sources .src small { display: none; }
 .mushra { display: flex; margin-top: 12px; }
@@ -168,7 +168,7 @@ code { font-size: 0.9em; background: var(--accent-soft); padding: 1px 5px; borde
 }
 .scale-col div { display: flex; align-items: center; border-top: 1px dashed var(--line); padding-right: 6px; }
 .scale-col div:last-child { border-bottom: 1px dashed var(--line); }
-.sliders { flex: 1 1 auto; display: grid; grid-template-columns: 1.4fr repeat(7, minmax(0, 1fr)); }
+.sliders { flex: 1 1 auto; display: grid; }  /* columns set per page in app.js */
 .scol { display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .scol .val { height: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .scol input[type="range"] {

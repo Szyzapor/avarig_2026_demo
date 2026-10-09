@@ -32,14 +32,37 @@ https://szyzapor.github.io/avarig_2026_demo/. The earlier online MOS test
 (5-point scale, no hidden reference or anchors) is kept on branch
 `online-mos-v2.1`.
 
-**Stimuli** (revision 3, `listening_test_v2/ARGENTUM_RECORDINGS.md` lists the
+**Stimuli** (version 3, `listening_test_v2/ARGENTUM_RECORDINGS.md` lists the
 Argentum recordings by role):
 
 * 12 trials of 10 s: 6 Zhu, 6 Argentum hold-out. a2b_2mp is left out because
   its FOA is not consistent B-format.
-* 7 conditions per trial: hidden reference, `proposed_crm_v2`, `zhu2022`,
-  `a2b_btpab`, `anchor_lp7000` (mid anchor, reference low-passed at 7 kHz),
-  `anchor_lp3500` (low anchor) and `anchor_foa_cardioid`. Files are 48 kHz /
+* 6 conditions per trial: hidden reference, `proposed_crm_v2`, `zhu2022`,
+  `a2b_btpab`, `anchor_lp3500` (low anchor) and `anchor_foa_cardioid`.
+  There is no mid anchor: a 7 kHz low-pass would sound like the reference on
+  8 of the 12 clips.
+* `zhu2022` is our re-implementation retrained in version 3
+  (`Zhu/train_hfmask.py`, checkpoint `binaural_rendering_100_hfmask.pt`).
+  The original version was 8-23 dB too quiet above 7 kHz. Its output
+  magnitude is sigmoid(mask) x |W|, so it could not exceed the omni channel,
+  but in the Zhu training data the binaural is louder than W in 34% of the
+  time-frequency bins at 7-10 kHz and in about half above 10 kHz. Its loss
+  (L1 on the waveform and on the complex spectrum, equation 7 of the paper)
+  also averages the poorly predictable high band towards zero. The retrained
+  model allows a mask up to 4 (+12 dB over |W|) and adds a multi-resolution
+  log-magnitude loss (weight 1). Data, architecture and the other
+  hyperparameters are unchanged. A variant with weight 0.1 was also trained,
+  and the choice was made on the 9 Zhu test files that are not in the
+  listening test:
+
+  | Model | Level vs reference at 7 / 10-16 kHz | Waveform corr. | ILD r |
+  |---|---|---|---|
+  | original | -13.7 / -20.6 dB | 0.936 | 0.64 |
+  | retrained, weight 1 (used) | +0.9 / -0.9 dB | 0.904 | 0.69 |
+  | retrained, weight 0.1 | -4.6 / -6.1 dB | 0.939 | 0.64 |
+
+  On the 6 Zhu test clips the used model is within ±1.2 dB of the reference
+  above 2 kHz. Report it as a re-implementation with these two changes. Files are 48 kHz /
   24-bit, served as lossless FLAC. The Zhu reference and anchors derive from
   16-bit source recordings.
 * Loudness: every file is at -23.0 LUFS as measured by ffmpeg `ebur128` (the
@@ -50,9 +73,9 @@ Argentum recordings by role):
   recording.
 * Baselines on Argentum: the cross-correlation with the reference has two
   near-equal peaks about 45 samples apart, with opposite signs, and picked
-  either one per clip. Revision 3 instead transfers each baseline's intrinsic
-  delay and polarity, measured on the Zhu clips: -85 samples with inverted
-  polarity for both models on all 6 clips. Combined with the FOA-to-binaural
+  either one per clip. Version 3 instead transfers each baseline's intrinsic
+  delay and polarity, measured on the Zhu clips: -84/-85 samples with
+  inverted polarity for both models on all 6 clips. Combined with the FOA-to-binaural
   table, this gives one consistent shift per recording (+802 or -222 samples,
   inverted). Baselines on Zhu are aligned by cross-correlation, which is
   unambiguous there.
@@ -82,12 +105,6 @@ re-rendering, and should be reported with the results:
 * Both baselines add +5 to +10 dB around 63 Hz on Argentum, most likely
   learned from the low-frequency wind and handling noise in the Zhu binaural
   targets.
-* `zhu2022` (our re-implementation) is 8-23 dB below the reference above
-  7 kHz on most Zhu clips. It is trained with an L1 loss on the waveform and
-  on the complex spectrum. On the Zhu data the FOA-to-binaural coherence above
-  4 kHz is only 0.1-0.3, and such a loss then averages the unpredictable part
-  towards zero. Whether the original model behaves the same cannot be checked
-  without its weights. Disclose it as a property of the re-implementation.
 * The FOA anchor is closer to the reference than both baselines on Argentum,
   so it is a condition there, not an anchor. It is never used for screening.
 
@@ -106,7 +123,7 @@ experience; session 2 only asks for headphones, model and environment.
 Then come the volume setting, the left/right check (must pass, or two failed
 rounds are recorded), instructions, practice and the rating pages.
 
-On every rating page the reference and seven numbered versions (new random
+On every rating page the reference and six numbered versions (new random
 order per page) play on one gapless shared timeline (keys 0-7, Space). Each
 slider starts unrated and unlocks after its version has been heard for 2 s.
 **Next unlocks only when every version has been heard and every slider set.**
@@ -141,14 +158,10 @@ python scripts/analyze_mushra.py --mushra mushra.csv --participants participants
     [--json downloads/*.json]
 ```
 
-* Listeners are excluded if they failed the L/R check, rated the hidden
-  reference below 90 on more than 15% of test pages, or rated the mid anchor
-  above 90 on more than 15% of the pages where it is audible enough
-  (BS.1534-3 §4.1.2). Both rules also need at least 2 pages.
-  "Audible enough" means the 7 kHz low-pass removes at least -30 dB of the
-  reference energy (`mid_anchor_screening` in `web/manifest.json`). That holds
-  for 4 Zhu trials only; most Argentum excerpts have too little energy above
-  7 kHz.
+* Listeners are excluded if they failed the L/R check, or rated the hidden
+  reference below 90 on more than 15% of test pages and on at least 2 pages
+  (BS.1534-3 §4.1.2). The mid-anchor rule is not applied, because there is
+  no mid anchor, and the FOA anchor is never used for screening.
 * Repeats give a reliability measure: mean |difference| to the original,
   flagged above 20 points. Practice pages are never analysed.
 * Primary: per-listener means per dataset, mean ± 95% CI across listeners,
@@ -161,18 +174,20 @@ python scripts/analyze_mushra.py --mushra mushra.csv --participants participants
 
 ```bash
 # in the research working copy (Argentum_popr9)
-PYTHONPATH=code .venv/bin/python code/build_listening_test_v2r.py --out listening_test_v2r3 \
-    --mid-anchor --training zhu=zhu_009,argentum_pg=argentum_pg_006 \
-    --baseline-alignment model-offset --loudness ffmpeg
+PYTHONPATH=code .venv/bin/python code/build_listening_test_v2r.py --out listening_test_v3 \
+    --training zhu=zhu_009,argentum_pg=argentum_pg_006 \
+    --baseline-alignment model-offset --loudness ffmpeg \
+    --raw-cache listening_test_v3_raw \
+    --zhu-checkpoint /home/smck/Argentum/Zhu/models/binaural_rendering_100_hfmask.pt
 # here
-python scripts/build_mushra_web.py <path>/listening_test_v2r3
+python scripts/build_mushra_web.py <path>/listening_test_v3
 ```
 
 ### Before launch
 
 * Set `endpoint` and `contactEmail` in `web/config.js`.
 * Run a 3-5 listener pilot. Check session time, score spread, whether the
-  anchors (especially the 7 kHz one) are audible, and the
+  low anchor is clearly audible, and the
   `audio_sample_rate` logged per participant (the player resamples, so 44.1
   kHz devices work, but it is worth knowing).
 * Limits to report: an online, unsupervised, mixed panel deviates from

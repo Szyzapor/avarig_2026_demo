@@ -12,18 +12,14 @@ Requires scipy (Wilcoxon signed-rank test).
 Screening (per listener and session; ITU-R BS.1534-3 section 4.1.2 where noted):
   * participants who reported Bluetooth headphones or loudspeakers never reach
     the test pages; listeners who failed the left/right check are excluded;
-  * hidden reference rated below 90 on more than 15% of test pages -> excluded
-    (BS.1534-3);
-  * mid anchor (anchor_lp7000) rated above 90 on more than 15% of the test pages
-    where it is audible enough -> excluded (BS.1534-3). "Audible enough" =
-    ``mid_anchor_screening`` in the manifest: the 7 kHz low-pass removes at least
-    -30 dB of the reference energy. On the other clips (most Argentum excerpts)
-    there is too little energy above 7 kHz for this rule to be fair;
-  * both 15% rules additionally need at least 2 pages: with only 4 eligible
-    mid-anchor pages, "more than 15%" would otherwise mean a single page
-    (a stated deviation from BS.1534-3);
+  * hidden reference rated below 90 on more than 15% of test pages, and on at
+    least 2 pages -> excluded (BS.1534-3; with 12 pages the two coincide);
+  * the BS.1534-3 mid-anchor rule is not applied: the test has no mid anchor
+    (a 7 kHz low-pass would sound like the reference on 8 of 12 clips), and the
+    FOA anchor is closer to the reference than the baselines on Argentum, so it
+    is a condition, not an anchor, and is never used for screening;
   * practice pages are never analysed; repeated pages measure reliability
-    (mean |difference| to the original over the six non-reference conditions,
+    (mean |difference| to the original over the five non-reference conditions,
     flagged above 20 points) and are not part of the means.
 
 Primary analysis (session 1, overall quality): for each listener and dataset,
@@ -48,8 +44,7 @@ import math
 import statistics
 from collections import defaultdict
 
-CONDS = ["reference", "proposed_crm_v2", "zhu2022", "a2b_btpab", "anchor_lp7000", "anchor_lp3500",
-         "anchor_foa_cardioid"]
+CONDS = ["reference", "proposed_crm_v2", "zhu2022", "a2b_btpab", "anchor_lp3500", "anchor_foa_cardioid"]
 SYSTEMS = ["proposed_crm_v2", "zhu2022", "a2b_btpab"]
 BASELINES = ["zhu2022", "a2b_btpab"]
 
@@ -110,13 +105,10 @@ def main():
     ap.add_argument("--mushra")
     ap.add_argument("--participants")
     ap.add_argument("--json", nargs="*")
-    ap.add_argument("--manifest", default="web/manifest.json")
     ap.add_argument("--max-repeat-diff", type=float, default=20.0)
     a = ap.parse_args()
     from scipy import stats
 
-    manifest = json.load(open(a.manifest, encoding="utf-8"))
-    mid_ok = {t["id"] for t in manifest["trials"] if t.get("mid_anchor_screening")}
     rows, parts = load_rows(a)
 
     pages = defaultdict(dict)        # (pid, session, page_id) -> {condition: score}
@@ -135,8 +127,6 @@ def main():
         p = parts.get(lid, {})
         n = len(test)
         ref_low = sum(pages[k].get("reference", 100) < 90 for k in test)
-        mid_pages = [k for k in test if meta[k]["trial_id"] in mid_ok]
-        mid_high = sum(pages[k].get("anchor_lp7000", 0) > 90 for k in mid_pages)
         diffs = []
         for k in pages:
             if (k[0], k[1]) == lid and meta[k]["kind"] == "repeat":
@@ -149,16 +139,14 @@ def main():
             reason = "failed L/R check"
         elif n and ref_low > 0.15 * n and ref_low >= 2:
             reason = f"hidden reference < 90 on {ref_low}/{n} pages"
-        elif mid_pages and mid_high > 0.15 * len(mid_pages) and mid_high >= 2:
-            reason = f"mid anchor > 90 on {mid_high}/{len(mid_pages)} eligible pages"
         if reason:
             dropped[lid] = reason
-        report.append((lid, n, ref_low, f"{mid_high}/{len(mid_pages)}", rep,
+        report.append((lid, n, ref_low, rep,
                        reason or ("flag: repeats differ" if rep > a.max_repeat_diff else "ok")))
 
-    print("listener / session        pages  ref<90  mid>90   repeat|Δ|  status")
-    for (pid, s), n, rl, mh, rep, st in report:
-        print(f"{pid:18s} s{s}   {n:6d} {rl:7d} {mh:>7s} {rep:10.1f}  {st}")
+    print("listener / session        pages  ref<90   repeat|Δ|  status")
+    for (pid, s), n, rl, rep, st in report:
+        print(f"{pid:18s} s{s}   {n:6d} {rl:7d} {rep:10.1f}  {st}")
     for s in (1, 2):
         kept = [l for l in listeners if l[1] == s and l not in dropped]
         print(f"session {s}: {len(kept)} listeners kept, {sum(1 for l in dropped if l[1] == s)} excluded")

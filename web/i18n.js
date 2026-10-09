@@ -81,10 +81,10 @@ window.I18N = {
 
     instr_h: "How to rate",
     instr_1:
-      "Each page has a <b>reference</b> and seven versions of the same 10-second scene, numbered 1-7 in a new random " +
+      "Each page has a <b>reference</b> and six versions of the same 10-second scene, numbered 1-6 in a new random " +
       "order on every page. One of them is a hidden copy of the reference, and some are deliberately degraded.",
     instr_2:
-      "All versions share one timeline: switch between them while playing (buttons or keys 0-7, where 0 is the " +
+      "All versions share one timeline: switch between them while playing (buttons or keys 0-6, where 0 is the " +
       "reference) to compare the same moment. The excerpt loops; Space plays and pauses; you can drag the position bar.",
     instr_3:
       "Rate every version from 0 to 100 against the reference. If a version sounds identical to the reference " +
@@ -112,7 +112,7 @@ window.I18N = {
     next: "Next",
     loading: "Loading audio...",
     load_err: "Could not load the audio. Check your connection and reload the page; your progress is kept.",
-    hint: "One version plays at a time on a shared timeline. Keys: 0 = reference, 1-7 = versions, Space = play/pause.",
+    hint: "One version plays at a time on a shared timeline. Keys: 0 = reference, 1-6 = versions, Space = play/pause.",
 
     crit_overall: "Overall quality",
     crit_overall_d:
@@ -229,10 +229,10 @@ window.I18N = {
 
     instr_h: "Jak oceniać",
     instr_1:
-      "Na każdej stronie jest <b>referencja</b> i siedem wersji tej samej 10-sekundowej sceny, ponumerowanych 1-7 w nowej " +
+      "Na każdej stronie jest <b>referencja</b> i sześć wersji tej samej 10-sekundowej sceny, ponumerowanych 1-6 w nowej " +
       "losowej kolejności na każdej stronie. Jedna z nich to ukryta kopia referencji, a niektóre są celowo zdegradowane.",
     instr_2:
-      "Wszystkie wersje mają wspólną oś czasu: przełączaj je w trakcie odtwarzania (przyciski lub klawisze 0-7, 0 to " +
+      "Wszystkie wersje mają wspólną oś czasu: przełączaj je w trakcie odtwarzania (przyciski lub klawisze 0-6, 0 to " +
       "referencja), żeby porównać ten sam moment. Fragment gra w pętli; Spacja uruchamia i zatrzymuje; pasek pozycji można przesuwać.",
     instr_3:
       "Oceń każdą wersję w skali 0-100 względem referencji. Jeśli wersja brzmi identycznie jak referencja (ukryta " +
@@ -259,7 +259,7 @@ window.I18N = {
     next: "Dalej",
     loading: "Wczytywanie audio...",
     load_err: "Nie udało się wczytać audio. Sprawdź połączenie i odśwież stronę; postęp jest zachowany.",
-    hint: "Naraz gra jedna wersja na wspólnej osi czasu. Klawisze: 0 = referencja, 1-7 = wersje, Spacja = start/pauza.",
+    hint: "Naraz gra jedna wersja na wspólnej osi czasu. Klawisze: 0 = referencja, 1-6 = wersje, Spacja = start/pauza.",
 
     crit_overall: "Jakość ogólna",
     crit_overall_d:
