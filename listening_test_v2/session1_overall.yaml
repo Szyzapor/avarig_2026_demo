@@ -1,5 +1,5 @@
 testname: FOA-to-binaural listening test, session 1 (overall)
-testId: foa2bin_v2_session1
+testId: foa2bin_v3_session1
 bufferSize: 2048
 stopOnErrors: true
 showButtonPreviousPage: true
@@ -17,12 +17,13 @@ pages:
     audio output to <b>48 kHz</b>; with another sample rate webMUSHRA stops with an error.</p><p>Each page has a reference
     and six versions of the same 10-second recording. One of them is a hidden copy of the reference and two are deliberately
     degraded. Play and switch freely (loop), then rate each version from 0 to 100 against the reference. Rate the hidden reference
-    100. Move every slider, even if you keep a high score.</p><p><b>PL</b> Sesja 1: 2 strony treningowe, potem 14 stron z
-    oceną <b>jakości ogólnej</b> (ok. 25–30 minut). Sesja 2 (osobny link) dotyczy czterech cech dźwięku.</p><p><b>EN</b> Session
-    1: 2 training pages, then 14 pages rating <b>overall quality</b> (about 25–30 minutes). Session 2 (separate link) covers
-    four sound attributes.</p><p><b>Jakość ogólna</b>: na ile każda wersja brzmi jak referencja, biorąc pod uwagę wszystko:
-    barwę, kierunki, eksternalizację i artefakty.<br/><b>Overall quality</b>: how close each version sounds to the reference,
-    considering everything: tone colour, directions, externalisation and artefacts.</p>'
+    100. Move every slider, even if you keep a high score.</p><p><small>Otwórz test linkiem, który dostałeś/aś (zawiera Twój
+    kod uczestnika). · Open the test with the link you received (it contains your participant code).</small></p><p><b>PL</b>
+    Sesja 1: 2 strony treningowe, potem 14 stron z oceną <b>jakości ogólnej</b> (ok. 25–30 minut). Sesja 2 (osobny link) dotyczy
+    czterech cech dźwięku.</p><p><b>EN</b> Session 1: 2 training pages, then 14 pages rating <b>overall quality</b> (about
+    25–30 minutes). Session 2 (separate link) covers four sound attributes.</p><p><b>Jakość ogólna</b>: na ile każda wersja
+    brzmi jak referencja, biorąc pod uwagę wszystko: barwę, kierunki, eksternalizację i artefakty.<br/><b>Overall quality</b>:
+    how close each version sounds to the reference, considering everything: tone colour, directions, externalisation and artefacts.</p>'
 - type: volume
   id: vol
   name: Głośność · Volume
@@ -61,15 +62,15 @@ pages:
     and artefacts.'
   showWaveform: false
   enableLooping: true
-  reference: configs/listening_test_v2/audio/feec7aa9a7e68067.wav
+  reference: configs/listening_test_v2/audio/5488b9164495ec0a.wav
   createAnchor35: false
   createAnchor70: false
   stimuli:
-    proposed_crm_v2: configs/listening_test_v2/audio/a4490fa22f1cd77b.wav
-    zhu2022: configs/listening_test_v2/audio/1e5b70e81085c4e3.wav
-    a2b_btpab: configs/listening_test_v2/audio/79373ae3503a9421.wav
-    anchor_lp3500: configs/listening_test_v2/audio/1bb1334e2e214b27.wav
-    anchor_foa_cardioid: configs/listening_test_v2/audio/aaebcdc25372b9f4.wav
+    proposed_crm_v2: configs/listening_test_v2/audio/31210fa10fb58d7d.wav
+    zhu2022: configs/listening_test_v2/audio/ca0f084dde1e3f59.wav
+    a2b_btpab: configs/listening_test_v2/audio/f3ddcf5f854ce97b.wav
+    anchor_lp3500: configs/listening_test_v2/audio/50d10cc0c92f3499.wav
+    anchor_foa_cardioid: configs/listening_test_v2/audio/c11c914901ce1030.wav
 -
   - random
   - type: mushra
@@ -288,6 +289,8 @@ pages:
       a2b_btpab: configs/listening_test_v2/audio/3c964403e2196b94.wav
       anchor_lp3500: configs/listening_test_v2/audio/223efd6215caf8dd.wav
       anchor_foa_cardioid: configs/listening_test_v2/audio/a0cd4962a93f095c.wav
+-
+  - random
   - type: mushra
     id: overall_zhu__zhu_002_repeat
     name: Jakość ogólna · Overall quality
@@ -333,10 +336,6 @@ pages:
   writeResults: true
   showErrors: true
   questionnaire:
-  - type: text
-    name: participant_code
-    label: Kod uczestnika · Participant code (2 pierwsze litery imienia matki + dzień urodzenia, np. AN07; ten sam w obu sesjach
-      · first 2 letters of your mother's first name + your day of birth, e.g. AN07; the same in both sessions)
   - type: likert
     name: age
     label: Wiek · Age
@@ -421,6 +420,8 @@ pages:
       label: Douszne przewodowe · In-ear wired
     - value: bluetooth
       label: Bezprzewodowe (Bluetooth) · Wireless (Bluetooth)
+    - value: speakers
+      label: Głośniki · Loudspeakers
     - value: other
       label: Inne · Other
   - type: text

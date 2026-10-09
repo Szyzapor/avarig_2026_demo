@@ -6,7 +6,7 @@
 Reads every ``ratings_*.csv`` and ``participants_*.csv``. Rules, fixed before
 looking at the results:
 
-1. Only ratings made on audio package ``--audio-version`` (default v2.1) are
+1. Only ratings made on audio package ``--audio-version`` (default v2.2) are
    used. Ratings without the column (older app) or from another package are
    counted and reported, never pooled.
 2. Only datasets in ``--datasets`` (default zhu, argentum_pg). a2b_2mp is out:
@@ -64,7 +64,7 @@ def table(title, groups):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("paths", nargs="+")
-    ap.add_argument("--audio-version", default="v2.1")
+    ap.add_argument("--audio-version", default="v2.2")
     ap.add_argument("--datasets", nargs="+", default=["zhu", "argentum_pg"])
     a = ap.parse_args()
 

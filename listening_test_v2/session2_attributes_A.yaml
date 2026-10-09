@@ -1,0 +1,579 @@
+testname: FOA-to-binaural listening test, session 2 (attributes, order A)
+testId: foa2bin_v3_session2_A
+bufferSize: 2048
+stopOnErrors: true
+showButtonPreviousPage: true
+remoteService: service/write.php
+pages:
+- type: generic
+  id: intro
+  name: Sesja 2 z 2 · Session 2 of 2
+  content: '<p><b>PL</b> Potrzebne są słuchawki (najlepiej przewodowe, nauszne lub wokółuszne) i ciche miejsce. Ustaw w systemie
+    częstotliwość próbkowania wyjścia audio na <b>48 kHz</b>; przy innej wartości webMUSHRA zatrzyma test z komunikatem o
+    błędzie.</p><p>Na każdej stronie jest referencja oraz sześć wersji tego samego 10-sekundowego nagrania. Wśród nich jest
+    ukryta kopia referencji i dwie wersje celowo zdegradowane. Odtwarzaj i przełączaj wersje dowolnie (pętla), a następnie
+    oceń każdą w skali 0–100 względem referencji. Ukrytą referencję oceń na 100. Przesuń każdy suwak, także gdy zostawiasz
+    wysoką ocenę.</p><p><b>EN</b> You need headphones (preferably wired, on-ear or over-ear) and a quiet place. Set your system
+    audio output to <b>48 kHz</b>; with another sample rate webMUSHRA stops with an error.</p><p>Each page has a reference
+    and six versions of the same 10-second recording. One of them is a hidden copy of the reference and two are deliberately
+    degraded. Play and switch freely (loop), then rate each version from 0 to 100 against the reference. Rate the hidden reference
+    100. Move every slider, even if you keep a high score.</p><p><small>Otwórz test linkiem, który dostałeś/aś (zawiera Twój
+    kod uczestnika). · Open the test with the link you received (it contains your participant code).</small></p><p><b>PL</b>
+    Sesja 2: 1 strona treningowa, potem 4 bloki po 6 stron (ok. 35 minut). W każdym bloku oceniasz <b>inną cechę</b>, więc
+    każde nagranie usłyszysz kilka razy. Nazwa cechy jest w tytule strony, a jej opis nad suwakami. Oceniaj tylko tę cechę.</p><p><b>EN</b>
+    Session 2: 1 training page, then 4 blocks of 6 pages (about 35 minutes). Each block rates a <b>different attribute</b>,
+    so you will hear each recording several times. The attribute is in the page title and described above the sliders. Rate
+    only that attribute.</p><ul><li><b>Barwa</b>: proporcja wysokich i niskich częstotliwości (jaśniej / ciemniej, więcej
+    / mniej basu) w porównaniu z referencją. Oceniaj tylko barwę, nie kierunek ani artefakty.<br/><b>Tone colour</b>: the
+    balance of high and low frequencies (brighter / darker, more / less bass) compared with the reference. Judge only tone
+    colour, not direction or artefacts.</li><li><b>Lokalizacja i szerokość</b>: czy źródła dźwięku są w tych samych kierunkach
+    i mają tę samą szerokość co w referencji.<br/><b>Localisation and width</b>: whether the sound sources appear in the same
+    directions and with the same width as in the reference.</li><li><b>Artefakty</b>: dodane niepożądane dźwięki, których
+    nie ma w referencji: zniekształcenia, szum, trzaski, brzmienie metaliczne lub „fazowe”. 100 = brak dodanych artefaktów.<br/><b>Artefacts</b>:
+    added unwanted sounds that are not in the reference: distortion, noise, clicks, metallic or "phasey" sound. 100 = no added
+    artefacts.</li><li><b>Eksternalizacja</b>: czy dźwięk jest odbierany na zewnątrz głowy tak jak w referencji, czy bardziej
+    „w głowie”.<br/><b>Externalisation</b>: whether the sound is perceived outside the head as in the reference, or more inside
+    the head.</li></ul>'
+- type: volume
+  id: vol
+  name: Głośność · Volume
+  content: Ustaw wygodną głośność i nie zmieniaj jej do końca sesji. · Set a comfortable level and do not change it until
+    the end of the session.
+  stimulus: configs/listening_test_v2/audio/1630ba93ced26798.wav
+  defaultVolume: 0.5
+- type: mushra
+  id: training_1
+  name: Trening · Training 1/1
+  content: '<b>Strona treningowa, oceny nie są analizowane.</b> Posłuchaj referencji i wszystkich wersji, znajdź ukrytą referencję
+    i wersje zdegradowane, poćwicz suwaki. · <b>Training page, ratings are not analysed.</b> Listen to the reference and all
+    versions, find the hidden reference and the degraded versions, practise the sliders.<br/><br/><b>Barwa</b>: proporcja
+    wysokich i niskich częstotliwości (jaśniej / ciemniej, więcej / mniej basu) w porównaniu z referencją. Oceniaj tylko barwę,
+    nie kierunek ani artefakty.<br/><b>Tone colour</b>: the balance of high and low frequencies (brighter / darker, more /
+    less bass) compared with the reference. Judge only tone colour, not direction or artefacts.'
+  showWaveform: false
+  enableLooping: true
+  reference: configs/listening_test_v2/audio/0578cf27c5fd096f.wav
+  createAnchor35: false
+  createAnchor70: false
+  stimuli:
+    proposed_crm_v2: configs/listening_test_v2/audio/49ec084b7c09b84a.wav
+    zhu2022: configs/listening_test_v2/audio/6820bf996f6bee1f.wav
+    a2b_btpab: configs/listening_test_v2/audio/5320790dcb2b41ec.wav
+    anchor_lp3500: configs/listening_test_v2/audio/b739e62f37895a5d.wav
+    anchor_foa_cardioid: configs/listening_test_v2/audio/aafd9707347ef0f0.wav
+-
+  - random
+  - type: mushra
+    id: tone_colour_zhu__zhu_001
+    name: Barwa · Tone colour
+    content: '<b>Barwa</b>: proporcja wysokich i niskich częstotliwości (jaśniej / ciemniej, więcej / mniej basu) w porównaniu
+      z referencją. Oceniaj tylko barwę, nie kierunek ani artefakty.<br/><b>Tone colour</b>: the balance of high and low frequencies
+      (brighter / darker, more / less bass) compared with the reference. Judge only tone colour, not direction or artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/1630ba93ced26798.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/832ede3733ebdb3a.wav
+      zhu2022: configs/listening_test_v2/audio/b756e92185d29c7b.wav
+      a2b_btpab: configs/listening_test_v2/audio/f6215a65f5b2617c.wav
+      anchor_lp3500: configs/listening_test_v2/audio/0670e2e59e21dd33.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/361b4ebda3a9c4fa.wav
+  - type: mushra
+    id: tone_colour_zhu__zhu_003
+    name: Barwa · Tone colour
+    content: '<b>Barwa</b>: proporcja wysokich i niskich częstotliwości (jaśniej / ciemniej, więcej / mniej basu) w porównaniu
+      z referencją. Oceniaj tylko barwę, nie kierunek ani artefakty.<br/><b>Tone colour</b>: the balance of high and low frequencies
+      (brighter / darker, more / less bass) compared with the reference. Judge only tone colour, not direction or artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/3f6d80eed650dcaa.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/633081b60e9779cc.wav
+      zhu2022: configs/listening_test_v2/audio/eb2c9cd3bf4a0bc2.wav
+      a2b_btpab: configs/listening_test_v2/audio/9b3c8e26da243d0d.wav
+      anchor_lp3500: configs/listening_test_v2/audio/6b42236fc86e2eee.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/31822611aa3f663c.wav
+  - type: mushra
+    id: tone_colour_zhu__zhu_005
+    name: Barwa · Tone colour
+    content: '<b>Barwa</b>: proporcja wysokich i niskich częstotliwości (jaśniej / ciemniej, więcej / mniej basu) w porównaniu
+      z referencją. Oceniaj tylko barwę, nie kierunek ani artefakty.<br/><b>Tone colour</b>: the balance of high and low frequencies
+      (brighter / darker, more / less bass) compared with the reference. Judge only tone colour, not direction or artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/ca4f7fc2c5067554.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/24854c1544247767.wav
+      zhu2022: configs/listening_test_v2/audio/c8dda137193daa97.wav
+      a2b_btpab: configs/listening_test_v2/audio/de9d206926a439e0.wav
+      anchor_lp3500: configs/listening_test_v2/audio/516799560fb3a6d8.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/5fbddc5bd4e4ce81.wav
+  - type: mushra
+    id: tone_colour_argentum_pg__argentum_pg_003
+    name: Barwa · Tone colour
+    content: '<b>Barwa</b>: proporcja wysokich i niskich częstotliwości (jaśniej / ciemniej, więcej / mniej basu) w porównaniu
+      z referencją. Oceniaj tylko barwę, nie kierunek ani artefakty.<br/><b>Tone colour</b>: the balance of high and low frequencies
+      (brighter / darker, more / less bass) compared with the reference. Judge only tone colour, not direction or artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/15f74f35de23d39d.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/7e2317f04200b1cb.wav
+      zhu2022: configs/listening_test_v2/audio/3e1464d186369923.wav
+      a2b_btpab: configs/listening_test_v2/audio/b1dad0cdf5877f52.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8c179b202db5803d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/58cb510e1c69b2a1.wav
+  - type: mushra
+    id: tone_colour_argentum_pg__argentum_pg_005
+    name: Barwa · Tone colour
+    content: '<b>Barwa</b>: proporcja wysokich i niskich częstotliwości (jaśniej / ciemniej, więcej / mniej basu) w porównaniu
+      z referencją. Oceniaj tylko barwę, nie kierunek ani artefakty.<br/><b>Tone colour</b>: the balance of high and low frequencies
+      (brighter / darker, more / less bass) compared with the reference. Judge only tone colour, not direction or artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/d9bad994f80be77b.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/351b28488bd4b22c.wav
+      zhu2022: configs/listening_test_v2/audio/31812fd06bd17385.wav
+      a2b_btpab: configs/listening_test_v2/audio/8f07e25327c870f4.wav
+      anchor_lp3500: configs/listening_test_v2/audio/d610cf6f64f3178d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/ede46562de243828.wav
+  - type: mushra
+    id: tone_colour_argentum_pg__argentum_pg_021
+    name: Barwa · Tone colour
+    content: '<b>Barwa</b>: proporcja wysokich i niskich częstotliwości (jaśniej / ciemniej, więcej / mniej basu) w porównaniu
+      z referencją. Oceniaj tylko barwę, nie kierunek ani artefakty.<br/><b>Tone colour</b>: the balance of high and low frequencies
+      (brighter / darker, more / less bass) compared with the reference. Judge only tone colour, not direction or artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/7d929e871545bfd9.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/9e47d42984fb9500.wav
+      zhu2022: configs/listening_test_v2/audio/b3531f34bfe60ae3.wav
+      a2b_btpab: configs/listening_test_v2/audio/1acceaa7fff031de.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8b3785a53954333f.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/c206452dd37fda44.wav
+-
+  - random
+  - type: mushra
+    id: localisation_zhu__zhu_001
+    name: Lokalizacja i szerokość · Localisation and width
+    content: '<b>Lokalizacja i szerokość</b>: czy źródła dźwięku są w tych samych kierunkach i mają tę samą szerokość co w
+      referencji.<br/><b>Localisation and width</b>: whether the sound sources appear in the same directions and with the
+      same width as in the reference.<br/><br/><small>Jedna z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy
+      suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/1630ba93ced26798.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/832ede3733ebdb3a.wav
+      zhu2022: configs/listening_test_v2/audio/b756e92185d29c7b.wav
+      a2b_btpab: configs/listening_test_v2/audio/f6215a65f5b2617c.wav
+      anchor_lp3500: configs/listening_test_v2/audio/0670e2e59e21dd33.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/361b4ebda3a9c4fa.wav
+  - type: mushra
+    id: localisation_zhu__zhu_003
+    name: Lokalizacja i szerokość · Localisation and width
+    content: '<b>Lokalizacja i szerokość</b>: czy źródła dźwięku są w tych samych kierunkach i mają tę samą szerokość co w
+      referencji.<br/><b>Localisation and width</b>: whether the sound sources appear in the same directions and with the
+      same width as in the reference.<br/><br/><small>Jedna z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy
+      suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/3f6d80eed650dcaa.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/633081b60e9779cc.wav
+      zhu2022: configs/listening_test_v2/audio/eb2c9cd3bf4a0bc2.wav
+      a2b_btpab: configs/listening_test_v2/audio/9b3c8e26da243d0d.wav
+      anchor_lp3500: configs/listening_test_v2/audio/6b42236fc86e2eee.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/31822611aa3f663c.wav
+  - type: mushra
+    id: localisation_zhu__zhu_005
+    name: Lokalizacja i szerokość · Localisation and width
+    content: '<b>Lokalizacja i szerokość</b>: czy źródła dźwięku są w tych samych kierunkach i mają tę samą szerokość co w
+      referencji.<br/><b>Localisation and width</b>: whether the sound sources appear in the same directions and with the
+      same width as in the reference.<br/><br/><small>Jedna z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy
+      suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/ca4f7fc2c5067554.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/24854c1544247767.wav
+      zhu2022: configs/listening_test_v2/audio/c8dda137193daa97.wav
+      a2b_btpab: configs/listening_test_v2/audio/de9d206926a439e0.wav
+      anchor_lp3500: configs/listening_test_v2/audio/516799560fb3a6d8.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/5fbddc5bd4e4ce81.wav
+  - type: mushra
+    id: localisation_argentum_pg__argentum_pg_003
+    name: Lokalizacja i szerokość · Localisation and width
+    content: '<b>Lokalizacja i szerokość</b>: czy źródła dźwięku są w tych samych kierunkach i mają tę samą szerokość co w
+      referencji.<br/><b>Localisation and width</b>: whether the sound sources appear in the same directions and with the
+      same width as in the reference.<br/><br/><small>Jedna z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy
+      suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/15f74f35de23d39d.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/7e2317f04200b1cb.wav
+      zhu2022: configs/listening_test_v2/audio/3e1464d186369923.wav
+      a2b_btpab: configs/listening_test_v2/audio/b1dad0cdf5877f52.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8c179b202db5803d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/58cb510e1c69b2a1.wav
+  - type: mushra
+    id: localisation_argentum_pg__argentum_pg_005
+    name: Lokalizacja i szerokość · Localisation and width
+    content: '<b>Lokalizacja i szerokość</b>: czy źródła dźwięku są w tych samych kierunkach i mają tę samą szerokość co w
+      referencji.<br/><b>Localisation and width</b>: whether the sound sources appear in the same directions and with the
+      same width as in the reference.<br/><br/><small>Jedna z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy
+      suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/d9bad994f80be77b.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/351b28488bd4b22c.wav
+      zhu2022: configs/listening_test_v2/audio/31812fd06bd17385.wav
+      a2b_btpab: configs/listening_test_v2/audio/8f07e25327c870f4.wav
+      anchor_lp3500: configs/listening_test_v2/audio/d610cf6f64f3178d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/ede46562de243828.wav
+  - type: mushra
+    id: localisation_argentum_pg__argentum_pg_021
+    name: Lokalizacja i szerokość · Localisation and width
+    content: '<b>Lokalizacja i szerokość</b>: czy źródła dźwięku są w tych samych kierunkach i mają tę samą szerokość co w
+      referencji.<br/><b>Localisation and width</b>: whether the sound sources appear in the same directions and with the
+      same width as in the reference.<br/><br/><small>Jedna z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy
+      suwak. · One version is the hidden reference: rate it 100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/7d929e871545bfd9.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/9e47d42984fb9500.wav
+      zhu2022: configs/listening_test_v2/audio/b3531f34bfe60ae3.wav
+      a2b_btpab: configs/listening_test_v2/audio/1acceaa7fff031de.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8b3785a53954333f.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/c206452dd37fda44.wav
+-
+  - random
+  - type: mushra
+    id: artefacts_zhu__zhu_001
+    name: Artefakty · Artefacts
+    content: '<b>Artefakty</b>: dodane niepożądane dźwięki, których nie ma w referencji: zniekształcenia, szum, trzaski, brzmienie
+      metaliczne lub „fazowe”. 100 = brak dodanych artefaktów.<br/><b>Artefacts</b>: added unwanted sounds that are not in
+      the reference: distortion, noise, clicks, metallic or "phasey" sound. 100 = no added artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/1630ba93ced26798.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/832ede3733ebdb3a.wav
+      zhu2022: configs/listening_test_v2/audio/b756e92185d29c7b.wav
+      a2b_btpab: configs/listening_test_v2/audio/f6215a65f5b2617c.wav
+      anchor_lp3500: configs/listening_test_v2/audio/0670e2e59e21dd33.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/361b4ebda3a9c4fa.wav
+  - type: mushra
+    id: artefacts_zhu__zhu_003
+    name: Artefakty · Artefacts
+    content: '<b>Artefakty</b>: dodane niepożądane dźwięki, których nie ma w referencji: zniekształcenia, szum, trzaski, brzmienie
+      metaliczne lub „fazowe”. 100 = brak dodanych artefaktów.<br/><b>Artefacts</b>: added unwanted sounds that are not in
+      the reference: distortion, noise, clicks, metallic or "phasey" sound. 100 = no added artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/3f6d80eed650dcaa.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/633081b60e9779cc.wav
+      zhu2022: configs/listening_test_v2/audio/eb2c9cd3bf4a0bc2.wav
+      a2b_btpab: configs/listening_test_v2/audio/9b3c8e26da243d0d.wav
+      anchor_lp3500: configs/listening_test_v2/audio/6b42236fc86e2eee.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/31822611aa3f663c.wav
+  - type: mushra
+    id: artefacts_zhu__zhu_005
+    name: Artefakty · Artefacts
+    content: '<b>Artefakty</b>: dodane niepożądane dźwięki, których nie ma w referencji: zniekształcenia, szum, trzaski, brzmienie
+      metaliczne lub „fazowe”. 100 = brak dodanych artefaktów.<br/><b>Artefacts</b>: added unwanted sounds that are not in
+      the reference: distortion, noise, clicks, metallic or "phasey" sound. 100 = no added artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/ca4f7fc2c5067554.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/24854c1544247767.wav
+      zhu2022: configs/listening_test_v2/audio/c8dda137193daa97.wav
+      a2b_btpab: configs/listening_test_v2/audio/de9d206926a439e0.wav
+      anchor_lp3500: configs/listening_test_v2/audio/516799560fb3a6d8.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/5fbddc5bd4e4ce81.wav
+  - type: mushra
+    id: artefacts_argentum_pg__argentum_pg_003
+    name: Artefakty · Artefacts
+    content: '<b>Artefakty</b>: dodane niepożądane dźwięki, których nie ma w referencji: zniekształcenia, szum, trzaski, brzmienie
+      metaliczne lub „fazowe”. 100 = brak dodanych artefaktów.<br/><b>Artefacts</b>: added unwanted sounds that are not in
+      the reference: distortion, noise, clicks, metallic or "phasey" sound. 100 = no added artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/15f74f35de23d39d.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/7e2317f04200b1cb.wav
+      zhu2022: configs/listening_test_v2/audio/3e1464d186369923.wav
+      a2b_btpab: configs/listening_test_v2/audio/b1dad0cdf5877f52.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8c179b202db5803d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/58cb510e1c69b2a1.wav
+  - type: mushra
+    id: artefacts_argentum_pg__argentum_pg_005
+    name: Artefakty · Artefacts
+    content: '<b>Artefakty</b>: dodane niepożądane dźwięki, których nie ma w referencji: zniekształcenia, szum, trzaski, brzmienie
+      metaliczne lub „fazowe”. 100 = brak dodanych artefaktów.<br/><b>Artefacts</b>: added unwanted sounds that are not in
+      the reference: distortion, noise, clicks, metallic or "phasey" sound. 100 = no added artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/d9bad994f80be77b.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/351b28488bd4b22c.wav
+      zhu2022: configs/listening_test_v2/audio/31812fd06bd17385.wav
+      a2b_btpab: configs/listening_test_v2/audio/8f07e25327c870f4.wav
+      anchor_lp3500: configs/listening_test_v2/audio/d610cf6f64f3178d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/ede46562de243828.wav
+  - type: mushra
+    id: artefacts_argentum_pg__argentum_pg_021
+    name: Artefakty · Artefacts
+    content: '<b>Artefakty</b>: dodane niepożądane dźwięki, których nie ma w referencji: zniekształcenia, szum, trzaski, brzmienie
+      metaliczne lub „fazowe”. 100 = brak dodanych artefaktów.<br/><b>Artefacts</b>: added unwanted sounds that are not in
+      the reference: distortion, noise, clicks, metallic or "phasey" sound. 100 = no added artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/7d929e871545bfd9.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/9e47d42984fb9500.wav
+      zhu2022: configs/listening_test_v2/audio/b3531f34bfe60ae3.wav
+      a2b_btpab: configs/listening_test_v2/audio/1acceaa7fff031de.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8b3785a53954333f.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/c206452dd37fda44.wav
+  - type: mushra
+    id: tone_colour_zhu__zhu_001_repeat
+    name: Barwa · Tone colour
+    content: '<b>Barwa</b>: proporcja wysokich i niskich częstotliwości (jaśniej / ciemniej, więcej / mniej basu) w porównaniu
+      z referencją. Oceniaj tylko barwę, nie kierunek ani artefakty.<br/><b>Tone colour</b>: the balance of high and low frequencies
+      (brighter / darker, more / less bass) compared with the reference. Judge only tone colour, not direction or artefacts.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/1630ba93ced26798.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/832ede3733ebdb3a.wav
+      zhu2022: configs/listening_test_v2/audio/b756e92185d29c7b.wav
+      a2b_btpab: configs/listening_test_v2/audio/f6215a65f5b2617c.wav
+      anchor_lp3500: configs/listening_test_v2/audio/0670e2e59e21dd33.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/361b4ebda3a9c4fa.wav
+-
+  - random
+  - type: mushra
+    id: externalisation_zhu__zhu_001
+    name: Eksternalizacja · Externalisation
+    content: '<b>Eksternalizacja</b>: czy dźwięk jest odbierany na zewnątrz głowy tak jak w referencji, czy bardziej „w głowie”.<br/><b>Externalisation</b>:
+      whether the sound is perceived outside the head as in the reference, or more inside the head.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/1630ba93ced26798.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/832ede3733ebdb3a.wav
+      zhu2022: configs/listening_test_v2/audio/b756e92185d29c7b.wav
+      a2b_btpab: configs/listening_test_v2/audio/f6215a65f5b2617c.wav
+      anchor_lp3500: configs/listening_test_v2/audio/0670e2e59e21dd33.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/361b4ebda3a9c4fa.wav
+  - type: mushra
+    id: externalisation_zhu__zhu_003
+    name: Eksternalizacja · Externalisation
+    content: '<b>Eksternalizacja</b>: czy dźwięk jest odbierany na zewnątrz głowy tak jak w referencji, czy bardziej „w głowie”.<br/><b>Externalisation</b>:
+      whether the sound is perceived outside the head as in the reference, or more inside the head.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/3f6d80eed650dcaa.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/633081b60e9779cc.wav
+      zhu2022: configs/listening_test_v2/audio/eb2c9cd3bf4a0bc2.wav
+      a2b_btpab: configs/listening_test_v2/audio/9b3c8e26da243d0d.wav
+      anchor_lp3500: configs/listening_test_v2/audio/6b42236fc86e2eee.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/31822611aa3f663c.wav
+  - type: mushra
+    id: externalisation_zhu__zhu_005
+    name: Eksternalizacja · Externalisation
+    content: '<b>Eksternalizacja</b>: czy dźwięk jest odbierany na zewnątrz głowy tak jak w referencji, czy bardziej „w głowie”.<br/><b>Externalisation</b>:
+      whether the sound is perceived outside the head as in the reference, or more inside the head.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/ca4f7fc2c5067554.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/24854c1544247767.wav
+      zhu2022: configs/listening_test_v2/audio/c8dda137193daa97.wav
+      a2b_btpab: configs/listening_test_v2/audio/de9d206926a439e0.wav
+      anchor_lp3500: configs/listening_test_v2/audio/516799560fb3a6d8.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/5fbddc5bd4e4ce81.wav
+  - type: mushra
+    id: externalisation_argentum_pg__argentum_pg_003
+    name: Eksternalizacja · Externalisation
+    content: '<b>Eksternalizacja</b>: czy dźwięk jest odbierany na zewnątrz głowy tak jak w referencji, czy bardziej „w głowie”.<br/><b>Externalisation</b>:
+      whether the sound is perceived outside the head as in the reference, or more inside the head.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/15f74f35de23d39d.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/7e2317f04200b1cb.wav
+      zhu2022: configs/listening_test_v2/audio/3e1464d186369923.wav
+      a2b_btpab: configs/listening_test_v2/audio/b1dad0cdf5877f52.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8c179b202db5803d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/58cb510e1c69b2a1.wav
+  - type: mushra
+    id: externalisation_argentum_pg__argentum_pg_005
+    name: Eksternalizacja · Externalisation
+    content: '<b>Eksternalizacja</b>: czy dźwięk jest odbierany na zewnątrz głowy tak jak w referencji, czy bardziej „w głowie”.<br/><b>Externalisation</b>:
+      whether the sound is perceived outside the head as in the reference, or more inside the head.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/d9bad994f80be77b.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/351b28488bd4b22c.wav
+      zhu2022: configs/listening_test_v2/audio/31812fd06bd17385.wav
+      a2b_btpab: configs/listening_test_v2/audio/8f07e25327c870f4.wav
+      anchor_lp3500: configs/listening_test_v2/audio/d610cf6f64f3178d.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/ede46562de243828.wav
+  - type: mushra
+    id: externalisation_argentum_pg__argentum_pg_021
+    name: Eksternalizacja · Externalisation
+    content: '<b>Eksternalizacja</b>: czy dźwięk jest odbierany na zewnątrz głowy tak jak w referencji, czy bardziej „w głowie”.<br/><b>Externalisation</b>:
+      whether the sound is perceived outside the head as in the reference, or more inside the head.<br/><br/><small>Jedna
+      z wersji jest ukrytą referencją: oceń ją na 100. Przesuń każdy suwak. · One version is the hidden reference: rate it
+      100. Move every slider.</small>'
+    showWaveform: false
+    enableLooping: true
+    reference: configs/listening_test_v2/audio/7d929e871545bfd9.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      proposed_crm_v2: configs/listening_test_v2/audio/9e47d42984fb9500.wav
+      zhu2022: configs/listening_test_v2/audio/b3531f34bfe60ae3.wav
+      a2b_btpab: configs/listening_test_v2/audio/1acceaa7fff031de.wav
+      anchor_lp3500: configs/listening_test_v2/audio/8b3785a53954333f.wav
+      anchor_foa_cardioid: configs/listening_test_v2/audio/c206452dd37fda44.wav
+- type: finish
+  name: Dziękujemy · Thank you
+  content: Wypełnij ankietę i kliknij „Send results”. Jeśli pojawi się komunikat o błędzie, nie zamykaj strony i skontaktuj
+    się z prowadzącym. · Fill in the questionnaire and click "Send results". If an error message appears, keep the page open
+    and contact the experimenter.
+  showResults: false
+  writeResults: true
+  showErrors: true
+  questionnaire:
+  - type: likert
+    name: headphones
+    label: Typ słuchawek · Headphone type
+    response:
+    - value: over_open
+      label: Wokółuszne otwarte · Over-ear open
+    - value: over_closed
+      label: Wokółuszne zamknięte · Over-ear closed
+    - value: on_ear
+      label: Nauszne · On-ear
+    - value: in_ear
+      label: Douszne przewodowe · In-ear wired
+    - value: bluetooth
+      label: Bezprzewodowe (Bluetooth) · Wireless (Bluetooth)
+    - value: speakers
+      label: Głośniki · Loudspeakers
+    - value: other
+      label: Inne · Other
+  - type: text
+    name: headphone_model
+    label: Model słuchawek · Headphone model
+    optional: true
+  - type: likert
+    name: environment
+    label: Otoczenie · Listening environment
+    response:
+    - value: quiet
+      label: Ciche pomieszczenie · Quiet room
+    - value: some_noise
+      label: Trochę hałasu · Some noise
+    - value: noisy
+      label: Głośno · Noisy
+  - type: long_text
+    name: comments
+    label: Uwagi · Comments
+    optional: true

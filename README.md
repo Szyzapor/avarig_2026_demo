@@ -30,9 +30,9 @@ after the rating is recorded.
 (ITU-R BS.1534-3 style) that runs as a static site on GitHub Pages, at
 https://szyzapor.github.io/avarig_2026_demo/. The earlier online MOS test
 (5-point scale, no hidden reference or anchors) is kept on branch
-`online-mos-v2.1`.
+`online-mos-v2.2` (audio package v2.2; `online-mos-v2.1` keeps the earlier audio).
 
-**Stimuli** (version 3, `listening_test_v2/ARGENTUM_RECORDINGS.md` lists the
+**Stimuli** (version 3.1, `listening_test_v2/ARGENTUM_RECORDINGS.md` lists the
 Argentum recordings by role):
 
 * 12 trials of 10 s: 6 Zhu, 6 Argentum hold-out. a2b_2mp is left out because
@@ -62,7 +62,19 @@ Argentum recordings by role):
   | retrained, weight 0.1 | -4.6 / -6.1 dB | 0.939 | 0.64 |
 
   On the 6 Zhu test clips the used model is within ±1.2 dB of the reference
-  above 2 kHz. Report it as a re-implementation with these two changes. Files are 48 kHz /
+  above 2 kHz. Measured per band on the 25 + 25 demo clips (`verify` set),
+  ILD agreement with the reference moves as follows:
+
+  | ILD band | Zhu clips, original -> retrained | Argentum clips, original -> retrained |
+  |---|---|---|
+  | 200-1000 Hz | 0.77 -> 0.59 | 0.56 -> 0.38 |
+  | 1-4 kHz | 0.68 -> 0.67 | 0.31 -> 0.46 |
+  | 4-10 kHz | 0.76 -> 0.85 | 0.20 -> 0.48 |
+
+  So the retrained model follows the reference better above 1 kHz and worse
+  below 1 kHz, where ILD is small and localisation rests mainly on ITD.
+  Report it as a re-implementation with these two changes, including this
+  trade-off. Files are 48 kHz /
   24-bit, served as lossless FLAC. The Zhu reference and anchors derive from
   16-bit source recordings.
 * Loudness: every file is at -23.0 LUFS as measured by ffmpeg `ebur128` (the
@@ -174,13 +186,14 @@ python scripts/analyze_mushra.py --mushra mushra.csv --participants participants
 
 ```bash
 # in the research working copy (Argentum_popr9)
-PYTHONPATH=code .venv/bin/python code/build_listening_test_v2r.py --out listening_test_v3 \
+PYTHONPATH=code .venv/bin/python code/build_listening_test_v2r.py --out listening_test_v3_1 \
     --training zhu=zhu_009,argentum_pg=argentum_pg_006 \
     --baseline-alignment model-offset --loudness ffmpeg \
     --raw-cache listening_test_v3_raw \
-    --zhu-checkpoint /home/smck/Argentum/Zhu/models/binaural_rendering_100_hfmask.pt
+    --zhu-checkpoint /home/smck/Argentum/Zhu/models/binaural_rendering_100_hfmask.pt \
+    --demo-root /home/smck/Argentum/avarig_2026_demo_audio_v2_1 --webmushra-style v3.1
 # here
-python scripts/build_mushra_web.py <path>/listening_test_v3
+python scripts/build_mushra_web.py <path>/listening_test_v3_1
 ```
 
 ### Before launch
@@ -238,7 +251,7 @@ Python 3.10 or later. The PyTorch wheel only matters for
 The audio files (about 2.3 GB compressed, 300 WAVs total) are distributed
 separately because they are too large for a Git repository. Two options:
 
-The current audio package is **v2.1** (2026-10-05):
+The current audio package is **v2.2** (2026-10-09):
 
 * `crm` is the retrained model `popr9_mirror_rot_level` (corrected training
   data); `zhu` and `a2b` use the same checkpoints as before,
@@ -252,11 +265,14 @@ The current audio package is **v2.1** (2026-10-05):
   that only the baselines had. The `a2b_2mp` references are re-read from the
   float source files. All files are 24-bit. Zhu source recordings are 16-bit,
   so their references keep that grid (quantisation floor about -109 dBFS).
+* v2.2: `zhu` is re-rendered with the retrained re-implementation (see
+  "Online MUSHRA test"), and loudness is measured with ffmpeg ebur128 (all
+  versions of a clip within 0.1 dB),
 * on `a2b_2mp` the baseline renderings get a non-standard FOA input (see
   above), so treat them as indicative only.
 
-`configs/audio_index.json` in this repository matches v2.1 (same clips as
-v2). v2 is built by `code/build_demo_package.py` and v2.1 by
+`configs/audio_index.json` in this repository matches v2.2 (same clips as
+v2). v2 is built by `code/build_demo_package.py` and v2.1/v2.2 by
 `code/rerender_demo_baselines.py` in the popr_9 working copy, and
 `code/verify_demo_package.py` checks the result, not by
 `scripts/generate_audio.py` (that script still renders the v1 setup).
@@ -371,7 +387,7 @@ Analyse the collected files with:
 python scripts/analyze_demo_ratings.py ratings/
 ```
 
-It uses only ratings made on audio package v2.1 and the two rated datasets,
+It uses only ratings made on audio package v2.2 and the two rated datasets,
 drops sessions without a complete profile or with identical ratings
 throughout, and prints MOS ± 95% CI per system (overall, per dataset, per
 profile group) plus paired CRM - baseline differences. Ratings collected
