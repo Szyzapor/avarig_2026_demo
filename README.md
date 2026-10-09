@@ -26,6 +26,9 @@ after the rating is recorded.
 
 ## Online listening test (GitHub Pages)
 
+> This branch keeps the online MOS version (audio package v2.2). The paper uses the MUSHRA test on
+> `main`, served at https://szyzapor.github.io/avarig_2026_demo/.
+
 `web/` holds a static version of the test that runs on GitHub Pages with no
 server. Each participant:
 
@@ -56,7 +59,7 @@ DEMO_AUDIO_ROOT=~/avarig_demo_audio python scripts/build_web.py \
 ```
 
 This writes `web/audio/**.flac` (24-bit) and `web/manifest.json` (about
-234 MB for 15 clips x 2 datasets x 12 s). ffmpeg is the only dependency.
+240 MB for 15 clips x 2 datasets x 12 s). ffmpeg is the only dependency.
 
 `a2b_2mp` is left out on purpose. Its FOA is not consistent B-format, while
 the Zhu and A2B baselines expect ACN/SN3D input, so the comparison on that
@@ -157,7 +160,7 @@ Python 3.10 or later. The PyTorch wheel only matters for
 The audio files (about 2.3 GB compressed, 300 WAVs total) are distributed
 separately because they are too large for a Git repository. Two options:
 
-The current audio package is **v2.1** (2026-10-05):
+The current audio package is **v2.2** (2026-10-09):
 
 * `crm` is the retrained model `popr9_mirror_rot_level` (corrected training
   data); `zhu` and `a2b` use the same checkpoints as before,
@@ -171,11 +174,15 @@ The current audio package is **v2.1** (2026-10-05):
   that only the baselines had. The `a2b_2mp` references are re-read from the
   float source files. All files are 24-bit. Zhu source recordings are 16-bit,
   so their references keep that grid (quantisation floor about -109 dBFS).
+* v2.2: `zhu` is re-rendered with the retrained Zhu re-implementation (mask up
+  to +12 dB over |W| and a multi-resolution log-magnitude loss; the original
+  was 8-23 dB too quiet above 7 kHz), and loudness is measured with ffmpeg
+  ebur128 (all versions of a clip within 0.1 dB),
 * on `a2b_2mp` the baseline renderings get a non-standard FOA input (see
   above), so treat them as indicative only.
 
-`configs/audio_index.json` in this repository matches v2.1 (same clips as
-v2). v2 is built by `code/build_demo_package.py` and v2.1 by
+`configs/audio_index.json` in this repository matches v2.2 (same clips as
+v2). v2 is built by `code/build_demo_package.py` and v2.1/v2.2 by
 `code/rerender_demo_baselines.py` in the popr_9 working copy, and
 `code/verify_demo_package.py` checks the result, not by
 `scripts/generate_audio.py` (that script still renders the v1 setup).
@@ -287,7 +294,7 @@ Analyse the collected files with:
 python scripts/analyze_demo_ratings.py ratings/
 ```
 
-It uses only ratings made on audio package v2.1 and the two rated datasets,
+It uses only ratings made on audio package v2.2 and the two rated datasets,
 drops sessions without a complete profile or with identical ratings
 throughout, and prints MOS ± 95% CI per system (overall, per dataset, per
 profile group) plus paired CRM - baseline differences. Ratings collected
