@@ -32,17 +32,64 @@ https://szyzapor.github.io/avarig_2026_demo/. The earlier online MOS test
 (5-point scale, no hidden reference or anchors) is kept on branch
 `online-mos-v2.1`.
 
-**Stimuli** are those of listening test v2 revision 2 (`listening_test_v2/`,
-which addresses the review in #3), plus a mid anchor:
+**Stimuli** (revision 3, `listening_test_v2/ARGENTUM_RECORDINGS.md` lists the
+Argentum recordings by role):
 
-* 12 trials of 10 s: 6 Zhu, 6 Argentum hold-out (no a2b_2mp: its FOA is not
-  consistent B-format, so the baselines got a mis-specified input),
+* 12 trials of 10 s: 6 Zhu, 6 Argentum hold-out. a2b_2mp is left out because
+  its FOA is not consistent B-format.
 * 7 conditions per trial: hidden reference, `proposed_crm_v2`, `zhu2022`,
   `a2b_btpab`, `anchor_lp7000` (mid anchor, reference low-passed at 7 kHz),
-  `anchor_lp3500` (low anchor) and `anchor_foa_cardioid`. All are aligned to
-  the reference, at -23 LUFS, 48 kHz / 24-bit (served as lossless FLAC),
-* practice clips `zhu_009` and `argentum_pg_006`. The Argentum practice clip
+  `anchor_lp3500` (low anchor) and `anchor_foa_cardioid`. Files are 48 kHz /
+  24-bit, served as lossless FLAC. The Zhu reference and anchors derive from
+  16-bit source recordings.
+* Loudness: every file is at -23.0 LUFS as measured by ffmpeg `ebur128` (the
+  BS.1770 reference implementation), at most 0.1 dB apart on a page. Revision 2
+  used an internal meter that differed from it by up to 0.5 dB.
+* Time and polarity: `proposed_crm_v2` is aligned by cross-correlation on the
+  30 s clip, and the FOA anchor by the measured FOA-to-binaural lag of the
+  recording.
+* Baselines on Argentum: the cross-correlation with the reference has two
+  near-equal peaks about 45 samples apart, with opposite signs, and picked
+  either one per clip. Revision 3 instead transfers each baseline's intrinsic
+  delay and polarity, measured on the Zhu clips: -85 samples with inverted
+  polarity for both models on all 6 clips. Combined with the FOA-to-binaural
+  table, this gives one consistent shift per recording (+802 or -222 samples,
+  inverted). Baselines on Zhu are aligned by cross-correlation, which is
+  unambiguous there.
+* Practice clips `zhu_009` and `argentum_pg_006`. The Argentum practice clip
   comes from a recording that is not in the test.
+
+**Known differences between systems.** These are measured, not fixable by
+re-rendering, and should be reported with the results:
+
+* Argentum is in-domain for the proposed model only. Its binaural references
+  are rendered from the same ZM-1 recordings: the multiple coherence between
+  FOA and binaural is 1.00 up to 500 Hz, against 0.65-0.88 for the Zhu
+  dummy-head recordings. The proposed model was trained on 40 other
+  recordings from this chain. The baselines were trained on Zhu only.
+  Report Argentum separately, as the proposed model's training domain, and
+  treat Zhu as the fair comparison. On Zhu all three systems were trained on
+  Zhu train, and A2B (`btpab`) is in-domain there.
+* A2B does not follow source direction on Argentum. Its ILD (1-4 kHz) does
+  not track the reference (r about 0, against 0.64-0.93 on Zhu). This is not
+  an input-convention error: none of the 24 permutations and sign changes of
+  the directional channels, N3D scaling, or an EQ to the Zhu microphone's
+  directional profile gives r above 0.14, and on Zhu the convention in use is
+  the best. The ZM-1 FOA has strongly reduced directional channels below
+  500 Hz (Y+Z+X at 0.06-0.35 x W at 63-250 Hz, against 0.8-1.7 x W for the
+  Zhu microphone), a microphone mismatch the Zhu-trained models do not
+  generalise over. Zhu2022 follows direction partly (r 0.2-0.55).
+* Both baselines add +5 to +10 dB around 63 Hz on Argentum, most likely
+  learned from the low-frequency wind and handling noise in the Zhu binaural
+  targets.
+* `zhu2022` (our re-implementation) is 8-23 dB below the reference above
+  7 kHz on most Zhu clips. It is trained with an L1 loss on the waveform and
+  on the complex spectrum. On the Zhu data the FOA-to-binaural coherence above
+  4 kHz is only 0.1-0.3, and such a loss then averages the unpredictable part
+  towards zero. Whether the original model behaves the same cannot be checked
+  without its weights. Disclose it as a property of the re-implementation.
+* The FOA anchor is closer to the reference than both baselines on Argentum,
+  so it is a condition there, not an anchor. It is never used for screening.
 
 **Sessions** (same page, `?session=1` or `?session=2`):
 
@@ -114,10 +161,11 @@ python scripts/analyze_mushra.py --mushra mushra.csv --participants participants
 
 ```bash
 # in the research working copy (Argentum_popr9)
-PYTHONPATH=code .venv/bin/python code/build_listening_test_v2r.py --out listening_test_v2r_mushra_web \
-    --mid-anchor --training zhu=zhu_009,argentum_pg=argentum_pg_006
+PYTHONPATH=code .venv/bin/python code/build_listening_test_v2r.py --out listening_test_v2r3 \
+    --mid-anchor --training zhu=zhu_009,argentum_pg=argentum_pg_006 \
+    --baseline-alignment model-offset --loudness ffmpeg
 # here
-python scripts/build_mushra_web.py <path>/listening_test_v2r_mushra_web
+python scripts/build_mushra_web.py <path>/listening_test_v2r3
 ```
 
 ### Before launch

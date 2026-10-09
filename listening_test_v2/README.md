@@ -1,5 +1,10 @@
 # Listening test v2 (webMUSHRA), revision 2
 
+> **Superseded for stimuli by revision 3** (`avarig_2026_listening_test_v2_rev3.zip`): consistent
+> baseline alignment on Argentum, loudness measured with ffmpeg ebur128, a 7 kHz mid anchor and a
+> practice clip from a recording outside the test. See the root README, section "Online MUSHRA
+> test", for the details and for the known system differences to report.
+
 A MUSHRA follow-up to the AES 2026 (AVARIG) poster demo. It compares the
 retrained **Proposed CRM** with the Zhu et al. 2022 and A2B (Gebru et al. 2025)
 baselines on the same excerpts, in two sessions:

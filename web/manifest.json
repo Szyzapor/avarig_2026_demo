@@ -1,5 +1,5 @@
 {
- "package": "listening_test_v2r_mushra_web",
+ "package": "listening_test_v2r3",
  "sample_rate": 48000,
  "conditions": [
   "proposed_crm_v2",
@@ -60,7 +60,7 @@
     "anchor_lp7000": "audio/e3f342fd670ed6b2.flac",
     "reference": "audio/3f6d80eed650dcaa.flac"
    },
-   "mid_anchor_removed_db": -42.6,
+   "mid_anchor_removed_db": -42.7,
    "mid_anchor_screening": false
   },
   {
@@ -230,7 +230,7 @@
     "anchor_lp7000": "audio/596b4876609ce9a3.flac",
     "reference": "audio/0578cf27c5fd096f.flac"
    },
-   "mid_anchor_removed_db": -22.2,
+   "mid_anchor_removed_db": -22.1,
    "mid_anchor_screening": true
   },
   {
